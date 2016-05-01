@@ -18,13 +18,6 @@ var balls = [];//存放动画小圆数组
 var colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900",
 "#FFBB33","#FF8800","#FF4444","#CC0000"];
 
-//计算目前到截止的时间间隔（秒）
-function getCurrentShowTimeSeconds(){
-	var curTime = new Date();
-	var res = endTime.getTime()-curTime.getTime();//获取间隔的时间毫秒数
-	res = Math.floor(res/1000);//转化为秒数
-	return res >=0?res:0;
-}
 //刷新
 function update(){
 	var nextTime = new Date();
@@ -38,22 +31,22 @@ function update(){
 	var curSeconds = parseInt(curTime.getSeconds());//获取秒
 	if(nextTime != curTime){
 		if(parseInt(nextHours/10) != parseInt(curHours/10)){
-			addBalls(mLeft,mTop,parseInt(curHours/10));
+			addBalls(mLeft,mTop,parseInt(nextHours/10));
 		}
 		if(parseInt(nextHours%10) != parseInt(curHours%10)){
-			addBalls(mLeft+15*(r+1),mTop,parseInt(curHours%10));
+			addBalls(mLeft+15*(r+1),mTop,parseInt(nextHours%10));
 		}
 		if(parseInt(nextMinutes/10) != parseInt(curMinutes/10)){
-			addBalls(mLeft+39*(r+1),mTop,parseInt(curMinutes/10));
+			addBalls(mLeft+39*(r+1),mTop,parseInt(nextMinutes/10));
 		}
 		if(parseInt(nextMinutes%10) != parseInt(curMinutes%10)){
-			addBalls(mLeft+54*(r+1),mTop,parseInt(curMinutes%10));
+			addBalls(mLeft+54*(r+1),mTop,parseInt(nextMinutes%10));
 		}
 		if(parseInt(nextSeconds/10) != parseInt(curSeconds/10)){
-			addBalls(mLeft+78*(r+1),mTop,parseInt(curSeconds/10));
+			addBalls(mLeft+78*(r+1),mTop,parseInt(nextSeconds/10));
 		}
 		if(parseInt(nextSeconds%10) != parseInt(curSeconds%10)){
-			addBalls(mLeft+93*(r+1),mTop,parseInt(curSeconds%10));
+			addBalls(mLeft+93*(r+1),mTop,parseInt(nextSeconds%10));
 		}
 		curTime = nextTime;
 	}
@@ -135,7 +128,7 @@ function updateBalls(){
         }
     }
     //console.log(len+"--"+cnt);
-    while(balls.length>Math.min(cnt,300)){
+    while(balls.length>cnt){
         balls.pop(); //将索引大于cnt的小球删除
     }
   }
