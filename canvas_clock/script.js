@@ -17,14 +17,6 @@ var curTime = new Date();
 var balls = [];//存放动画小圆数组
 var colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900",
 "#FFBB33","#FF8800","#FF4444","#CC0000"];
-
-//计算目前到截止的时间间隔（秒）
-function getCurrentShowTimeSeconds(){
-	var curTime = new Date();
-	var res = endTime.getTime()-curTime.getTime();//获取间隔的时间毫秒数
-	res = Math.floor(res/1000);//转化为秒数
-	return res >=0?res:0;
-}
 //刷新
 function update(){
 	var nextTime = new Date();
@@ -135,7 +127,7 @@ function updateBalls(){
         }
     }
     //console.log(len+"--"+cnt);
-    while(balls.length>Math.min(cnt,300)){
+    while(balls.length>cnt){
         balls.pop(); //将索引大于cnt的小球删除
     }
   }
