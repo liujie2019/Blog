@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东轮播图</title>
+    <style type="text/css">
+    *{margin: 0;padding: 0;list-style: none;}
+    a{text-decoration: none;color: #fff;}
+     #content{width: 730px;height: 454px;margin: 100px auto;position: relative;cursor: pointer;}
+     #pic li{position: absolute;top: 0;left: 0;display: none;z-index: 1;}
+     #num{position: absolute;z-index: 2;left: 40%;bottom: 10px;}
+     #num li{float: left;width: 20px;height: 20px;background: #666;margin: 3px;line-height: 20px;text-align: center;
+        color: #fff;border-radius: 50%;}
+    #num li.active{background: #f00;}
+    .arrow{height: 60px;width: 30px;z-index: 3;position: absolute;top: 45%;background-color: rgba(0,0,0,0.3);text-align: center; line-height: 60px;display: none;font-size: 30px;font-weight: bold;}
+    .arrow:hover{background: rgba(0,0,0,0.7);}
+    #content:hover .arrow{display: block;}
+    #left{left: 2%;}
+    #right{right:2%;}
+    </style>
+    <script type="text/javascript">
+        function $(id){//根据id获取元素的函数
+                 return typeof id==='string'?document.getElementById(id):id;
+           }
+    window.onload=function(){
+           var index=0;
+           var timer=null;
+           var pic=$("pic").getElementsByTagName("li");//获取图片元素
+           var num=$("num").getElementsByTagName("li");//获取图片索引元素
+           var oDiv=$("content");
+           var left=$("left");//获取左按钮
+           var right=$("right");//获取右按钮
+
+           left.onclick=function()//为左按钮绑定事件
+           {
+            index--;//点击左按钮，图片索引值减小
+            if(index<0){
+                index=num.length-1;
+            }
+            change(index);
+           }
+
+            right.onclick=function()//为右按钮绑定事件
+           {
+            index++;//点击右按钮，图片索引值增加
+            if(index>=num.length){
+                index=0;
+            }
+            change(index);
+           }
+
+           oDiv.onmouseover=function(){//鼠标进入，停止图片切换
+            clearInterval(timer);
+           }
+
+            oDiv.onmouseout=function(){//鼠标移出，图片继续切换
+            timer=setInterval(run,2000);
+           }
+           timer=setInterval(run,2000);
+           for(var i=0;i<num.length;i++){
+            num[i].index=i;
+            num[i].onmouseover=function(){
+                change(this.index);//为每一个图片索引添加鼠标移入事件
+            }
+           }
+
+           function run(){//页面加载完毕开始进行图片切换
+            index++;
+            if(index>=num.length){
+                index=0;
+            }
+            change(index);
+           }
+
+           function change(curindex)//根据索引值来改变图片和按钮背景
+           {
+               for(var i=0;i<num.length;i++){
+                pic[i].style.display='none';
+                num[i].className="";
+               }
+               pic[curindex].style.display='block';
+               num[curindex].className='active';
+               index=curindex;
+           }
+    }
+    </script>
+</head>
+<body>
+<div id="content">
+<ul id="pic">
+    <li style="display: block;"><img src="images/1.jpg"  alt=""></li>
+    <li><img src="images/2.jpg"  alt=""></li>
+    <li><img src="images/3.jpg"  alt=""></li>
+    <li><img src="images/4.jpg"  alt=""></li>
+    <li><img src="images/5.jpg"  alt=""></li>
+    <li><img src="images/6.jpg"  alt=""></li>
+</ul>
+<ul id="num">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<a href="javascript:;" class="arrow" id="left">&lt;</a>
+<a href="javascript:;" class="arrow" id="right">&gt;</a>
+</div>
+</body>
+</html>

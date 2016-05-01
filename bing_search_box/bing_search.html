@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>bing搜索框实现</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="nav">
+<ul class="clearfix">
+	<li><a href="#">图片</a></li>
+	<li><a href="#">视频</a></li>
+	<li><a href="#">词典</a></li>
+	<li><a href="#">咨询</a></li>
+	<li><a href="#">地图</a></li>
+	<li><a href="#">影响力</a></li>
+	<li><a href="#">更多</a></li>
+</ul>
+</div>
+<div class="container">
+	<div class="search_box">
+		<div class="logo"></div>
+		<form class="search_form" id="search_form" action="https://cn.bing.com/search" target="_blank">
+			<input type="text" class="search_text" name="q" id="search_input" autocomplete="off">
+			<input type="submit" class="search_button" value="">
+		</form>
+	</div>
+</div>
+<div class="suggest" id="search_suggest" style="display:none;">
+				<ul id="search_result">
+				</ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

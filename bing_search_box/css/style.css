@@ -1,0 +1,101 @@
+/*清浮动*/
+.clearfix:after{
+	content:"";
+	display:block;
+	visibility:hidden;
+	clear:both;
+	height:0;
+}
+.clearfix{
+	zoom:1;
+}
+body{
+	background: #333;
+}
+.nav{
+	margin: 0 auto;
+	width: 1228px;
+}
+.nav ul{
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+.nav ul li{
+	float:left;
+	padding:10px;
+}
+.nav ul li a{
+	color:#fff;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+}
+.nav ul li a:hover{
+	font-size: 16px;
+}
+.container{
+	position:relative;
+	background:url(../river.jpg);
+	width:1228px;
+	height:690px;
+	margin:0 auto;
+}
+.search_box{
+	position:absolute;
+	left:150px;
+	top:150px;
+}
+.logo{
+	background-image: url(../logo.png);
+	height:53px;
+	width:107px;
+	float: left;
+	margin:-4px 18px 0 0;
+}
+.search_form{
+	float:left;
+	background:#fff;
+	padding:5px;
+}
+.search_text{
+	height:25px;
+	line-height: 25px;
+	float:left;
+	width:350px;
+	border:none;
+	outline: none;
+}
+.search_button{
+	width:29px;
+	height:29px;
+	background:url(../search-button.png);
+	float:left;
+	border:none;
+}
+.suggest{
+	width:388px;
+	background-color:#fff;
+	position:absolute;
+	margin:0;
+	padding:0;
+	border:1px solid #999;
+}
+.suggest ul{
+	list-style:none;
+	display:block;
+	margin:0;
+	padding:0;
+}
+.suggest ul li {
+	padding:3px;
+	line-height:25px;
+	font-size: 14px;
+	color: #777;
+	cursor: pointer;
+	padding:3px;
+}
+.suggest ul li:hover{
+	background-color:#e5e5e5;
+	text-decoration: underline;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的轮播图</title>
+    <style type="text/css">
+    *{margin: 0;padding: 0;list-style: none;}
+    a{text-decoration: none;color: #fff;}
+    #wrap{width: 600px;height: 400px;margin: 100px auto;position: relative;cursor: pointer;}
+    #pic li{display: none;position: absolute;top: 0;left: 0;z-index: 1;}
+    #num{position: absolute;z-index: 2;bottom: 10px;left: 40%;}
+    #num li{float: left;width: 20px;height: 20px;margin:3px;border-radius: 50%;line-height: 20px;color: #fff;background: #666;text-align: center;}
+    #num li.active{background:#f00; }
+    .arrow{z-index: 3;height: 40px;width: 30px;position: absolute;top: 45%;line-height: 40px;background: rgba(0,0,0,0.3);text-align: center;display: none;}
+    .arrow:hover{background: rgba(0,0,0,0.7);}
+    #wrap:hover .arrow{display: block;}
+    #left{left:2%;}
+    #right{right:2%;}
+    </style>
+    <script type="text/javascript">
+    /*function $(id){
+            return document.getElementById(id);
+        }
+    window.onload=function(){
+        var oLeft=$("left");
+        var oRight=$("right");
+        var index=0;
+        var timer=null;
+        var pic=$("pic").getElementsByTagName("li");
+        var num=$("num").getElementsByTagName("li");
+        var oDiv=$("wrap");
+
+        oRight.onclick=function(){
+              index++;
+              if(index>=pic.length){
+                index=0;
+              }
+              change(index);
+        }
+        oLeft.onclick=function(){
+            index--;
+            if(index<0){
+                index=pic.length-1;
+            }
+            change(index);
+        }
+        oDiv.onmouseover=function(){
+            clearInterval(timer);
+        }
+        oDiv.onmouseout=function(){
+            timer=setInterval(run,2000);//鼠标移出后重新开始定时器
+        }
+
+
+        timer=setInterval(run,2000);
+
+        function run(){//用于定时器的函数
+            index++;
+            if(index>=pic.length){
+                index=0;
+            }
+            change(index);
+        }
+
+for(var i=0;i<num.length;i++){
+            num[i].index=i;//把索引值存起来
+            num[i].onmouseover=function(){
+                change(this.index);
+            }
+        }
+        function change(curindex){//用于切换图片的函数
+              for(var i=0;i<pic.length;i++){
+                pic[i].style.display="none";
+                num[i].className="";
+              }
+              pic[curindex].style.display="block";
+              num[curindex].className="active";
+              index=curindex;
+        }
+    }*/
+    </script>
+</head>
+<body>
+<div id="wrap">
+<ul id="pic">
+    <li style="display: block;"><img src="img/1.jpg" alt=""></li>
+    <li><img src="img/2.jpg" alt=""></li>
+    <li><img src="img/3.jpg" alt=""></li>
+    <li><img src="img/4.jpg" alt=""></li>
+    <li><img src="img/5.jpg" alt=""></li>
+</ul>
+<ul id="num">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<a href="javascript:;" class="arrow" id="left">&lt;</a>
+<a href="javascript:;" class="arrow" id="right">&gt;</a>
+</div>
+<script type="text/javascript">
+    function $(id){
+        return document.getElementById(id);
+    }
+    var oDiv=$("wrap");
+    var pic=$("pic").getElementsByTagName("li");
+    var num=$("num").getElementsByTagName("li");
+    var left=$("left");
+    var right=$("right");
+    var index=0;
+    var len=pic.length;
+
+    left.onclick=function(){
+        index--;
+        if(index<0){
+            index=len-1;
+        }
+        change(index);
+    };
+    right.onclick=function(){
+        index++;
+        if(index>len-1){
+            index=0;
+        }
+        change(index);
+    };
+
+    oDiv.onmouseover=function(){
+        clearInterval(timer);
+    };
+    oDiv.onmouseout=function(){
+        timer=setInterval(run,2000);
+    };
+    timer=setInterval(run,2000);
+    function run(){
+        index++;
+        if(index>len-1){
+            index=0;
+        }
+        change(index);
+    }
+    function change(curindex){
+        for(var i=0;i<len;i++){
+            pic[i].style.display="none";
+            num[i].className="";
+        }
+        pic[curindex].style.display="block";
+        num[curindex].className="active";
+    }
+</script>
+</body>
+</html>

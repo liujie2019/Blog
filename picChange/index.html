@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style type="text/css">
+    *{margin: 0;padding: 0;list-style: none;}
+    #wrap{width: 430px;height: 430px;margin: 20px auto;cursor: pointer;border: 1px solid #DED4D3;position: relative;}
+    #pic-big li{display: none;}
+    #pic-big{margin-bottom: 15px;}
+    #pic-small li{width: 60px;height: 60px;float: left;margin-left: 20px; border: 1px solid #DED4D3;}
+    #pic-small li.active{border: 2px solid #000;}
+    </style>
+    <script type="text/javascript">
+    function $(id){
+        return document.getElementById(id);
+    }
+    window.onload=function (){
+        var oDiv=$("wrap");
+        var oPicbig=$("pic-big").getElementsByTagName("li");
+        var oPicsmall=$("pic-small").getElementsByTagName("li");
+
+        for(var i=0;i<oPicsmall.length;i++){
+               oPicsmall[i].index=i;//将小图片索引存起来
+               oPicsmall[i].onmouseover=function(){
+                for(var j=0;j<oPicsmall.length;j++){
+                //当鼠标浮在某个小图片上时，先将所有的小图片的className置为空
+                        oPicsmall[j].className="";
+                }
+                        oPicsmall[this.index].className="active";
+                         change(this.index);
+               }
+        }
+        function change(curindex){
+            for(var i=0;i<oPicbig.length;i++){
+                oPicbig[i].style.display="none";
+            }
+            oPicbig[curindex].style.display="block";
+            //index=curindex;
+        }
+    }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <ul id="pic-big">
+        <li style="display:block;"><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+        <li><img src="img/5.jpg" alt=""></li>
+    </ul>
+    <ul id="pic-small">
+        <li class="active"><img src="img/11.jpg" alt=""></li>
+        <li><img src="img/22.jpg" alt=""></li>
+        <li><img src="img/33.jpg" alt=""></li>
+        <li><img src="img/44.jpg" alt=""></li>
+        <li><img src="img/55.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>
