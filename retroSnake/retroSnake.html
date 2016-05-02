@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>我的贪吃蛇</title>
+        <style type="text/css">
+        body{margin: 0;}
+        </style>
+    </head>
+    <body>
+    <script type="text/javascript">
+    //绘制地图
+        function drawMap(){
+            //私有成员
+            var h=500;
+            var w=1000;
+            this.showMap=function(){
+                var tu=document.createElement("div");
+                tu.style.width=w+'px';
+                tu.style.height=h+'px';
+                tu.style.backgroundColor='pink';
+                document.body.appendChild(tu);
+            }
+        }
+        //绘制食物
+        function drawFood(){
+            //私有成员
+            //xFood和yFood定义了食物（权值）
+            //把食物（权值）坐标声明为公开的，以便在外部访问
+            var len=20;
+            this.xFood=0;
+            this.yFood=0;
+            this.food=null;//定义食物对象
+            this.showFood=function(){
+                if(this.food===null){
+                    this.food=document.createElement("div");
+                    this.food.style.width=len+'px';
+                    this.food.style.height=len+'px';
+                    this.food.style.backgroundColor="green";
+
+                    this.food.style.position="absolute";
+                    document.body.appendChild(this.food);
+                }
+                    this.xFood=Math.floor(Math.random()*50);
+                    this.yFood=Math.floor(Math.random()*25);
+                    this.food.style.left=this.xFood*len+'px';
+                    this.food.style.top=this.yFood*len+'px';
+                }
+        }
+        //绘制小蛇
+        function drawSnake(){
+            var len=20;
+            this.direct="right";
+            //每个蛇节：[x坐标,y坐标,颜色,蛇节对象]
+            this.snakebody=[[0,1,"green",null],[1,1,"green",null],[2,1,"green",null],[3,1,"red",null]];
+            //绘制小蛇
+            this.showSnake=function(){
+                for(var i=0;i<this.snakebody.length;i++){
+                    if(this.snakebody[i][3]===null){
+                        this.snakebody[i][3]=document.createElement("div");
+                        this.snakebody[i][3].style.width=len+'px';
+                        this.snakebody[i][3].style.height=len+'px';
+                        this.snakebody[i][3].style.backgroundColor=this.snakebody[i][2];
+                        this.snakebody[i][3].style.position="absolute";
+                        document.body.appendChild(this.snakebody[i][3]);
+                    }
+                    this.snakebody[i][3].style.left=this.snakebody[i][0]*len+'px';
+                    this.snakebody[i][3].style.top=this.snakebody[i][1]*len+'px';
+                }
+            };
+            //小蛇移动方法
+            this.moveSnake=function(){
+                //非蛇头蛇节(当前蛇节的新坐标是下一个蛇节的旧坐标)
+                for(var i=0;i<this.snakebody.length-1;i++){
+                    this.snakebody[i][0]=this.snakebody[i+1][0];
+                    this.snakebody[i][1]=this.snakebody[i+1][1];
+                }
+                if(this.direct=="right"){
+                    this.snakebody[this.snakebody.length-1][0]+=1;
+                }
+                if(this.direct=="left"){
+                    this.snakebody[this.snakebody.length-1][0]-=1;
+                }
+                if(this.direct=="up"){
+                    this.snakebody[this.snakebody.length-1][1]-=1;
+                }
+                if(this.direct=="down"){
+                    this.snakebody[this.snakebody.length-1][1]+=1;
+                }
+
+            //判断蛇头碰到食物
+            //蛇头坐标
+            var xSnake=this.snakebody[this.snakebody.length-1][0];
+            var ySnake=this.snakebody[this.snakebody.length-1][1];
+            if(xSnake==food.xFood&&ySnake==food.yFood)
+            {
+                var newjie=[this.snakebody[0][0],this.snakebody[0][1],"green",null];
+                this.snakebody.unshift(newjie);
+                 //原来食物消失，重新生成一个新事物
+                //地图上的食物永远只有一个，调用showfood()方法只不过是改变食物的位置而已
+                food.showFood();
+            }
+            //控制小蛇在地图范围内移动
+            if(xSnake<0||xSnake>49||ySnake<0||ySnake>24)
+            {
+                alert("Game Over");
+                clearInterval(timer);
+                return false;
+            }
+            //不能吃到自己(蛇头坐标与其他蛇节坐标一致)
+            for(var i=0;i<this.snakebody.length-1;i++){
+                if(this.snakebody[i][0]==xSnake&&this.snakebody[i][1]==ySnake){
+                    alert("You killed by yourself");
+                    clearInterval(timer);
+                    return false;
+                }
+            }
+            //根据新坐标重新绘制小蛇
+            this.showSnake();
+            };
+        }
+
+
+        var map=new drawMap();
+        map.showMap();
+        var food=new drawFood();
+        food.showFood();
+        var snake=new drawSnake();
+        snake.showSnake();
+        timer=setInterval("snake.moveSnake()",200);
+        document.onkeydown=function(ev){
+            var num=ev.keyCode;
+            switch(num){
+                case 38:
+                case 87:
+                snake.direct="up";
+                break;
+                case 40:
+                case 83:
+                snake.direct="down";
+                break;
+                case 37:
+                case 65:
+                snake.direct="left";
+                break;
+                case 39:
+                case 68:
+                snake.direct="right";
+                break;
+            }
+        };
+    </script>
+    </body>
+</html>
