@@ -40,22 +40,22 @@ function update(){
 	var curSeconds = curShowTimeSeconds % 60;
 	if(nextSeconds != curSeconds){
 		if(parseInt(nextHours/10) != parseInt(curHours/10)){
-			addBalls(mLeft,mTop,parseInt(curHours/10));
+			addBalls(mLeft,mTop,parseInt(nextHours/10));
 		}
 		if(parseInt(nextHours%10) != parseInt(curHours%10)){
-			addBalls(mLeft+15*(r+1),mTop,parseInt(curHours%10));
+			addBalls(mLeft+15*(r+1),mTop,parseInt(nextHours%10));
 		}
 		if(parseInt(nextMinutes/10) != parseInt(curMinutes/10)){
-			addBalls(mLeft+39*(r+1),mTop,parseInt(curMinutes/10));
+			addBalls(mLeft+39*(r+1),mTop,parseInt(nextMinutes/10));
 		}
 		if(parseInt(nextMinutes%10) != parseInt(curMinutes%10)){
-			addBalls(mLeft+54*(r+1),mTop,parseInt(curMinutes%10));
+			addBalls(mLeft+54*(r+1),mTop,parseInt(nextMinutes%10));
 		}
 		if(parseInt(nextSeconds/10) != parseInt(curSeconds/10)){
-			addBalls(mLeft+78*(r+1),mTop,parseInt(curSeconds/10));
+			addBalls(mLeft+78*(r+1),mTop,parseInt(nextSeconds/10));
 		}
 		if(parseInt(nextSeconds%10) != parseInt(curSeconds%10)){
-			addBalls(mLeft+93*(r+1),mTop,parseInt(curSeconds%10));
+			addBalls(mLeft+93*(r+1),mTop,parseInt(nextSeconds%10));
 		}
 		curShowTimeSeconds = nextShowTimeSeconds;
 	}
