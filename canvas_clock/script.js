@@ -12,52 +12,43 @@ var r = 8;//设置小球半径
 var mTop = Math.round(vWidth /10);
 var mLeft = Math.round(vHeight /5);
 //设置倒计时时间
-var endTime = new Date();
-endTime.setTime(endTime.getTime()+3600*1000);//设置倒计时一小时
-var curShowTimeSeconds = 0;//当前时间到截止时间的间隔
+var curTime = new Date();
 
 var balls = [];//存放动画小圆数组
 var colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900",
 "#FFBB33","#FF8800","#FF4444","#CC0000"];
 
-//计算目前到截止的时间间隔（秒）
-function getCurrentShowTimeSeconds(){
-	var curTime = new Date();
-	var res = endTime.getTime()-curTime.getTime();//获取间隔的时间毫秒数
-	res = Math.floor(res/1000);//转化为秒数
-	return res >=0?res:0;
-}
 //刷新
 function update(){
-	var nextShowTimeSeconds = getCurrentShowTimeSeconds();//秒数
+	var nextTime = new Date();
 	//获取下一帧时间
-	var nextHours = parseInt(nextShowTimeSeconds / 3600);
-	var nextMinutes = parseInt((nextShowTimeSeconds-nextHours*3600) / 60);
-	var nextSeconds = nextShowTimeSeconds % 60;
+	var nextHours = parseInt(nextTime.getHours());//获取小时
+	var nextMinutes = parseInt(nextTime.getMinutes());//获取分钟
+	var nextSeconds = parseInt(nextTime.getSeconds());//获取秒
 	//获取当前时间
-	var curHours = parseInt(curShowTimeSeconds / 3600);
-	var curMinutes = parseInt((curShowTimeSeconds-curHours*3600) / 60);
-	var curSeconds = curShowTimeSeconds % 60;
-	if(nextSeconds != curSeconds){
+	var curHours = parseInt(curTime.getHours());//获取小时
+	var curMinutes = parseInt(curTime.getMinutes());//获取分钟
+	var curSeconds = parseInt(curTime.getSeconds());//获取秒
+	if(nextTime != curTime){
 		if(parseInt(nextHours/10) != parseInt(curHours/10)){
-			addBalls(mLeft,mTop,parseInt(nextHours/10));
+			addBalls(mLeft,mTop,parseInt(curHours/10));
 		}
 		if(parseInt(nextHours%10) != parseInt(curHours%10)){
-			addBalls(mLeft+15*(r+1),mTop,parseInt(nextHours%10));
+			addBalls(mLeft+15*(r+1),mTop,parseInt(curHours%10));
 		}
 		if(parseInt(nextMinutes/10) != parseInt(curMinutes/10)){
-			addBalls(mLeft+39*(r+1),mTop,parseInt(nextMinutes/10));
+			addBalls(mLeft+39*(r+1),mTop,parseInt(curMinutes/10));
 		}
 		if(parseInt(nextMinutes%10) != parseInt(curMinutes%10)){
-			addBalls(mLeft+54*(r+1),mTop,parseInt(nextMinutes%10));
+			addBalls(mLeft+54*(r+1),mTop,parseInt(curMinutes%10));
 		}
 		if(parseInt(nextSeconds/10) != parseInt(curSeconds/10)){
-			addBalls(mLeft+78*(r+1),mTop,parseInt(nextSeconds/10));
+			addBalls(mLeft+78*(r+1),mTop,parseInt(curSeconds/10));
 		}
 		if(parseInt(nextSeconds%10) != parseInt(curSeconds%10)){
-			addBalls(mLeft+93*(r+1),mTop,parseInt(nextSeconds%10));
+			addBalls(mLeft+93*(r+1),mTop,parseInt(curSeconds%10));
 		}
-		curShowTimeSeconds = nextShowTimeSeconds;
+		curTime = nextTime;
 	}
 	updateBalls();
 }
@@ -82,9 +73,9 @@ function addBalls(x,y,num){
 //创建倒计时动画
 function render(cxt){
 	cxt.clearRect(0,0,vWidth, vHeight);//每次调用清空画布
-	var hours = parseInt(curShowTimeSeconds / 3600);
-	var minutes = parseInt((curShowTimeSeconds-hours*3600) / 60);
-	var seconds = curShowTimeSeconds % 60;
+	var hours = parseInt(curTime.getHours());//获取小时
+	var minutes = parseInt(curTime.getMinutes());//获取分钟
+	var seconds = parseInt(curTime.getSeconds());//获取秒
 	// console.log(parseInt(hours/10));
 	//绘制计时钟本体
 	renderDigit(mLeft,mTop,parseInt(hours/10),cxt);//parseInt(hours/10)这样写是为了防止小数的出现
@@ -126,7 +117,7 @@ function updateBalls(){
         if( balls[i].y >= vHeight-r ){//碰撞检测
         //如果小球的竖直方向的坐标值大于等于屏幕可视区的高度减去小球的半径，则将其重新赋值
             balls[i].y = vHeight-r;
-            balls[i].vy = - Math.abs(balls[i].vy)*0.75;
+            balls[i].vy = - Math.abs(balls[i].vy)*0.75;//减少垂直方向上的速度
         }
     }
     //性能优化
@@ -142,7 +133,6 @@ function updateBalls(){
     }
   }
 
-curShowTimeSeconds = getCurrentShowTimeSeconds(); //当前时间到截止时间的间隔
 setInterval(
         function(){
             render(cxt); //创建计时钟动画

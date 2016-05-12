@@ -3,14 +3,17 @@
 	margin: 0 auto;
 	text-align: center;
 }
-#select img{
+#select1 img,#select2 img{
 	cursor: pointer;
-            border: none;
-            width: 167px;
-            height: 133px;
+      border: none;
+       width: 167px;
+       height: 133px;
 }
-#select3{
-    width:165px;height130px;
+#select3 img{
+    width:148px;
+    height134px;
+    cursor: pointer;
+     border: none;
 }
 #result{
 	margin-top: 30px;

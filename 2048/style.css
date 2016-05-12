@@ -1,0 +1,83 @@
+        *{margin: 0;padding: 0;}
+        #wrap{width: 500px;height: 500px;position: absolute;top: 50%;left: 50%;background-color:#B8AF9E;
+            margin-left: -250px;margin-top: -250px;border-radius: 20px;}
+        #start{
+            width: 500px;height: 500px;display: block;background-color: #F2B179;
+            color: yellow;text-align: center;line-height: 500px;font-weight: bolder;font-size: 40px;
+            border-radius: 20px;
+        }
+        #wrap .card{
+            width: 100px;
+            height: 60px;
+            padding: 20px 0;
+            margin:20px 0 0 20px;
+            line-height: 60px;
+            font-weight: bolder;
+            font-size: 60px;
+            float: left;
+            text-align: center;
+            border-radius: 10px;
+        }
+        #wrap .card0{
+    background: #CCC0B2;
+        }
+        #wrap .card2
+        {
+            color: #7C736A;
+            background: #EEE4DA;
+        }
+        #wrap .card4
+        {
+            color: #7C736A;
+            background: #ece0c8;
+        }
+        #wrap .card8
+        {
+            color: #fff7eb;
+            background: #f2b179;
+        }
+        #wrap .card16
+        {
+            color:#fff7eb;
+            background:#f59563;
+        }
+        #wrap .card32
+        {
+            color:#fff7eb;
+            background:#F57C5F;
+        }
+        #wrap .card64
+        {
+            color:#fff7eb;
+            background:#f65d3b;
+        }
+        #wrap .card128
+        {
+            color:#fff7eb;
+            background:#EDCE71;
+            font-size: 50px;
+        }
+        #wrap .card256
+        {
+            color:#fff7eb;
+            background:#edcc61;
+            font-size: 50px;
+        }
+        #wrap .card512
+        {
+            color:#fff7eb;
+            background:#ecc850;
+             font-size: 50px;
+        }
+        #wrap .card1024
+        {
+            color:#fff7eb;
+            background:#edc53f;
+            font-size: 40px;
+        }
+        #wrap .card2048
+        {
+            color:#fff7eb;
+            background:#eec22e;
+            font-size: 40px;
+        }
