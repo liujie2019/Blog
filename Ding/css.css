@@ -5,7 +5,7 @@
 }
 #select1 img,#select2 img{
 	cursor: pointer;
-      border: none;
+      	border: none;
        width: 167px;
        height: 133px;
 }
