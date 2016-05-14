@@ -3,23 +3,17 @@
 	margin: 0 auto;
 	text-align: center;
 }
-#select1 img,#select2 img{
+#select1,#select2,#select3{
 	cursor: pointer;
       	border: none;
        width: 167px;
        height: 133px;
 }
-#select3 img{
-    width:148px;
-    height134px;
-    cursor: pointer;
-     border: none;
-}
 #result{
 	margin-top: 30px;
 	text-align: center;
 }
-#result #mine,#result #cpt{
+#mine,#cpt{
 	display: inline-block;
 	width: 167px;
 	height: 133px;
