@@ -100,8 +100,8 @@ canvas.addEventListener("touchend",function(e){
 	endStroke();
 },false);
 //计算线条的宽度值
-var maxLineWidth = 30;//设置最大宽度为30
-var minLineWidth = 1;//设置最小宽度为30
+var maxLineWidth = 15;//设置最大宽度为15
+var minLineWidth = 1;//设置最小宽度为1
 var maxStrokeV = 10;//最大的绘制速度为10
 var minStrokeV = 0.1;//最小的绘制速度为0.1
 function calcLineWidth(t,s){
