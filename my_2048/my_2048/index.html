@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>2048经典版</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<header class="clearfix">
+	<h1>2048经典版</h1>
+	<a href="#" id="newGameBtn">New Game</a>
+	<p class="p_left">score:<span id="score">0</span></p>
+	<p class="p_right">已用时长:<span id="time">0s</span></p>
+        <div class="music">
+        <img src="images/music_note_big.png" id="music" class="play">
+        <audio autoplay="true" loop>
+            <source src="music/bg_music.mp3" type="audio/mpeg">
+            您的浏览器不支持html5音频
+        </audio>
+        </div>
+</header>
+<div id="grid_container">
+        <div class="grid-cell" id="grid_cell_0_0"></div>
+        <div class="grid-cell" id="grid_cell_0_1"></div>
+        <div class="grid-cell" id="grid_cell_0_2"></div>
+        <div class="grid-cell" id="grid_cell_0_3"></div>
+
+        <div class="grid-cell" id="grid_cell_1_0"></div>
+        <div class="grid-cell" id="grid_cell_1_2"></div>
+        <div class="grid-cell" id="grid_cell_1_1"></div>
+        <div class="grid-cell" id="grid_cell_1_3"></div>
+
+        <div class="grid-cell" id="grid_cell_2_0"></div>
+        <div class="grid-cell" id="grid_cell_2_1"></div>
+        <div class="grid-cell" id="grid_cell_2_2"></div>
+        <div class="grid-cell" id="grid_cell_2_3"></div>
+
+        <div class="grid-cell" id="grid_cell_3_0"></div>
+        <div class="grid-cell" id="grid_cell_3_1"></div>
+        <div class="grid-cell" id="grid_cell_3_2"></div>
+        <div class="grid-cell" id="grid_cell_3_3"></div>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/support.js"></script>
+<script type="text/javascript" src="js/animation.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

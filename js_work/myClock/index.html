@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的数码时钟</title>
+    <style type="text/css">
+    body{background:#003;color: white;}
+    div{font-weight: bold;font-size: 45px;text-align: center;}
+    h2{text-align: center;font-size: 50px;margin-top: 100px;}
+    </style>
+    <script type="text/javascript">
+    function toDou(n)
+    {
+        if(n<10){
+            return '0'+n;
+        }else{
+            return ''+n;
+        }
+    }
+    function toXQ(day)
+    {
+        switch(day)
+        {
+            case 0:
+                    return '&nbsp;星&nbsp;期&nbsp;日';
+            case 1:
+                    return '&nbsp;星&nbsp;期&nbsp;一';
+            case 2:
+                    return '&nbsp;星&nbsp;期&nbsp;二';
+            case 3:
+                    return '&nbsp;星&nbsp;期&nbsp;三';
+            case 4:
+                    return '&nbsp;星&nbsp;期&nbsp;四';
+            case 5:
+                    return '&nbsp;星&nbsp;期&nbsp;五';
+            case 6:
+                    return '&nbsp;星&nbsp;期&nbsp;六';
+        }
+    }
+    window.onload=function()
+    {
+        var aImg=document.getElementsByTagName("img");
+        var aSpan=document.getElementById("span");
+        function tick()
+        {
+            var oDate=new Date();
+            var iYear=oDate.getFullYear();
+            //alert(iYear);
+          /*  if(oDate.getYear()<1900)
+            {
+                iYear+=1900;
+            }*/
+             var str=toDou(iYear)+toDou(oDate.getMonth()+1)+toDou(oDate.getDate())+toDou(oDate.getHours())+toDou(oDate.getMinutes())+toDou(oDate.getSeconds());
+             for (var i = 0; i < aImg.length; i++)
+             {
+                 aImg[i].src='img/'+str.charAt(i)+'.png';
+             }
+             aSpan.innerHTML=toXQ(oDate.getDay());
+        }
+        setInterval(tick,1000);
+        tick();
+    };
+    </script>
+</head>
+<body">
+<h2>超酷数码时钟</h2>
+<div id="year">
+<img src="img/0.png">
+<img src="img/0.png">
+<img src="img/0.png">
+<img src="img/0.png">
+年
+<img src="img/0.png">
+<img src="img/0.png">
+月
+<img src="img/0.png">
+<img src="img/0.png">
+日
+</div>
+<div id="time">
+<img src="img/0.png">
+<img src="img/0.png">
+:
+<img src="img/0.png">
+<img src="img/0.png">
+:
+<img src="img/0.png">
+<img src="img/0.png">
+<span id="span">&nbsp;星&nbsp;期&nbsp;一</span>
+</div>
+</body>
+</html>
