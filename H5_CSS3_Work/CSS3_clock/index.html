@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CSS3时钟</title>
+	<style type="text/css">
+	body{
+		background-color: #ff0;
+		font-family: "微软雅黑";
+	}
+	h1{
+		text-align: center;
+	}
+	ol,ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	/*表盘*/
+	.clock{
+		width: 300px;
+		height: 300px;
+		border-radius: 50%;
+		position: absolute;
+		top:50%;
+		left: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		background-color: #292a38;
+	}
+	.pointer .circle{
+		position: absolute;
+		border-radius: 50%;
+		top:50%;
+		left: 50%;
+		width: 20px;
+		height: 20px;
+		background-color: #fff;
+		-webkit-transform: translate(-50%,-50%);
+	}
+	.line-min li,.line-hour li{
+		position: absolute;
+		top:50%;
+		left: 50%;
+		background-color: #fff;
+		/*设定指针的旋转点为最左端，否则，指针将围绕着自己的中点，进行自旋转。*/
+		transform-origin: left center;
+	}
+	.line-min li{
+		width: 10px;
+		height: 2px;
+	}
+	.line-hour li{
+		width: 20px;
+		height: 2px;
+	}
+	/*数字*/
+	.number{
+		width: 250px;
+		height: 250px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		color: #fff;
+		font-family: "微软雅黑";
+		font-size: 20px;
+		-webkit-transform: translate(-50%,-50%);
+	}
+	.number li{
+		position: absolute;
+		-webkit-transform: translate(-50%, -50%);
+	}
+	/*指针*/
+	.pointer li{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform-origin: left center;
+		background-color: #fff;
+	}
+	.pointer li.hour{
+		width: 60px;
+		height: 3px;
+	}
+	.pointer li.min{
+		width: 80px;
+		height: 2px;
+	}
+	.pointer li.sec{
+		width: 100px;
+		height: 1px;
+	}
+	</style>
+</head>
+<body>
+<h1>CSS3时钟效果实现</h1>
+<div class="clock">
+<ul class="line-min"></ul>
+<ul class="line-hour"></ul>
+<ul class="number"></ul>
+<ul class="pointer">
+	<li class="hour"></li>
+	<li class="min"></li>
+	<li class="sec"></li>
+	<li class="circle"></li>
+</ul>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	function init(){
+		drawLines($(".line-min"),60,135);
+		drawLines($(".line-hour"),12,130);
+		drawNum($(".number"));
+		move();
+	}
+	init();
+	function drawLines(wrap,total,translateX){
+		var ang = 360/total;
+		var strHtml = "";
+		for(i = 0;i < total;i++){
+			strHtml += '<li style="-webkit-transform: rotate('+i*ang+'deg) translate('+translateX+'px,-50%);"></li>';
+		}
+		wrap.html(strHtml);
+	}
+	//(i-3)*30/Angle = (180/Math.PI)
+	//Angle = (i-3)/6* Math.PI
+	//这里减去3，因为默认时分秒针都是水平的，所以实际的角度要减去90度
+	function drawNum(wrap){
+		var r = wrap.width() / 2;//获取表盘半径
+		var strHtml = "";
+		for(var i =1 ;i <=12; i++){
+			var Angle = (i-3)/6* Math.PI;
+			var posX = r + r*Math.cos(Angle), // x=r+rcos(θ) 数字的横坐标
+			      posY = r + r*Math.sin(Angle); // y=r+rsin(θ) 数字的纵坐标
+				strHtml += '<li style="left:' + posX + 'px; top:'+ posY +'px">' + i + '</li>';
+			}
+			wrap.html(strHtml);
+		}
+		function checkTime(m){
+					if(m < 9){
+					return "0"+m;
+					}else{
+						return m;
+					}
+				}
+		function move(){
+			var oHour = $(".hour");
+			var oMin = $(".min");
+			var oSec = $(".sec");
+			setInterval(function(){
+				var oDate = new Date();
+				var h = oDate.getHours(),
+					m = oDate.getMinutes(),
+					s = oDate.getSeconds();
+				var sAngle = s*6 - 90,
+					mAngle = m*6 + s*0.1 - 90,//一分钟分钟转6度，一秒钟分钟转6/60=0.1度
+					hAngle = h*30 + m*0.5 - 90;
+				oHour.css("transform","rotate("+hAngle+"deg)");
+				oMin.css("transform","rotate("+mAngle+"deg)");
+			       oSec.css("transform","rotate("+sAngle+"deg)");
+		     document.title = checkTime(h)+':'+checkTime(m)+':'+checkTime(s);
+			},1000);
+		}
+});
+</script>
+</body>
+</html>
