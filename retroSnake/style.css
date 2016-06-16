@@ -1,0 +1,35 @@
+body{
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .box{
+            width: 100%;
+            text-align: center;
+        }
+        .btn{
+            cursor: pointer;
+            margin-right: 10px;
+            border: none;
+            padding: 0 10px;
+            box-sizing: border-box;
+            height: 34px;
+            font-size: 14px;
+            line-height: 34px;
+            background: #2e99e6;
+            color: #fff;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+        select{
+            width: 50px;
+            height: 34px;
+            font-size: 14px;
+            line-height: 34px;
+            border-radius: 4px;
+            outline: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
