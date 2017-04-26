@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>无序预加载--qq表情</title>
+	<style type="text/css">
+		body,p,ul,li{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+			display: inline-block;
+		}
+		body{
+			background-color: #eee;
+		}
+		.box{
+			margin:150px 0 0 200px;
+		}
+		.list li{
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+			border: 1px solid #fff;
+		}
+		.list li:hover{
+			border-color: #06c;
+		}
+		#face-btn{
+			padding: 5px;
+			color:#333;
+			background-color: #f00;
+		}
+		#face-btn:hover{
+			background-color: yellow;
+		}
+		.panel{
+			margin-top: 5px;
+			display: none;
+			width: 370px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+		}
+		.loading{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<a href="javascript:;" id="face-btn">表情</a>
+	<div class="panel">
+		<p class="loading">表情加载中，请稍后......</p>
+		<!-- <ul class="list">
+			<li><img src="../QQ/1.gif" alt=""></li>
+			<li><img src="../QQ/2.gif" alt=""></li>
+			<li><img src="../QQ/3.gif" alt=""></li>
+			<li><img src="../QQ/4.gif" alt=""></li>
+			<li><img src="../QQ/5.gif" alt=""></li>
+			<li><img src="../QQ/6.gif" alt=""></li>
+			<li><img src="../QQ/7.gif" alt=""></li>
+			<li><img src="../QQ/8.gif" alt=""></li>
+			<li><img src="../QQ/9.gif" alt=""></li>
+			<li><img src="../QQ/10.gif" alt=""></li>
+			<li><img src="../QQ/11.gif" alt=""></li>
+			<li><img src="../QQ/12.gif" alt=""></li>
+			<li><img src="../QQ/13.gif" alt=""></li>
+			<li><img src="../QQ/14.gif" alt=""></li>
+			<li><img src="../QQ/15.gif" alt=""></li>
+			<li><img src="../QQ/16.gif" alt=""></li>
+			<li><img src="../QQ/17.gif" alt=""></li>
+			<li><img src="../QQ/18.gif" alt=""></li>
+			<li><img src="../QQ/19.gif" alt=""></li>
+			<li><img src="../QQ/20.gif" alt=""></li>
+			<li><img src="../QQ/21.gif" alt=""></li>
+			<li><img src="../QQ/22.gif" alt=""></li>
+			<li><img src="../QQ/23.gif" alt=""></li>
+			<li><img src="../QQ/24.gif" alt=""></li>
+			<li><img src="../QQ/25.gif" alt=""></li>
+			<li><img src="../QQ/26.gif" alt=""></li>
+			<li><img src="../QQ/27.gif" alt=""></li>
+			<li><img src="../QQ/28.gif" alt=""></li>
+			<li><img src="../QQ/29.gif" alt=""></li>
+			<li><img src="../QQ/30.gif" alt=""></li>
+			<li><img src="../QQ/31.gif" alt=""></li>
+			<li><img src="../QQ/32.gif" alt=""></li>
+			<li><img src="../QQ/33.gif" alt=""></li>
+			<li><img src="../QQ/34.gif" alt=""></li>
+			<li><img src="../QQ/35.gif" alt=""></li>
+			<li><img src="../QQ/36.gif" alt=""></li>
+			<li><img src="../QQ/37.gif" alt=""></li>
+			<li><img src="../QQ/38.gif" alt=""></li>
+			<li><img src="../QQ/39.gif" alt=""></li>
+			<li><img src="../QQ/40.gif" alt=""></li>
+			<li><img src="../QQ/41.gif" alt=""></li>
+			<li><img src="../QQ/42.gif" alt=""></li>
+			<li><img src="../QQ/43.gif" alt=""></li>
+			<li><img src="../QQ/44.gif" alt=""></li>
+			<li><img src="../QQ/45.gif" alt=""></li>
+			<li><img src="../QQ/46.gif" alt=""></li>
+			<li><img src="../QQ/47.gif" alt=""></li>
+			<li><img src="../QQ/48.gif" alt=""></li>
+			<li><img src="../QQ/49.gif" alt=""></li>
+			<li><img src="../QQ/50.gif" alt=""></li>
+			<li><img src="../QQ/51.gif" alt=""></li>
+			<li><img src="../QQ/52.gif" alt=""></li>
+			<li><img src="../QQ/53.gif" alt=""></li>
+			<li><img src="../QQ/54.gif" alt=""></li>
+			<li><img src="../QQ/55.gif" alt=""></li>
+			<li><img src="../QQ/56.gif" alt=""></li>
+			<li><img src="../QQ/57.gif" alt=""></li>
+			<li><img src="../QQ/58.gif" alt=""></li>
+			<li><img src="../QQ/59.gif" alt=""></li>
+			<li><img src="../QQ/60.gif" alt=""></li>
+			<li><img src="../QQ/61.gif" alt=""></li>
+			<li><img src="../QQ/62.gif" alt=""></li>
+			<li><img src="../QQ/63.gif" alt=""></li>
+			<li><img src="../QQ/64.gif" alt=""></li>
+			<li><img src="../QQ/65.gif" alt=""></li>
+			<li><img src="../QQ/66.gif" alt=""></li>
+			<li><img src="../QQ/67.gif" alt=""></li>
+			<li><img src="../QQ/68.gif" alt=""></li>
+			<li><img src="../QQ/69.gif" alt=""></li>
+			<li><img src="../QQ/70.gif" alt=""></li>
+			<li><img src="../QQ/71.gif" alt=""></li>
+			<li><img src="../QQ/72.gif" alt=""></li>
+			<li><img src="../QQ/73.gif" alt=""></li>
+			<li><img src="../QQ/74.gif" alt=""></li>
+			<li><img src="../QQ/75.gif" alt=""></li>
+			<li><img src="../QQ/76.gif" alt=""></li>
+			<li><img src="../QQ/77.gif" alt=""></li>
+			<li><img src="../QQ/78.gif" alt=""></li>
+			<li><img src="../QQ/79.gif" alt=""></li>
+			<li><img src="../QQ/80.gif" alt=""></li>
+			<li><img src="../QQ/81.gif" alt=""></li>
+			<li><img src="../QQ/82.gif" alt=""></li>
+			<li><img src="../QQ/83.gif" alt=""></li>
+			<li><img src="../QQ/84.gif" alt=""></li>
+			<li><img src="../QQ/85.gif" alt=""></li>
+			<li><img src="../QQ/86.gif" alt=""></li>
+			<li><img src="../QQ/87.gif" alt=""></li>
+			<li><img src="../QQ/88.gif" alt=""></li>
+			<li><img src="../QQ/89.gif" alt=""></li>
+			<li><img src="../QQ/90.gif" alt=""></li>
+			<li><img src="../QQ/91.gif" alt=""></li>
+			<li><img src="../QQ/92.gif" alt=""></li>
+			<li><img src="../QQ/93.gif" alt=""></li>
+			<li><img src="../QQ/94.gif" alt=""></li>
+			<li><img src="../QQ/95.gif" alt=""></li>
+			<li><img src="../QQ/96.gif" alt=""></li>
+			<li><img src="../QQ/97.gif" alt=""></li>
+			<li><img src="../QQ/98.gif" alt=""></li>
+			<li><img src="../QQ/99.gif" alt=""></li>
+			<li><img src="../QQ/100.gif" alt=""></li>
+		</ul> -->
+	</div>
+</div>
+<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+<script type="text/javascript" src="preload.js"></script>
+<script type="text/javascript">
+var $btn = $('#face-btn'),
+	$panel = $('.panel');
+var imgs = [];//保存图片路径
+for(var i = 0;i<100;i++){
+	imgs[i] = '../QQ/' + (i+1) + '.gif';
+}
+var len = imgs.length;
+$btn.on('click',function(e){
+	e.stopPropagation();//阻止事件冒泡
+	$panel.show();
+	$.preload(imgs,{
+		all: function(){
+			var html = '';
+			html += '<ul class="list">';
+			for(var i = 0;i < len;i++){
+				html += '<li><img src="' + imgs[i] + '" alt=""></li>';
+			}
+			html += '</ul>';
+			setTimeout(function(){
+				$panel.html(html);
+			},2000);
+		}
+	});
+});
+$(document).on('click',function(){
+	$panel.hide();
+});
+</script>
+</body>
+</html>
