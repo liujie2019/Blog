@@ -1,0 +1,32 @@
+.NewsItem{
+	background-color: #f6f6ef;
+	padding-top: 5px;
+}
+.NewsItem-rank{
+	float:left;
+}
+.NewsItem-vote{
+	float: left;
+	margin: 5px 3px;
+}
+.NewsItem-title a{
+	text-decoration:none;
+	color: #000;
+	font-size: 15px;
+}
+.NewItem-titleDomain,.NewsItem-subtext a{
+	text-decoration:none;
+	color: 828282;
+	font-size: 12px;
+}
+.NewItem-titleDomain a:hover{
+	text-decoration:underline;
+}
+.NewsItem-subtext{
+	color: #828282;
+	font-size: 12px;
+}
+.NewsItem-subtext a:hover{
+	text-decoration:underline;
+}
+
