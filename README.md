@@ -1,7 +1,87 @@
-
 # 学习总结
-## 1. webpack相关
-1. [webpack 4.x学习总结](https://github.com/liujie1990/myWork/issues/1)
+## 目录
+* [js相关](#js相关)
+* [算法与数据结构](#JS中的算法与数据结构)
+* [ES6](#ES6)
+* [HTML5和CSS3](#HTML5和CSS3)
+* [移动端开发](#移动端开发)
+* [react全家桶](#react全家桶)
+	* [react](#react)
+	* [redux](#redux)
+	* [react-router](#react-router)
+	* [Redux-Saga](#Redux-Saga)
+	* [dva](#dva)
+* [Vue](#vue)
+* [Webpack](#Webpack)
+* [TypeScript](#TypeScript)
+* [HTTP协议](#HTTP协议)
+* [Web安全](#Web安全)
+* [Git](#Git)
+* [Node](#Node)
+	* [Koa](#Koa)
+		1. 	[Koa学习总结](https://github.com/liujie1990/Blog/issues/2)
+	* [Express](#Express)
+* [Go](#Go)
+* [Nginx](#Nginx)
+* [Docker](#Docker)
+* [Linux](#Linux)
+* [数据库](#database)
+* [其他](#tool)
+
+>相关学习笔记汇总如下：
+
+## <a id="js相关"></a>js相关
+
+ 1. [深入理解js对象](https://github.com/liujie1990/Blog/issues/7)
+ 2. [JS定时器学习总结](https://github.com/liujie1990/Blog/issues/3)
+ 3. [requestAnimationFrame学习总结](https://github.com/liujie1990/Blog/issues/4)
+
+## <a id="JS中的算法与数据结构"></a>JS中的算法与数据结构
+
+## <a id="ES6"></a>ES6
+
+## <a id="HTML5和CSS3"></a>HTML5和CSS3
+
+## <a id="移动端开发"></a>移动端开发
+
+## <a id="react全家桶"></a>react全家桶
+### <a id="react"></a>react
+ 1. [React 组件间通讯](https://github.com/liujie1990/Blog/issues/6)
+
+### <a id="redux"></a>redux
+1. [redux-thunk源码分析](https://github.com/liujie1990/Blog/issues/8)
+2. [Redux源码分析](https://github.com/liujie1990/Blog/issues/9)
+
+### <a id="react-router"></a>react-router
+
+## <a id="Webpack"></a>Webpack
+ 1. [webpack 4.x学习总结](https://github.com/liujie1990/Blog/issues/1)
+
+## <a id="HTTP协议"></a>HTTP协议
+
+## <a id="Web安全"></a>Web安全
+
+## <a id="Git"></a>Git
+ 
+## <a id="Node"></a>Node
+
+### <a id="Koa"></a>Koa
+
+### <a id="Express"></a> Express
+
+## <a id="Nginx"></a>Nginx
+
+## <a id="Go"></a>Go
+
+## <a id="Docker"></a>Docker
+
+## <a id="TypeScript"></a>TypeScript
+
+## <a id="database"></a>数据库
+
+## <a id="tool"></a>其他
+1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
+
 
 # 自己平时学习写的一些小demo，请大家多多指教
 ## 1.简易版贪吃蛇
