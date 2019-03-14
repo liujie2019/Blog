@@ -40,7 +40,7 @@
 ## <a id="JS中的算法与数据结构"></a>JS中的算法与数据结构
 
 ## <a id="ES6"></a>ES6
-
+* [x] 1. [babel学习总结](https://github.com/liujie1990/Blog/issues/21)
 ## <a id="HTML5和CSS3"></a>HTML5和CSS3
 
 ## <a id="移动端开发"></a>移动端开发
@@ -70,9 +70,10 @@
  * [x] 1. [Linux下tar命令总结](https://github.com/liujie1990/Blog/issues/10)
  
 ## <a id="Node"></a>Node
-
+ * [x] 1. [发布自己的npm包](https://github.com/liujie1990/Blog/issues/19)
+ * [x] 2. [Node命令行程序开发学习总结](https://github.com/liujie1990/Blog/issues/20)
 ### <a id="Koa"></a>Koa
-
+ * [x] 1. [Koa学习总](https://github.com/liujie1990/Blog/issues/2)
 ### <a id="Express"></a> Express
 
 ## <a id="Nginx"></a>Nginx
