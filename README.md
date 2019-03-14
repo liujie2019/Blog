@@ -33,9 +33,9 @@
 
 ## <a id="js相关"></a>js相关
 
- 1. [深入理解js对象](https://github.com/liujie1990/Blog/issues/7)
- 2. [JS定时器学习总结](https://github.com/liujie1990/Blog/issues/3)
- 3. [requestAnimationFrame学习总结](https://github.com/liujie1990/Blog/issues/4)
+ * [x] 1. [深入理解js对象](https://github.com/liujie1990/Blog/issues/7)
+ * [x] 2. [JS定时器学习总结](https://github.com/liujie1990/Blog/issues/3)
+ * [x] 3. [requestAnimationFrame学习总结](https://github.com/liujie1990/Blog/issues/4)
 
 ## <a id="JS中的算法与数据结构"></a>JS中的算法与数据结构
 
@@ -50,15 +50,15 @@
  1. [React 组件间通讯](https://github.com/liujie1990/Blog/issues/6)
 
 ### <a id="redux"></a>redux
-1. [redux-thunk源码分析](https://github.com/liujie1990/Blog/issues/8)
-2. [Redux源码分析](https://github.com/liujie1990/Blog/issues/9)
+* [x] 1. [redux-thunk源码分析](https://github.com/liujie1990/Blog/issues/8)
+* [x] 2. [Redux源码分析](https://github.com/liujie1990/Blog/issues/9)
 
 ### <a id="react-router"></a>react-router
 
 ## <a id="Webpack"></a>Webpack
  1. [webpack 4.x学习总结](https://github.com/liujie1990/Blog/issues/1)
 ### <a id="webpack4"></a>webpack4实战(不断更新中)
- * [x] 1. [webpack4实战总结](https://github.com/liujie1990/FE-study-notes/tree/master/sources/webpack4-study)
+ * [] 1. [webpack4实战总结](https://github.com/liujie1990/FE-study-notes/tree/master/sources/webpack4-study)
 
 ## <a id="HTTP协议"></a>HTTP协议
 
@@ -67,7 +67,7 @@
 ## <a id="Git"></a>Git
 
 ## <a id="Linux"></a>Linux
- 1. [Linux下tar命令总结](https://github.com/liujie1990/Blog/issues/10)
+ * [x] 1. [Linux下tar命令总结](https://github.com/liujie1990/Blog/issues/10)
  
 ## <a id="Node"></a>Node
 
@@ -86,7 +86,7 @@
 ## <a id="database"></a>数据库
 
 ## <a id="tool"></a>其他
-1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
+* [x] 1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
 
 
 # 自己平时学习写的一些小demo，请大家多多指教
