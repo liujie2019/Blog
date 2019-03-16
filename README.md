@@ -42,6 +42,7 @@
  * [x] 6. [Object属性](https://github.com/liujie1990/FE-study-notes/blob/master/%E5%8E%9F%E7%94%9Fjs%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/Object%E5%B1%9E%E6%80%A7.md)
  * [x] 7. [js闭包深入理解](https://github.com/liujie1990/FE-study-notes/blob/master/%E5%8E%9F%E7%94%9Fjs%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/js%E9%97%AD%E5%8C%85%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md)
  * [x] 8. [跨域资源共享(CORS)总结](https://github.com/liujie1990/FE-study-notes/blob/master/%E5%8E%9F%E7%94%9Fjs%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB(CORS)%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93.md)
+ * [x] 9. [ajax跨域完全讲解](https://github.com/liujie1990/Blog/issues/22)
 ## <a id="JS中的算法与数据结构"></a>JS中的算法与数据结构
 
 ## <a id="ES6"></a>ES6
