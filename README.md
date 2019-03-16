@@ -27,6 +27,7 @@
 * [Docker](#Docker)
 * [Linux](#Linux)
 * [数据库](#database)
+	* [Mysql](#Mysql)
 * [其他](#tool)
 
 >相关学习笔记汇总如下：
@@ -73,7 +74,7 @@
  * [x] 1. [发布自己的npm包](https://github.com/liujie1990/Blog/issues/19)
  * [x] 2. [Node命令行程序开发学习总结](https://github.com/liujie1990/Blog/issues/20)
 ### <a id="Koa"></a>Koa
- * [x] 1. [Koa学习总](https://github.com/liujie1990/Blog/issues/2)
+ * [x] 1. [Koa学习总结](https://github.com/liujie1990/Blog/issues/2)
 ### <a id="Express"></a> Express
 
 ## <a id="Nginx"></a>Nginx
@@ -85,9 +86,10 @@
 ## <a id="TypeScript"></a>TypeScript
 
 ## <a id="database"></a>数据库
-
+### <a id="Mysql"></a>Mysql
+ * [ ] 1. [Mysql基础学习总结(更新中)](https://github.com/liujie1990/FE-study-notes/tree/master/Mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93)
 ## <a id="tool"></a>其他
-* [x] 1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
+ * [x] 1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
 
 
 # 自己平时学习写的一些小demo，请大家多多指教
