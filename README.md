@@ -62,17 +62,20 @@
  * [ ] 1. [webpack4实战总结](https://github.com/liujie1990/FE-study-notes/tree/master/sources/webpack4-study)
 
 ## <a id="HTTP协议"></a>HTTP协议
-
+  * [x] 1. [OSI七层与TCP:IP五层网络架构](https://github.com/liujie1990/FE-study-notes/blob/master/http/OSI%E4%B8%83%E5%B1%82%E4%B8%8ETCP%3AIP%E4%BA%94%E5%B1%82%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.md)
 ## <a id="Web安全"></a>Web安全
 
 ## <a id="Git"></a>Git
  * [x] 1. [git撤销操作总结](https://github.com/liujie1990/FE-study-notes/blob/master/git%E7%9B%B8%E5%85%B3/git%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93.md)
+ * [x] 2. [git操作经验相关总结](https://github.com/liujie1990/FE-study-notes/blob/master/git%E7%9B%B8%E5%85%B3/git%E6%93%8D%E4%BD%9C%E7%BB%8F%E9%AA%8C%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93.md)
 ## <a id="Linux"></a>Linux
  * [x] 1. [Linux下tar命令总结](https://github.com/liujie1990/Blog/issues/10)
  
 ## <a id="Node"></a>Node
  * [x] 1. [发布自己的npm包](https://github.com/liujie1990/Blog/issues/19)
  * [x] 2. [Node命令行程序开发学习总结](https://github.com/liujie1990/Blog/issues/20)
+ * [x] 3. [node交互式命令行工具 Inquirer.js学习](https://github.com/liujie1990/FE-study-notes/blob/master/node%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/node%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%20Inquirer.js%E5%AD%A6%E4%B9%A0.md)
+ * [x] 4. [Node命令行程序开发学习总结](https://github.com/liujie1990/Blog/issues/20)
 ### <a id="Koa"></a>Koa
  * [x] 1. [Koa学习总结](https://github.com/liujie1990/Blog/issues/2)
 ### <a id="Express"></a> Express
