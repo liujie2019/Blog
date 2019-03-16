@@ -66,7 +66,7 @@
 ## <a id="Web安全"></a>Web安全
 
 ## <a id="Git"></a>Git
-
+ * [x] 1. [git撤销操作总结](https://github.com/liujie1990/FE-study-notes/blob/master/git%E7%9B%B8%E5%85%B3/git%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93.md)
 ## <a id="Linux"></a>Linux
  * [x] 1. [Linux下tar命令总结](https://github.com/liujie1990/Blog/issues/10)
  
