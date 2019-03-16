@@ -86,7 +86,7 @@
 ## <a id="TypeScript"></a>TypeScript
 
 ## <a id="database"></a>数据库
-### <a id="Mysql"></a>Mysql
+### <a target="_blank" id="Mysql"></a>Mysql
  * [ ] 1. [Mysql基础学习总结(更新中)](https://github.com/liujie1990/FE-study-notes/tree/master/Mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93)
 ## <a id="tool"></a>其他
  * [x] 1. [editorconfig和eslint配置](https://github.com/liujie1990/Blog/issues/5)
