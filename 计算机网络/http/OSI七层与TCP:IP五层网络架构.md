@@ -7,14 +7,14 @@ HTTP：超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网�
 * HTTPS：HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。
 
 ### OSI七层模型(每层解释)
-![](../static/osi构架各层功能说明.jpg)
+![](../../static/osi构架各层功能说明.jpg)
 ### OSI七层结构–每层结构的功能
-![osi各层的作用](../static/osi各层的作用.png)
+![osi各层的作用](../../static/osi各层的作用.png)
 ### TCP/IP五层模型
 OSI七层模型与TCP/IP五层模型的关系
-![](../static/tcp和ip结构解析.png)
+![](../../static/tcp和ip结构解析.png)
 ### OSI七层模型-每层的设备
-![](../static/tcp和ip设备.jpg)
+![](../../static/tcp和ip设备.jpg)
 
 ### 对各层的详细说明
 #### 第一层是物理层（PhysicalLayer)，

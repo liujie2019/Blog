@@ -1,5 +1,7 @@
-```
-# 重新加载授权表
+
+
+```js
+// 重新加载授权表
 FLUSH PRIVILEGES;
 ```
 
@@ -12,7 +14,7 @@ FLUSH PRIVILEGES;
 #### 1.1 USE 数据库名(选择数据库)
 选择要操作的Mysql数据库，使用该命令后所有Mysql命令都只针对该数据库。
 
-```
+```js
 mysql> USE mysql;
 Database changed
 ```
@@ -22,7 +24,7 @@ Database changed
 #### 1.4 SHOW COLUMNS FROM tb_name
 显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息。
 
-```
+```js
 mysql> show columns from users;
 +----------+----------------------+------+-----+---------+----------------+
 | Field    | Type                 | Null | Key | Default | Extra          |
@@ -38,7 +40,7 @@ mysql> show columns from users;
 #### 1.5 SHOW INDEX FROM 数据表
 显示数据表的详细索引信息，包括PRIMARY KEY（主键）。
 
-```
+```js
 mysql> show index from users;
 +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 | Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
@@ -47,20 +49,20 @@ mysql> show index from users;
 +-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 1 row in set (0.01 sec)
 ```
-#### 1.6 SHOW TABLE STATUS LIKE [FROM db_name] [LIKE 'pattern'] \G 
+#### 1.6 SHOW TABLE STATUS LIKE [FROM db_name] [LIKE 'pattern'] \G
 该命令将输出Mysql数据库管理系统的性能及统计信息。
 
-```
-# 显示数据库 mysql_test 中所有表的信息
-mysql> SHOW TABLE STATUS FROM mysql_test;   
+```js
+// 显示数据库 mysql_test 中所有表的信息
+mysql> SHOW TABLE STATUS FROM mysql_test;
 
-# 表名以user开头的表的信息
+// 表名以user开头的表的信息
 mysql> SHOW TABLE STATUS from mysql_test LIKE 'user%';
 
-# 加上 \G，查询结果按列打印
+// 加上 \G，查询结果按列打印
 mysql> SHOW TABLE STATUS from mysql_test LIKE 'user%'\G;
 ```
-```
+```js
 mysql> show table status from mysql_test like 'user%'\G;
 *************************** 1. row ***************************
            Name: users
