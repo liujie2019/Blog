@@ -1,0 +1,37 @@
+/*less匹配模式*/
+
+//箭头向上的三角形
+.triangle(top,@w:10px,@c:red) {
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+	border-style: dashed dashed solid dashed;
+}
+//箭头向右的三角形
+.triangle(right,@w:10px,@c:red) {
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+	border-style: dashed solid dashed dashed;
+}
+//箭头向下的三角形
+.triangle(bottom,@w:10px,@c:red) {
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+}
+
+//箭头向左的三角形
+.triangle(left,@w:10px,@c:red) {
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+	border-style: dashed dashed dashed solid;
+}
+
+// 公共代码，不管选择哪中模式都会匹配
+.triangle(@_) {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+.box {
+	.triangle(left);
+}

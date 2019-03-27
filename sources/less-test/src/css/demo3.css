@@ -1,0 +1,26 @@
+/*混合*/
+.box {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+.border {
+  border: 3px solid #ccc;
+}
+.box2 {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border: 3px solid #ccc;
+}
+.box3 {
+  border: 5px solid #ccc;
+}
+.box4 {
+  width: 60px;
+  height: 60px;
+  border: 10px solid #ccc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}

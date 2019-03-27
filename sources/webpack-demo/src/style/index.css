@@ -1,0 +1,17 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    color: blueviolet;
+}
+.container {
+    background: url(../images/mvvm.png) #999;
+    width: 500px;
+    height: 500px;
+}
+#root {
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+    color: blueviolet;
+}

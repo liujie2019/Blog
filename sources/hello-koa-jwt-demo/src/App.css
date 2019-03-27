@@ -1,0 +1,29 @@
+@import '~antd/dist/antd.css';
+
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    height: 32px;
+    background: rgba(255,255,255,.2);
+    margin: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .logout {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }

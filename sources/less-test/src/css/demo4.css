@@ -1,0 +1,9 @@
+/*less匹配模式*/
+.box {
+  border-width: 10px;
+  border-color: transparent transparent transparent red;
+  border-style: dashed dashed dashed solid;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}

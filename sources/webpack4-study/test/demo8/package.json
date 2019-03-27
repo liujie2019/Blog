@@ -1,0 +1,24 @@
+{
+  "name": "demo6",
+  "version": "1.0.0",
+  "description": "脑壳疼的webpack按需加载",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.11",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open",
+    "build": "webpack --color --progress --display-used-exports"
+  },
+  "keywords": [],
+  "author": "liujie",
+  "license": "ISC"
+}

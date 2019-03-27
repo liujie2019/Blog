@@ -1,0 +1,24 @@
+/*嵌套规则*/
+.list {
+    width: 600px;
+    margin: 30px auto;
+    padding: 0;
+    list-style: none;
+    li {
+       height: 30px;
+       line-height:30px;
+       margin-bottom: 5px;
+       background-color: aqua;
+       padding: 0 10px;
+    }
+    a {
+        float: left;
+        //&代表上一层选择器
+        &:hover{
+            color: red;
+        }
+    }
+    span {
+        float: right;
+    }
+}

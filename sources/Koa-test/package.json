@@ -1,0 +1,26 @@
+{
+  "name": "Koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon demo5.js"
+  },
+  "keywords": [],
+  "author": "liujie",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.4",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

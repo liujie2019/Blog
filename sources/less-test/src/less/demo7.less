@@ -1,0 +1,10 @@
+/*避免编译*/
+.box {
+    // CSS3提供的calc是让浏览器来计算
+    width: calc(300px - 30px);
+}
+/*不编译*/
+.box2 {
+    // CSS3提供的calc是让浏览器来计算
+    width: ~'calc(300px - 30px)';
+}

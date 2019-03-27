@@ -1,0 +1,34 @@
+{
+  "name": "hello-san-webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development --open --config ./config/webpack.dev.js"
+  },
+  "keywords": [],
+  "author": "liujie",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "html-webpack-plugin": "^3.2.0",
+    "san-loader": "0.0.7",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "css-loader": "^1.0.1",
+    "html-loader": "^0.5.5",
+    "san": "^3.7.0",
+    "san-router": "^1.2.0",
+    "san-store": "^1.1.0",
+    "san-update": "^2.1.0",
+    "san-xui": "^0.2.0",
+    "style-loader": "^0.23.1"
+  }
+}

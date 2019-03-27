@@ -1,0 +1,21 @@
+{
+    "presets": [["env", {
+        "targets": {
+            "browsers" : ["last 2 versions", "safari >= 7"]
+        }
+    }], "react", "stage-0"],
+    "plugins": [
+        "transform-class-properties",
+        "transform-decorators-legacy",
+        "transform-decorators",
+        "react-hot-loader/babel",
+        ["transform-runtime",
+            {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+            }
+        ]
+    ]
+}

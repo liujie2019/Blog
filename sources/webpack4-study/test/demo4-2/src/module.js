@@ -1,0 +1,1 @@
+export var Count = 'module-test';

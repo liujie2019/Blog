@@ -1,0 +1,37 @@
+/*混合*/
+@test-width: 20px;
+.box {
+    width: @test-width;
+    height: @test-width;
+    background-color: red;
+}
+// 混合
+.border {
+    border: 3px solid #ccc;
+}
+.box2 {
+    .box; // 直接引用box的样式
+    .border;
+}
+// 混合-带参数的
+.border-2(@border-width) {
+    border: @border-width solid #ccc;
+}
+.box3 {
+    .border-2(5px);
+}
+// 混合-带默认参数
+.border-3(@border-width: 10px) {
+    border: @border-width solid #ccc;
+}
+.border_radius(@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.box4 {
+    width: 60px;
+    height: 60px;
+    .border-3();
+    .border_radius(10px);
+}

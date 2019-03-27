@@ -1,0 +1,8 @@
+/*避免编译*/
+.box {
+  width: calc(270px);
+}
+/*不编译*/
+.box2 {
+  width: calc(300px - 30px);
+}

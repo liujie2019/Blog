@@ -1,0 +1,9 @@
+.normal {
+    background-color: #f00;
+    color: #fff;
+}
+
+.disabled {
+    background-color: #ccc;
+    color: #fff;
+}
