@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+         1. slice 方法不会影响原数组的值, 能够基于当前数组中的一或多项来创建一个数组。该方法接收
+         一或两个参数，即要返回项的起始和结束位置
+         2. splice方法会影响原数组的值，该方法始终返回一个数组，即从数组中删除的元素
+        */
+        var array = [0, 1, 2];
+        var spliceArray = array.splice(0, 1);//从第一项开始，删除一项，返回删除元素组成的数组
+        var sliceArray = array.slice(0, 1);
+        var concatArray = array.concat("a");
+        console.log(array);//[1, 2]
+        console.log(spliceArray);//[0]
+        console.log(sliceArray);// [1]
+        console.log(concatArray);// [1, 2, "a"]
+    </script>
+</body>
+</html>

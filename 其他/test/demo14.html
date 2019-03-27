@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+       <li>
+           <a href="#/">change red</a>
+       </li>
+       <li>
+            <a href="#/green">change green</a>
+        </li>
+        <li>
+            <a href="#/yellow">change yellow</a>
+        </li>
+    </ul>
+    <script>
+        class Routers {
+            constructor() {
+                this.routes = {};
+                this.currentUrl = '';
+                this.refresh = this.refresh.bind(this);
+                window.addEventListener('load', this.refresh, false);
+                window.addEventListener('hashchange', this.refresh, false);
+            }
+
+            route(path, callback) {
+                this.routes[path] = callback || function() {};
+            }
+
+            refresh() {
+                this.currentUrl = location.hash.slice(1) || '/';
+                this.routes[this.currentUrl]();
+            }
+        }
+
+        window.Router = new Routers();
+        const content = document.querySelector('body');
+        
+        function changeBgColor(color) {
+            content.style.backgroundColor = color;
+        }
+        Router.route('/', function() {
+            changeBgColor('red');
+        });
+        Router.route('/green', function() {
+            changeBgColor('green');
+        });
+        Router.route('/yellow', function() {
+            changeBgColor('yellow');
+        });
+    </script>
+</body>
+</html>

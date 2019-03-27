@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 200px;
+            height: 200px;
+            float: left;
+            border: 1px solid #ddd;
+            overflow: auto;
+            position: relative;
+        }
+        .wrapper .content {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+        .content .inner {
+            height: 6000px;
+        }
+        .wrapper .desc {
+            position: absolute;
+        }
+        .wrapper .count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .normal {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Try scrolling in the 2 boxes...</h3>
+    <div>
+        <div class="wrapper normal">
+            <div class="desc">Normal scroll</div>
+            <div class="content">
+                <div class="inner"></div>
+            </div>
+            <span id="normal" class="count">0</span>
+        </div>
+        <div class="wrapper throttled">
+            <div class="desc">Throttled scroll</div>
+            <div class="content">
+                <div class="inner"></div>
+            </div>
+            <span id="throttled" class="count">0</span>
+        </div>
+    </div>
+    <script>
+        function throttle(fn, threshhold) {
+            // 记录上次执行的时间
+            var last;
+            // 定时器
+            var timer = null;
+            // 默认间隔为250ms
+            threshhold || (threshhold = 250);
+            // 返回函数，每隔threshhold毫秒就执行一次fn函数
+            return function () {
+                // 保存函数调用时的上下文和参数，传递给fn
+                var that = this;
+                var args = arguments;
+                var now = +new Date();
+                // 如果距离上次执行fn函数的时间小于threshhold，就不执行fn
+                // 否则执行fn，并重新计时
+                if (last && now < last + threshhold) {
+                    clearTimeout(timer);
+                    // 保证在当前时间区间结束后，再执行一次fn
+                    timer = setTimeout(function() {
+                        last = now;
+                        fn.apply(that, args);
+                    }, threshhold);
+                }
+                else {
+                    last = now;
+                    fn.apply(that, args);
+                }
+            }
+        }
+        var normalCount = 0;
+        var throttledCount = 0;
+        var normalSpan = document.querySelector('#normal');
+        var throttledSpan = document.querySelector('#throttled');
+        var normalContent = document.querySelector('.normal .content');
+        var throttledContent = document.querySelector('.throttled .content');
+        normalContent.addEventListener('scroll', function() {
+            normalSpan.innerText = ++normalCount;
+        }, false);
+        throttledContent.addEventListener('scroll', throttle(function() {
+            throttledSpan.innerText = ++throttledCount;
+        }, 250), false);
+        document.addEventListener('mouseleave', function() {
+            normalCount = 0;
+            throttledCount = 0;
+            normalSpan.innerText = 0;
+            throttledSpan.innerText = 0;
+        }, false);
+    </script>
+</body>
+</html>

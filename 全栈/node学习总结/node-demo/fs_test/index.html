@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <a href="http://www.baidu.com">hello</a>
+    <script>
+        // function hello(){
+        //     alert("hello world");
+        // }
+        // function ha(){
+        //     alert("bye");
+        // }
+        // function go(){
+        //     event.returnValue = "真的要退出吗？";
+        // }
+        // window.onbeforeunload = function() {
+        //     return "Leave this page?";
+        // };
+        // 网页得到焦点
+        // window.onfocus = function() {
+        //     alert('当前页面获取焦点');
+        // }
+        // // 网页失去焦点
+        // window.onblur = function() {
+        //     alert('当前页面失去焦点');
+        // }
+        let num = 0;
+        document.addEventListener('visibilitychange', function() {
+            const isHidden = document.hidden;
+            if (isHidden) {
+                console.log('当前页面失去焦点');
+                num++;
+            }
+            else {
+                console.log('当前页面获取焦点');
+            }
+            console.log(num);
+        });
+    </script>
+</body>
+</html>

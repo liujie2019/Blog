@@ -1,0 +1,1 @@
+var Workspace=Backbone.Router.extend({routes:{"*filter":"setFilter"},setFilter:function(e){common.TodoFilter=e&&e.trim()||"",todos.trigger("filter")}});

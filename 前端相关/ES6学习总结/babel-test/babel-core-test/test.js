@@ -1,0 +1,1 @@
+const promise = new Promise();

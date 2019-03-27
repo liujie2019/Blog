@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 Router</title>
+</head>
+<body>
+    <ul>
+       <li>
+           <a href="/">change red</a>
+       </li>
+       <li>
+            <a href="/green">change green</a>
+        </li>
+        <li>
+            <a href="/yellow">change yellow</a>
+        </li>
+    </ul>
+    <script>
+        function Routers() {
+            this.routes = {};
+        }
+        Routers.prototype.route = function(path, callback) {
+            this.routes[path] = callback || function() {};
+        }
+        Routers.prototype._bindPopState = function() {
+            window.addEventListener('popstate', e => {
+                const path = e.state && e.state.path;
+                this.routes[path] && this.routes[path]();
+            }, false);
+        }
+        Routers.prototype.go = function(path) {
+            window.history.pushState({path: path}, null, path);
+            this.routes[path] && this.routes[path]();
+        }
+        Routers.prototype.init = function(path) {
+            window.history.replaceState({path: path}, null, path);
+            this.routes[path] && this.routes[path]();
+        }
+        
+        let Router = new Routers();
+        Router._bindPopState();
+        Router.init();
+        const content = document.querySelector('body');
+        const ul = document.querySelector('ul');
+        function changeBodyColor(color) {
+            content.style.backgroundColor = color;
+        }
+        Router.route('/', function() {
+            changeBodyColor('red');
+        });
+        Router.route('/green', function() {
+            changeBodyColor('green');
+        });
+        Router.route('/yellow', function() {
+            changeBodyColor('yellow');
+        });
+        ul.addEventListener('click', (e) => {
+            if(e.target.tagName === 'A') {
+                console.log(Router.routes);
+                e.preventDefault();
+                Router.go(e.target.getAttribute('href'));
+            }
+        }, false);
+    </script>
+</body>
+</html>

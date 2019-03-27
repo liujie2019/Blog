@@ -7,10 +7,10 @@
 比如，要使用myapp作为命令时可以这么做：
 
 ```
-{ 
+{
 	"bin" : {
-	 	"myapp" : "./cli.js" 
-	} 
+	 	"myapp" : "./cli.js"
+	}
 }
 ```
 这么一来，当你安装myapp，npm会从cli.js文件创建一个到/usr/local/bin/myapp的符号链接(这使你可以直接在命令行执行myapp)。

@@ -1,0 +1,23 @@
+root = true
+
+# 匹配所有文件类型
+[*]
+# 设置字符编码
+charset = utf-8
+# 设置缩进格式
+indent_style = space
+# 使用4个空格缩进
+indent_size = 4
+# 设置换行格式
+end_of_line = lf
+# 在文件最后添加一个空行
+insert_final_newline = true
+# 删除行末尾多余的空格
+trim_trailing_whitespace = true
+
+[*.json]
+indent_size = 4
+
+# 对后缀名为md的文件生效
+[*.md]
+trim_trailing_whitespace = false

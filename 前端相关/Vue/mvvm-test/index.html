@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue-MVVM</title>
+</head>
+<body>
+<div id="root">
+    <input type="text" v-model="message">
+    <p>{{ message }}</p>
+    <input type="text" v-model="info.txt">
+    <p>{{ info.txt }}</p>
+</div>
+<script src="dep.js"></script>
+<script src="watcher.js"></script>
+<script src="observer.js"></script>
+<script src="compile.js"></script>
+<script src="MVVM.js"></script>
+<script>
+    let vm = new MVVM({
+        el: '#root',
+        data: {
+            message: 'Hello, My name is liujie.',
+            info: {
+                txt: 'How are you?'
+            }
+        }
+    });
+</script>
+</body>
+</html>

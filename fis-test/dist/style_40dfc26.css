@@ -1,0 +1,20 @@
+body {
+	background-color: #FFCCFF;
+}
+
+li {
+  position: relative;
+  list-style: none;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: -15px;
+}
+
+li.list-1::before {background-repeat: no-repeat;}
+
+li.list-2::before {background-repeat: no-repeat;}li.list-1::before{background-position:0px 0px}li.list-2::before{background-position:0px -19px}li.list-1::before,li.list-2::before{background-image: url(/style_z_e8ddcb0.png)}

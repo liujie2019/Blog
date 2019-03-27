@@ -1,0 +1,1 @@
+console.log(Reflect.has(Object, 'assign'));

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用ajax获取Node.js服务器数据</title>
+</head>
+<body>
+    <button onclick="GetData()">获取数据</button>
+    <div id="box"></div>
+    <script>
+        function GetData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://localhost:8089/', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        document.querySelector('#box').innerHTML = xhr.responseText;
+                    }
+                }
+            }
+            xhr.send(null);
+        }
+    </script>
+</body>
+</html>

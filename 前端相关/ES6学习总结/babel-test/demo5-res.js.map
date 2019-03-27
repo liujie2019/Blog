@@ -1,0 +1,1 @@
+{"version":3,"sources":["demo5.js"],"names":[],"mappings":";;;;;;;;AAAA,IAAM,OAAO,GAAG,sBAAhB;AACA,IAAM,GAAG,GAAG,mBAAW,QAAX,CAAZ","file":"demo5-res.js","sourcesContent":["const promise = new Promise();\nconst arr = Array.from('foo111');"]}

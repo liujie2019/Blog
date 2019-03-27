@@ -1,0 +1,7 @@
+子进程当前工作目录为：/Users/liujie26/study/node/expressDemo/Node权威指南demo/part9/fork-test
+0: /usr/local/bin/node
+1: /Users/liujie26/study/node/expressDemo/Node权威指南demo/part9/fork-test/test/test1.js
+2: one
+3: two
+4: three
+5: four

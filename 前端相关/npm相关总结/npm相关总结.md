@@ -78,7 +78,7 @@ sudo npm install -g n
 sudo n stable
 
 #安装最新的 LTS 版
-n lts 
+n lts
 
 # 也可以选择安装一个指定的版本号
 sudo n 5.5.1
@@ -160,7 +160,7 @@ npm init -y
 当我们试图安装命令行工具的时候，使用全局安装；当我们试图只是单纯安转某一模块的时候，使用本地安装。
 
 **需要注意：本地安装的时候，将依赖包信息写入package.json中非常有必要。**
- 
+
 在我们日常的团队协作中，一个常见的情景是别人从代码库中clone你的项目，然后通过`npm install`安装必要的依赖，（刚从代码库中clone下来是没有`node_modules`的，需要安装。那么根据什么信息安装模块依赖呢？就是你的`package.json`中的`dependencies和devDependencies`。所以，在本地安装的同时，将依赖包的信息（要求的名称和版本）写入package.json中是很重要的！
 
 ```
@@ -213,10 +213,10 @@ npm uninstall -g <package>
 
 #删除本地模块时你应该思考的问题：是否将在package.json上的相应依赖信息也删除？
 #该命令删除本地模块，但不删除模块留在package.json中的对应信息
-npm uninstall 模块 
+npm uninstall 模块
 
 #删除模块，同时删除模块留在package.json中dependencies下的对应信息
-npm uninstall 模块 --save 
+npm uninstall 模块 --save
 
 #删除模块，同时删除模块留在package.json中devDependencies下的对应信息
 npm uninstall 模块 --save-dev
@@ -266,7 +266,7 @@ npm v react
 ```
 dist: {
   shasum: '2a57c2cf8747b483759ad8de0fa47fb0c5cf5c6a',
-  tarball: 'http://registry.npmjs.org/react/-/react-0.14.6.tgz' 
+  tarball: 'http://registry.npmjs.org/react/-/react-0.14.6.tgz'
 }
 ```
 到这个网址下载压缩包，在本地解压，就得到了模块的源码。`npm install`和`npm update`命令，都是通过这种方式安装模块的。
@@ -282,7 +282,7 @@ $HOME/.npm
 你最好浏览一下这个目录。
 
 ```
-$ ls ~/.npm 
+$ ls ~/.npm
 # ~代表的是当前用户的home目录(主目录)
 # 或者
 $ npm cache ls
@@ -339,12 +339,12 @@ rm -rf node_modules
 ### 9. 解决安装某些npm包失败问题
 #### 9.1 通过config命令
 ```
-npm config set registry https://registry.npm.taobao.org 
+npm config set registry https://registry.npm.taobao.org
 npm info underscore （如果上面配置正确这个命令会有字符串response）
 ```
 #### 9.2 命令行指定
 ```
-npm --registry https://registry.npm.taobao.org info underscore 
+npm --registry https://registry.npm.taobao.org info underscore
 ```
 #### 9.3 编辑`~/.npmrc`加入下面内容
 ```

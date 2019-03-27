@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = 'World';
+        (function () {
+            if (typeof name === 'undefined') {
+            var name = 'Shawn';//这里会发生变量声明提升
+            console.log('Goodbye ' + name);
+            } else {
+            console.log('Hello ' + name);
+        }
+        })();
+        
+        //相当于这样
+        var name = 'World';
+        (function () {
+            var name;
+            if (typeof name === 'undefined') {
+                name = 'Shawn';//这里会发生变量声明提升
+                console.log('Goodbye ' + name);
+            } else {
+                console.log('Hello ' + name);
+            }
+        })();
+    </script>
+</body>
+</html>
