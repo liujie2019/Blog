@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.querySelector('#box');
+        var height = 100;
+        function debounce(fn, delay) {
+            var timer = null;
+            return function () {
+                var that = this;
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    fn.call(that);
+                }, delay);
+            }
+        }
+        /*
+        没有做防抖处理
+        window.addEventListener('resize', function() {
+            height += 1;
+            box.style.height = height + 'px';
+        }, false);
+        */
+        window.addEventListener('resize', debounce(function() {
+            height += 1;
+            box.style.height = height + 'px';
+        }, 250), false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+具体详见：[深入理解js对象](https://github.com/liujie1990/Blog/issues/7)

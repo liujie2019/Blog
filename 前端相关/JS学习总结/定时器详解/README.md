@@ -1,0 +1,1 @@
+具体参考：[JS定时器学习总结](https://github.com/liujie1990/Blog/issues/3)

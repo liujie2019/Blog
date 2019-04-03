@@ -1,0 +1,1 @@
+具体总结详见：[JS函数去抖（debounce）和节流（throttle）](https://github.com/liujie1990/Blog/issues/23)
