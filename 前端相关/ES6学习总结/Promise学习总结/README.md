@@ -4,7 +4,7 @@
 * 可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果
 * 可以在对象之间传递和操作Promise，帮助我们处理队列
 
-```
+```js
 new Promise(
 	/*执行器 executor*/
 	function (resolve, reject) {

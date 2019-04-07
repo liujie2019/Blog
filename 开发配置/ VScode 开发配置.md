@@ -1,12 +1,22 @@
+[TOC]
+
+>用户和工作区的区别？
+- 用户设置：全局应用与打开的任何代码实例的设置；
+- 工作区设置：存储在工作区内的设置，仅在打开工作区时应用。
+
+### 常用快捷键
+- 行注释：Ctrl + /
+- 块注释：Shift + Alt + A
 ### mac_iterm2+zsh命令行调用VS Code
 编辑根目录下的zsh配置文件`~/.zshrc`，添加`alias`，具体写法：
 
-```
+```js
 alias vscode = "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 ```
 保存更改并退出，重启iterm2，输入命令`vscode --status`发现正常调用，再使用测试命令`vscode test.txt`发现正确打开test.txt。至此，配置完成。
+
 ### 调试 Debug
-![](./static/toolbar.png)
+![](../static/toolbar.png)
 
 * Continue / Pause F5
 * Step Over(单步跳过) F10
@@ -34,18 +44,19 @@ import moduleName from 'module';
 ### Document This (JSDoc注释插件)
 在 TypeScript 和 JavaScript 文件中自动生成详细的 JSDoc 注释。
 
-```
-# 快捷键
+```js
+// 快捷键
 control + alt + D
 ```
 ### fileheader插件(自动生成文件说明注释)
 安装完成后，在用户设置里面加入如下配置即可。
 
-```
+```js
 "fileheader.Author": "自己的名字",
 "fileheader.LastModifiedBy": "自己的名字",
 "fileheader.tpl": "/*\r\n * @Author: {author} \r\n * @Date: {createTime} \r\n * @Last Modified by:   {lastModifiedBy} \r\n * @Last Modified time: {updateTime} \r\n */\r\n"
 ```
+
 ### 参考文档
 1. [能让你开发效率翻倍的 VSCode 插件配置（上)](https://juejin.im/post/5a08d1d6f265da430f31950e)
 2. [能让你开发效率翻倍的 VSCode 插件配置（中）](https://juejin.im/post/5ad13d8a6fb9a028ce7c0721)

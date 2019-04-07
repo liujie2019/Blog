@@ -55,13 +55,10 @@ demo1().then(val => {
 #### await
 await 可以理解为是 `async wait`(异步等待)的简写。await关键字只能出现在 async 函数内部，不能单独使用。任何async函数都会默认返回promise，并且这个promise解析的值都将会是这个函数的返回值，而async函数必须等到内部所有的 await 命令的 Promise 对象执行完，才会发生状态改变。
 
-```
-
-```
 await 后面可以跟任何的JS 表达式。虽然说 await 可以等很多类型的东西，但是它最主要的意图是用来等待 Promise 对象的状态被 resolved。如果await的是 promise对象会造成异步函数停止执行并且等待 promise 的解决,如果等的是正常的表达式则立即执行。
 
 ### Async 函数的错误处理
-```
+```js
 let a;
 
 const testFn = async () => {
@@ -73,7 +70,7 @@ testFn().then(v => console.log(a));
 ```
 >如上面代码所示：当 async 函数中只要一个 await 出现 reject 状态，则后面的 await 都不会被执行。解决办法：可以添加 try/catch。
 
-```
+```js
 let a;
 
 const testFn = async () => {
@@ -87,7 +84,7 @@ const testFn = async () => {
 
 testFn().then(v => console.log(a));
 ```
-```
+```js
 const testError = async () => {
     throw new Error('has Error');
 }
@@ -97,7 +94,7 @@ testError()
 ```
 
 ### demo
-```
+```js
 // demo1
 const axios = require('axios');
 
@@ -114,7 +111,7 @@ const getZhihuColumn = async (id) => {
 
 getZhihuColumn('zhihuadmin');
 ```
-```
+```js
 // demo2
 // 将函数的结果做为一个Promise返回
 const axios = require('axios');
@@ -133,7 +130,7 @@ getZhihuColumn('zhihuadmin')
         console.log(`Intro: ${response.data.intro}`);
     });
 ```
-```
+```js
 // demo3
 const axios = require('axios');
 
@@ -158,7 +155,7 @@ class ApiClient {
         });
 })();
 ```
-```
+```js
 const axios = require('axios');
 
 const getZhihuColumn = async (id) => {
@@ -187,7 +184,7 @@ const showColunmInfo = async (id) => {
 
 showColunmInfo('zhihuadmin11');
 ```
-```
+```js
 const axios = require('axios');
 
 const sleep = (timeout = 2000) => new Promise(resolve => {
@@ -225,7 +222,7 @@ NAME: 知乎小管家说
 INTRO: 知乎社区管理团队官方专栏，不定期更新社区管理工作…
 showColumnInfo: 6653.686ms
 ```
-```
+```js
 const axios = require('axios');
 
 const getZhihuColumn = async (id) => {
@@ -261,7 +258,7 @@ INTRO: 知乎社区管理团队官方专栏，不定期更新社区管理工作�
 showColumnInfo: 412.075ms
 ```
 #### bluebird使用
-```
+```js
 const bluebird = require('bluebird');
 
 //结合 await 和任意兼容 .then() 的代码
@@ -273,7 +270,7 @@ const main = async () => {
 
 main();
 ```
-```
+```js
 const axios = require('axios');
 const bluebird = require('bluebird');
 
@@ -310,7 +307,7 @@ Name: 知乎小管家说
 Intro: 知乎社区管理团队官方专栏，不定期更新社区管理工作…
 showColumnInfo: 1750.034ms
 ```
-```
+```js
 const sleep = (time = 100) => new Promise(resolve => {
     setTimeout(resolve(time + 200), timeout);
 });
@@ -352,7 +349,7 @@ step2 with 900
 result is 1100
 test: 3.451ms
 ```
-```
+```js
 const sleep = (time = 100) => new Promise(resolve => {
     setTimeout(resolve(time + 200), timeout);
 });
@@ -390,3 +387,4 @@ test();
 2. [ES6系列文章 异步神器async-await](https://segmentfault.com/a/1190000011526612)
 3. [一次性让你懂async/await，解决回调地狱](https://juejin.im/post/5b1ffff96fb9a01e345ba704)
 4. [理解 JavaScript 的 async/await](https://segmentfault.com/a/1190000007535316)
+5. [JavaScript基础——深入学习async/await](https://cloud.tencent.com/developer/article/1372947)
