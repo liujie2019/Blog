@@ -1,4 +1,4 @@
-# async&await学习总结
+# async学习总结
 
 ## 目录
   1. [async和await](#async和await)
@@ -35,7 +35,7 @@ console.log('我先执行');
 ### async-await和Promise的关系
 async-await是promise和generator的语法糖。只是为了让我们书写代码时更加流畅，当然也增强了代码的可读性。简单来说：async-await 是建立在 promise机制之上的，并不能取代其地位。
 
-**[⬆ 返回顶部](#async&await学习总结)**
+**[⬆ 返回顶部](#async学习总结)**
 ## 基本语法
 ```js
 async function fn() {
@@ -100,7 +100,7 @@ testError()
     .then(success => console.log('成功', success))
     .catch(error => console.log('失败', error)); // 失败 Error: has Error
 ```
-**[⬆ 返回顶部](#async&await学习总结)**
+**[⬆ 返回顶部](#async学习总结)**
 ## demo
 ```js
 // demo1
@@ -390,7 +390,7 @@ const test = async () => {
 
 test();
 ```
-**[⬆ 返回顶部](#async&await学习总结)**
+**[⬆ 返回顶部](#async学习总结)**
 
 ### 参考文档
 1. [理解 async/await](https://segmentfault.com/a/1190000010244279)
