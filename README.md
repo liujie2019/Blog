@@ -44,6 +44,7 @@
  * [x] 8. [跨域资源共享(CORS)总结](https://github.com/liujie1990/Blog/blob/master/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/%E5%8E%9F%E7%94%9Fjs%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB(CORS)%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93.md)
  * [x] 9. [ajax跨域完全讲解](https://github.com/liujie1990/Blog/issues/22)
  * [x] 10. [JS函数去抖（debounce）和节流（throttle](https://github.com/liujie1990/Blog/issues/23)
+ * [x] 11. [JavaScript代码简洁之道](https://github.com/liujie1990/Blog/tree/master/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/JS%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/js代码简洁之道)
 ## <a id="JS中的算法与数据结构"></a>JS中的算法与数据结构
 
 ## <a id="ES6"></a>ES6

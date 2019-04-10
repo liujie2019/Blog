@@ -1,0 +1,13 @@
+.InputAddOn {
+    display: flex;
+    width: 300px;
+}
+
+.InputAddOn-item {
+    background-color: #ccc;
+    color: #000;
+}
+
+.InputAddOn-field {
+    flex: 1;
+}

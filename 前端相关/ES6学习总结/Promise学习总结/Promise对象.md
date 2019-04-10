@@ -8,7 +8,7 @@
 ```js
 let promise = new Promise(function (resolve, reject) {
   // ...
-  if (/* 异步操作成功 */){
+  if (/* 异步操作成功 */) {
     resolve(value);
   } else { /* 异步操作失败 */
     reject(new Error());

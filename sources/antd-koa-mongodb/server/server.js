@@ -17,7 +17,6 @@ router.get('/', async (ctx, next) => {
 // 新增用户
 router.post('/addUser', async (ctx, next) => {
     const postData = ctx.request.body;
-    console.log(postData);
     const user = {
         username: postData.username,
         age: postData.age,
@@ -54,9 +53,6 @@ router.put('/editUser', async (ctx, next) => {
         if (err) {
             console.error(err);
         }
-        else {
-            console.error(res);
-        }
     });
     ctx.response.body = result;
     return result;
@@ -71,9 +67,6 @@ router.delete('/deleteUser', async (ctx, next) => {
     Model.deleteOne({_id: postData.id}, (err, res) => {
         if (err) {
             console.error(err);
-        }
-        else {
-            console.error(res);
         }
     });
     ctx.response.body = result;

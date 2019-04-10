@@ -225,7 +225,6 @@ promise
 
 ```js
 // Promise.race()
-
 console.log('start');
 let p1 = new Promise(resolve => {
     // 这是一个长时间的调用
@@ -282,6 +281,7 @@ class Confirm{
   }
 }
 ```
+
 #### 其他
 如果需要在IE使用Promise，有两个选择：
 
