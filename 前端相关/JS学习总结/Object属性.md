@@ -1,11 +1,18 @@
-### 1. Object.create
+# Object属性学习总结
+
+## 目录
+1. [create](#create)
+2. [defineProperty](#defineProperty)
+
+## create
 `Object.create()`方法创建一个新对象，使用现有的对象来提供新创建的对象的`__proto__`。
-#### 1.1 语法
-```
+
+### 语法
+```js
 Object.create(proto, [propertiesObject])
 ```
-#### demo(Object.create实现类式继承)
-```
+### demo(Object.create实现类式继承)
+```js
 // 父类
 function Animal () {
     this.name = '';
@@ -36,13 +43,15 @@ console.log(dog instanceof Animal); // true
 console.log(dog instanceof Object); // true
 console.log(Dog.prototype.constructor);
 ```
-### 2. Object.defineProperty
+**[⬆ 返回顶部](#Object属性学习总结)**
 
-`Object.defineProperty()`方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+## defineProperty
+
+Object.defineProperty()`方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
 
 `Object.defineProperty` ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性：
 
-```
+```js
 // 方法1
 obj.name = 'lisi';
 // 方法2
@@ -52,28 +61,28 @@ Object.defineProperty(obj, 'name', {
     value : 'lisi'
 })
 ```
-#### 2.1 语法
-```
+### 语法
+```js
 Object.defineProperty(object, propertyname, descriptor)
 ```
 该方法的返回值是**被传递给函数的对象**。
 
 >在ES6中，由于 Symbol类型的特殊性，用Symbol类型的值来做对象的key与常规的定义或修改不同，而Object.defineProperty 是定义key为Symbol的属性的方法之一。
 
-#### 2.2 参数
+### 参数
 * object：必需，要在其上添加或修改属性的对象。 这可能是一个本机 JavaScript对象（即用户定义的对象或内置对象）或 DOM 对象；
 * propertyname：必需，要定义或修改的属性的名称。
 * descriptor：必需，属性描述符。 将被定义或修改的属性描述符。
 
-#### 2.3 属性的状态设置
-#### 2.4 `=`与Object.defineProperty区别
+### 属性的状态设置
+#### `=`与Object.defineProperty区别
 如果要为js对象新增或者修改属性，有两种不同方式：
 
 1. 直接使用`=`赋值;
 2. 使用`Object.defineProperty()`定义.
 
-```
-# demo1
+```js
+// demo1
 const obj = {};
 
 // 直接使用=赋值
@@ -89,8 +98,8 @@ console.log(obj) // {a: 1, b: 2}
 ```
 单纯从上面的示例来看这两者似乎没有区别。但是，如果使用`Object.getOwnPropertyDescriptor()`查看`obj.a`与`obj.b`属性的**描述描述符(property descriptor)**时，会发现`=`与`Object.defineProperty`并不一样。
 
-```
-# demo2
+```js
+// demo2
 const obj = {};
 
 obj.a = 1;
@@ -109,14 +118,14 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'b')); {value: 2, writable: fal
 
 使用`=`赋值，等价于使用`Object.defineProperty()`定义时，同时将writable、enumerable和configurable设为true。demo3和demo4是等价的：
 
-```
+```js
 // demo3
 const obj = {};
 
 obj.name = "lisi";
 console.log(Object.getOwnPropertyDescriptor(obj, 'name;)); // {value: "lisi", writable: true, enumerable: true, configurable: true}
 ```
-```
+```js
 // 示例4
 const obj = {};
 
@@ -131,7 +140,7 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'name')); // {value: "lisi", wr
 ```
 >特别注意：使用Object.defineProperty()定义时若只定义value，则writable、enumerable和configurable默认值为false。下面demo5和demo6是等价的。
 
-```
+```js
 // demo5
 const obj = {};
 
@@ -141,7 +150,7 @@ Object.defineProperty(obj, 'name',
 });
 console.log(Object.getOwnPropertyDescriptor(obj, 'name')); // {value: "lisi", writable: false, enumerable: false, configurable: false}
 ```
-```
+```js
 // demo6
 const obj = {};
 
@@ -156,7 +165,7 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'name')); // {value: "lisi", wr
 ```
 >还需要注意：由于writable、enumerable和configurable都是false，导致obj.name属性不能赋值、不能遍历而且不能删除。若在严格模式("use strict")下，demo7中的代码将会报错。
 
-```
+```js
 // demo7
 const obj = {};
 
@@ -176,8 +185,8 @@ console.log(Object.keys(obj)); // []
 delete obj.name;
 console.log(obj.name); // lisi
 ```
-##### writable(为false时，属性不能再次赋值)
-```
+#### writable(为false时，属性不能再次赋值)
+```js
 // demo8
 "use strict"
 
@@ -193,8 +202,8 @@ Object.defineProperty(obj, 'name',
 
 obj.name = 'wangwu'; // Uncaught TypeError: Cannot assign to read only property 'name' of object '#<Object>'
 ```
-##### enumerable(为false时，属性不能遍历)
-```
+#### enumerable(为false时，属性不能遍历)
+```js
 // demo9
 "use strict"
 
@@ -210,8 +219,8 @@ Object.defineProperty(obj, 'name',
 
 console.log(Object.keys(obj)) // []
 ```
-##### configurable(为false时，属性不能删除)
-```
+#### configurable(为false时，属性不能删除)
+```js
 // 示例10
 "use strict"
 const obj = {};
@@ -226,8 +235,8 @@ Object.defineProperty(obj, 'name',
 
 delete obj.name // Uncaught TypeError: Cannot delete property 'name' of #<Object>
 ```
-##### writable与configurable(当writable与enumerable同时为false时，属性不能重新使用Object.defineProperty()定义，严格模式下会报错)
-```
+#### writable与configurable(当writable与enumerable同时为false时，属性不能重新使用Object.defineProperty()定义，严格模式下会报错)
+```js
 // demo11
 "use strict"
 
@@ -248,7 +257,7 @@ Object.defineProperty(obj, 'name',
 ```
 >特别注意：一旦把属性定义为不可配置的，就不能再把它变回可配置的了。
 
-```
+```js
 // demo12
 "use strict"
 const person = {};
@@ -261,6 +270,8 @@ Object.defineProperty(person, 'name', {
     value: 'lisisi'
 }); // Uncaught TypeError: Cannot redefine property: name at Function.defineProperty (<anonymous>)
 ```
+**[⬆ 返回顶部](#Object属性学习总结)**
+
 ### 参考文档
 1. [Web 技术文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 2. [学习Object.defineProperty](https://www.geekjc.com/post/5a63068df6a6db2832a57367)
