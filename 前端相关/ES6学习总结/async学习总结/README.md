@@ -1,4 +1,9 @@
-[TOC]
+# async&await学习总结
+
+## 目录
+  1. [async和await](#async和await)
+  2. [基本语法](#基本语法)
+  3. [demo](#demo)
 
 `async`函数是`Generator`函数的语法糖。使用关键字`async`来表示，在函数内部使用`await`来表示异步。相较于 Generator，async 函数的改进在于下面四点：
 
@@ -24,12 +29,14 @@ console.log('我先执行');
 ```
 >虽然是上面asyncFn()先执行，但是已经被定义异步函数了，不会影响后续函数的执行。
 
-### async 和 await
+## async和await
 先从字面意思来理解，`async` 是异步的简写，而`await`可以认为是 `async wait` 的简写。所以应该很好理解 async 用于申明一个函数(function)是异步的，而`await`用于等待一个异步方法执行完成。
 
 ### async-await和Promise的关系
 async-await是promise和generator的语法糖。只是为了让我们书写代码时更加流畅，当然也增强了代码的可读性。简单来说：async-await 是建立在 promise机制之上的，并不能取代其地位。
-### 基本语法
+
+**[⬆ 返回顶部](#async&await学习总结)**
+## 基本语法
 ```js
 async function fn() {
  	// await会把结果转化为一个Promise对象
@@ -39,7 +46,7 @@ async function fn() {
 
 fn();
 ```
-#### async
+### async
 async用来表示函数是异步的，定义的函数会返回一个Promise对象，可以使用then方法添加回调函数。
 
 ```js
@@ -53,12 +60,12 @@ demo1().then(val => {
 ```
 若 async 定义的函数有返回值，return 123;相当于Promise.resolve(123),没有声明式的 return则相当于执行了Promise.resolve();
 
-#### await
+### await
 await 可以理解为是 `async wait`(异步等待)的简写。await关键字只能出现在 async 函数内部，不能单独使用。任何async函数都会默认返回promise，并且这个promise解析的值都将会是这个函数的返回值，而async函数必须等到内部所有的 await 命令的 Promise 对象执行完，才会发生状态改变。
 
 await 后面可以跟任何的JS 表达式。虽然说 await 可以等很多类型的东西，但是它最主要的意图是用来等待 Promise 对象的状态被 resolved。如果await的是 promise对象会造成异步函数停止执行并且等待 promise 的解决,如果等的是正常的表达式则立即执行。
 
-### Async 函数的错误处理
+### Async函数的错误处理
 ```js
 let a;
 
@@ -93,8 +100,8 @@ testError()
     .then(success => console.log('成功', success))
     .catch(error => console.log('失败', error)); // 失败 Error: has Error
 ```
-
-### demo
+**[⬆ 返回顶部](#async&await学习总结)**
+## demo
 ```js
 // demo1
 const axios = require('axios');
@@ -383,6 +390,8 @@ const test = async () => {
 
 test();
 ```
+**[⬆ 返回顶部](#async&await学习总结)**
+
 ### 参考文档
 1. [理解 async/await](https://segmentfault.com/a/1190000010244279)
 2. [ES6系列文章 异步神器async-await](https://segmentfault.com/a/1190000011526612)
