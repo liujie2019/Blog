@@ -33,7 +33,7 @@ $ webpack-dev-server --content-base dist/
 在 `webpack.config.js` 文件中，如果配置了 output 的 `publicPath` 这个字段的话，在 index.html 文件里面也应该做出调整。 因为 `webpack-dev-server `伺服的文件是相对 `publicPath` 这个路径的 。
 因此，如果你的 `webpack.config.js` 配置成这样的：
 
-```
+```js
 module.exports = {
         entry: './src/index.js',
         output: {
@@ -45,7 +45,7 @@ module.exports = {
 ```
 那么，在 index.html 文件当中引入的路径也发生相应的变化:
 
-```
+```html
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -58,7 +58,7 @@ module.exports = {
     </html>
 ```
 如果在 `webpack.config.js` 里面没有配置` output` 的 `publicPath` 的字段，那么`index.html `最后引入的文件 js文件路径应该是下面这样的：
-```
+```html
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -91,10 +91,10 @@ http://«host»:«port»/webpack-dev-server/«path»
 在`webpack.config.js`中添加`devServer:{inline:true}`
 
 特别注意：**默认情况下使用`--inline`模式**，如果需要切换到`--iframe`模式，只需要设置：
-```
-devServer:{
-		inline: false
-	}
+```js
+devServer: {
+	inline: false
+}
 ```
 
 2.当以Node.js API启动webpack-dev-server时,我们也需要做两点:
@@ -129,7 +129,7 @@ localhost:8080/index.html
 该模式下也能完成自动编译打包，页面自动刷新的功能。但是没有的`header 部分`的 reload 消息的显示，不过在**控制台中会显示 reload 的状态**。
 `webpack-dev-server` 会在你的 `webpack.config.js `的入口配置文件中添加一个入口：
 
-```
+```js
 module.exports = {
         entry: {
             app: [
@@ -170,7 +170,7 @@ npm install extract-text-webpack-plugin --save-dev
 ```
 首先进入项目的根目录，然后执行以上命令进行插件的安装，插件安装完成后，接下来我们要做的就是在webpack.config.js中引入该插件：
 
-```
+```js
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {

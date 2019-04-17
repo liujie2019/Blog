@@ -2,7 +2,7 @@
 #### 转换URL字符串和查询字符串
 在NodeJS中，提供了url模块和querystring模块，分别用来转换完成URL字符串和URL中的查询字符串。
 #### 发送服务器端响应流
-```
+```js
 // server.js
 const http = require('http');
 const fs = require('fs');
@@ -30,7 +30,7 @@ server.listen(3000, () => {
     console.log('Server running at http://127.0.0.1:3000');
 });
 ```
-```
+```js
 // server2.js
 const http = require('http');
 const server = http.createServer((req, res) => {
@@ -47,8 +47,8 @@ const server = http.createServer((req, res) => {
 server.listen(8089, () => {
     console.log('Server running at http://127.0.0.1:8089');
 });
-``` 
 ```
+```js
 // 在3000端口访问该html文件，形成跨域访问
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +91,7 @@ openssl genrsa -out privatekey.pem 1024
 ```
 openssl req -new -key privatekey.pem -out certrequest.csr
 ```
-```
+```js
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -127,7 +127,7 @@ openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.p
 openssl pkcs12 -export -in certificate.pem -inkey privatekey.pem -out certificate.pfx
 ```
 #### demo(https)
-```
+```js
 const https = require('https');
 const fs = require('fs');
 const pk = fs.readFileSync('./privatekey.pem');
@@ -165,7 +165,7 @@ server.listen(443, 'localhost', () => {
 * text/plain：空格转换为 "+" 加号，但不对特殊字符编码。
 
 ### demo
-```
+```js
 // router.js
 function route(pathname) {
    console.log("About to route a request for " + pathname);
@@ -173,7 +173,7 @@ function route(pathname) {
 
 exports.route = route;
 ```
-```
+```js
 // server.js
 const http = require('http');
 const url = require('url');
@@ -189,15 +189,15 @@ function start() {
         res.end();
     }
     http.createServer(onRequest).listen(8089, () => {
-        console.log("Server has started.");
+        console.log('Server has started.');
     });
 }
 exports.start = start;
 ```
-```
+```js
 // index.js
-const server = require("./server");
-const router = require("./router");
+const server = require('./server');
+const router = require('./router');
 
 server.start(router.route);
 ```
@@ -216,7 +216,7 @@ Url {
   query: 'name=lisi',
   pathname: '/book',
   path: '/book?name=lisi',
-  href: '/book?name=lisi' 
+  href: '/book?name=lisi'
 }
 ```
 

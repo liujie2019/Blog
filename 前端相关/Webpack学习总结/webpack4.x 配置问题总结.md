@@ -4,7 +4,7 @@
 使用SplitChunkPlugin有两种方式：
 
 #### 1.1 optimization.splitChunks
-```
+```js
 optimization: {
         //提取公共模块，webpack4去除了CommonsChunkPlugin，使用SplitChunksPlugin作为替代
         //主要用于多页面
@@ -58,7 +58,7 @@ optimization: {
 
 基于webpack 3.0的Vue项目：
 
-```
+```js
 const utils = require('./utils')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
@@ -70,7 +70,7 @@ module.exports = {
 ```
 基于webpack 4.0的Vue项目：
 
-```
+```js
 const utils = require('./utils')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {

@@ -8,15 +8,15 @@ Multer在解析完请求体后，会向Request对象中添加一个body对象和
 ```
 npm install --save multer
 ```
-```
+```js
 const multer  = require('multer');
 const upload = multer({dest:"/upload"});
 ```
 >Multer 接受一个 options 对象，其中最基本的是 `dest` 属性，这将告诉 Multer 将上传文件保存在哪。如果你省略 options 对象，这些文件将保存在内存中，永远不会写入磁盘。
 
 ### demo
-```
-# server.js
+```js
+// server.js
 const fs = require('fs');
 const express = require('express');
 const multer  = require('multer')

@@ -42,10 +42,10 @@ npm i cross-env -D
 ```
 执行npm命令切换环境
 
-```
-# 生产环境 process.env.NODE_ENV === 'production'
+```js
+// 生产环境 process.env.NODE_ENV === 'production'
 npm run build
-# 开发环境 process.env.NODE_ENV === 'development'
+// 开发环境 process.env.NODE_ENV === 'development'
 npm run dev
 ```
 接下来我们就可以在`webpack.config.js`通过`process.env.NODE_ENV`来获取当前环境标识。

@@ -58,20 +58,20 @@ inquirer.prompt([{
   filter: function () {
     return new Promise(/* etc... */);
   },
- 
+
   /* 也可以使用 this.async */
   validate: function (input) {
-    // Declare function as asynchronous, and save the done callback 
+    // Declare function as asynchronous, and save the done callback
     var done = this.async();
- 
+
     // 进行异步操作
     setTimeout(function () {
       if (typeof input !== 'number') {
-        // Pass the return value in the done callback 
+        // Pass the return value in the done callback
         done('You need to provide a number');
         return;
       }
-      // Pass the return value in the done callback 
+      // Pass the return value in the done callback
       done(null, true);
     }, 3000);
   }
@@ -84,7 +84,7 @@ Answers是一个包含有用户客户端输入的每一个问题的答案的对�
 ### Separator(分隔)
 可以为任意的choices数组选项添加分隔，方便在多选项时划分选项类别。
 ### Prompt types(问题类型)
-* List  
+* List
 
 ```
 {type: 'list'}
@@ -142,4 +142,3 @@ Answers是一个包含有用户客户端输入的每一个问题的答案的对�
 
 ### 参考文档
 1. [Inquirer.js](https://github.com/sboudrias/Inquirer.js)
-

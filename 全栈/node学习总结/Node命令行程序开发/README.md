@@ -1,10 +1,10 @@
-```
-# 执行npm link
+[TOC]
+```js
+// 执行npm link
 /usr/local/bin/hello -> /usr/local/lib/node_modules/node-cli/bin/hello.js
 /usr/local/lib/node_modules/node-cli -> /Users/liujie26/study/node/expressDemo/node-cli
 ```
-
-### npm link
+#### 1. npm link
 开发NPM模块的时候，有时我们会希望，边开发边试用，比如本地调试的时候，`require('myModule')`会自动加载本机开发中的模块。Node规定，使用一个模块时，需要将其安装到全局的或项目的`node_modules`目录之中。对于开发中的模块，解决方法就是在全局的`node_modules`目录之中，生成一个符号链接，指向模块的本地目录。
 
 `npm link`就能起到这个作用，会自动建立这个符号链接。
@@ -33,7 +33,7 @@ src/myProject/node_modules/myModule -> /path/to/global/node_modules/myModule
 ```
 然后，就可以在你的项目中，加载该模块了。
 
-```
+```js
 var myModule = require('myModule');
 ```
 这样一来，myModule的任何变化，都可以直接反映在myProject项目之中。但是，这样也出现了风险，任何在myProject目录中对myModule的修改，都会反映到模块的源码中。
@@ -43,8 +43,8 @@ var myModule = require('myModule');
 ```
 src/myProject$ npm unlink myModule
 ```
-### 参数解析
-```
+#### 2. 参数解析
+```js
 #! /usr/bin/env node
 
 console.log(process.argv);
@@ -53,7 +53,7 @@ console.log(argv);
 const name = argv[0];
 console.log(`hello, ${name}`);
 ```
-```
+```js
 # 执行 hello liujie
 # 结果如下：
 [ '/usr/local/bin/node', '/usr/local/bin/hello', 'liujie' ]
@@ -62,11 +62,11 @@ hello, liujie
 ```
 >命令行参数可通过系统变量`process.argv`获取。 `process.argv`返回一个数组 第一个是node 第二个是脚本文件 第三个是输入的参数，`process.argv[2]`开始得到才是真正的参数部分。
 
-### Commander.js
+#### 3. Commander.js
 对于参数处理，我们一般使用commander，commander是一个轻巧的nodejs模块，提供了用户命令行输入和参数解析强大功能如：自记录代码、自动生成帮助、合并短参数（“ABC”==“-A-B-C”）、默认选项、强制选项、命令解析、提示符。
 
-```
-#!/usr/bin/env node 
+```js
+#!/usr/bin/env node
 
 var program = require('commander');
  program
@@ -76,14 +76,14 @@ var program = require('commander');
  	.option('-b, --bbq-sauce', 'Add bbq sauce')
  	.option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
  	.parse(process.argv);
- 	
+
  	console.log('you ordered a pizza with:');
  	if (program.peppers) console.log(' - peppers');
  	if (program.pineapple) console.log(' - pineapple');
  	if (program.bbqSauce) console.log(' - bbq');
  	console.log(' - %s cheese', program.cheese);
 ```
-#### Commander API
+##### 3.1 Commander API
 * Option(): 初始化自定义参数对象，设置关键字和描述；
 * Command(): 初始化命令行参数对象，直接获得命令行输入；
 * Command#command(): 定义一个命令名字；
@@ -93,21 +93,20 @@ var program = require('commander');
 * Command#description(): 设置description值；
 * Command#usage(): 设置usage值。
 
-### 开发命令行翻译工具
-```
-# 安装相关依赖
+#### 4. 开发命令行翻译工具
+```js
+// 安装相关依赖
 npm install commander superagent cli-table2 --save
 ```
-```
-新建bin/translator.js文件，并加入package.json文件中
+```js
+// 新建bin/translator.js文件，并加入package.json文件中
 
 "bin": {
 	"translator": "bin/translator.js"
 }
-
-然后执行：npm link
 ```
-```
+>然后执行：`npm link`
+```js
 #! /usr/bin/env node
 // 引入需要的模块
 const program = require('commander');
@@ -165,15 +164,107 @@ if (!process.argv[2]) {
 program.parse(process.argv);
 ```
 ```
-# 执行：translator query food
+// 执行：translator query food
 ┌──────┬───────────────┐
 │ food │ n. 食物；养料 │
 ```
+#### 5. Node命令行工具开发【看段子小工具】
+##### 5.1 cheerio
+`cheerio`可理解为服务器端的`jQuery`，基本用法与jQuery一样。有了它，我们在写小爬虫时就可抛开那可爱又可恨的正则表达式了。从此拥抱幸福生活。具体用法如下：
 
+```js
+const cheerio = require('cheerio')
+const $ = cheerio.load('<h2 class="title">Hello world</h2>');
 
+$('h2.title').text('Hello there!');
+$('h2').addClass('welcome');
 
-### 参考文档
-1. [Node.js 命令行程序开发教程](http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html)
+$.html();
+//=> <h2 class="title welcome">Hello there!</h2>
+```
+##### 5.2 superagent
+`superagent`专注于处理服务端/客户端的http请求，用法如下：
+
+```
+request
+  .get(url)
+  .end((err, res) => {
+});
+```
+##### 5.3 开始开发joke-cli
+###### 5.3.1 初始化项目
+```js
+mkdir joke-cli
+cd joke-cli
+npm init
+npm install cheerio superagent colors --save //colors 输出美化
+```
+>新建`bin/index.js`文件，并加入`package.json`文件中：
+
+```
+"bin": {
+    "joke-cli": "./bin/index.js"
+ }
+```
+>执行`npm link`：
+```js
+#!/usr/bin/env node
+
+const superAgent = require('superagent');
+const cheerio = require('cheerio');
+const readline = require('readline');
+const colors = require('colors');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: '您正在使用joke-cli，按回车键查看笑话>>>'
+});
+const baseUrl = 'https://www.qiushibaike.com/text/page/';
+let page = 1;
+
+// 使用数组来存放笑话
+const jokeArr = [];
+// 获取笑话并存入数组中
+function getJokes() {
+    // 数组中的笑话不足三条时就请求下一页的数据
+    if (jokeArr.length < 3) {
+        superAgent
+        .get(baseUrl + page)
+        .end((err, res) => {
+            if(err) console.error(err);
+            const $ = cheerio.load(res.text);
+            const jokeList = $('.article .content span');
+            jokeList.each((index, element) => {
+                jokeArr.push($(element).text()); // 存入数组
+            });
+            page++;
+        });
+    }
+}
+rl.prompt();
+getJokes();
+
+// line事件 每当 input 流接收到接收行结束符（\n、\r 或 \r\n）时触发 'line' 事件。 通常发生在用户按下 <Enter> 键或 <Return> 键。
+// 按下回车键显示一条笑话
+rl.on('line', (line) => {
+    if(jokeArr.length > 0) {
+        console.log('======================');
+        console.log(jokeArr.shift().bgCyan.black); //用colors模块改变输出颜色
+        getJokes();
+     }
+     else {
+         console.log('正在加载中~~~'.green);
+     }
+     rl.prompt();
+    }).on('close', () => {
+        console.log('Bye!');
+        process.exit(0);
+    });
+```
+#### 参考文档
+1. [跟着老司机玩转Node命令行](https://aotu.io/notes/2016/08/09/command-line-development/index.html)
+2. [Node.js 命令行程序开发教程](http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html)
 2. [commander.js](https://github.com/tj/commander.js)
 3. [Commander写自己的Nodejs命令](http://blog.fens.me/nodejs-commander/)
 4. [Node.js+commander开发命令行工具](https://www.jianshu.com/p/2cae952250d1)

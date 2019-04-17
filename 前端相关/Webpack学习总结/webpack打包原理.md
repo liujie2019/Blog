@@ -1,9 +1,10 @@
+[TOC]
 ### Webpack 中执行代码分割
 #### 允许代码分割(CommonsChunkPlugin)
 对于多个打包入口的情况：
 相应的配置文件：webpack.config.js
 
-```
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
@@ -36,20 +37,19 @@ module.exports = {
 ```
 main.js:
 
-```
+```js
 import chunk1 from './chunk1.js';
 console.log("main");
-
 ```
 main1.js:
 
-```
+```js
 import chunk1 from './chunk1.js';
 console.log("main1");
 ```
 chunk1.js：
 
-```
+```js
 let chunk1 = 1;
 export default chunk1;
 ```
@@ -57,7 +57,7 @@ export default chunk1;
 
 common.js:
 
-```
+```js
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// install a JSONP callback for chunk loading
 /******/ 	var parentJsonpFunction = window["webpackJsonp"];
@@ -229,7 +229,7 @@ webpackJsonp函数的三个参数：
 
 打包后的main.js:
 
-```
+```js
 webpackJsonp([1],[
 /* 0 */,
 /* 1 */
@@ -254,7 +254,7 @@ webpack的id有两种：chunkid和moduleId。
 
 #### 参数minChunks: Infinity
 
-```
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
@@ -289,7 +289,7 @@ main.js和main1.js共同引用的chunk1和chunk2会被打包到common.js中。
 #### 参数chunks
 webpack.config.js：
 
-```
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');

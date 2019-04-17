@@ -1,3 +1,4 @@
+[TOC]
 ### 1. 安装npm
 直接下载`NodeJs`安装即可。[NodeJs官网](https://nodejs.org/zh-cn/)
 ### 2. 创建项目目录
@@ -25,9 +26,9 @@ src文件夹用来存放原始数据和我们将写的js模块，dist是项目�
 
 ```
 # 全局安装
-npm install -g webpack 
+npm install -g webpack
 # 项目目录安装
-npm install --save-dev webpack 
+npm install --save-dev webpack
 ```
 #### 3.2 安装babel相关工具包
 
@@ -152,7 +153,7 @@ module.exports = {
 		new webpack.NoEmitOnErrorsPlugin(),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new HtmlWebpackPlugin({
-            template: './index.tmpl.html' 
+            template: './index.tmpl.html'
         }),
         new webpack.optimize.UglifyJsPlugin(),//压缩JS代码
         //清除dist文件夹中重复的文件
@@ -170,12 +171,12 @@ module.exports = {
 		inline: true,//实时刷新
 		hot: true
 	},
-	//由于压缩后的代码不易于定位错误, 配置该项后发生错误时即可采用source-map的形式直接显示你出错代码的位置  
-    devtool: 'eval-source-map', 
-    resolve: {  
-        //配置简写, 配置过后, 书写该文件路径的时候可以省略文件后缀。  
-        extensions: ['.js', '.jsx', '.coffee', '.css', './scss']  
-    }  
+	//由于压缩后的代码不易于定位错误, 配置该项后发生错误时即可采用source-map的形式直接显示你出错代码的位置
+    devtool: 'eval-source-map',
+    resolve: {
+        //配置简写, 配置过后, 书写该文件路径的时候可以省略文件后缀。
+        extensions: ['.js', '.jsx', '.coffee', '.css', './scss']
+    }
 };
 ```
 

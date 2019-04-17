@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webshell</title>
+    <link rel="stylesheet" href="node_modules/xterm/dist/xterm.css" />
+    <script src="node_modules/xterm/dist/xterm.js"></script>
+</head>
+<body>
+    <div id="terminal"></div>
+    <script>
+        var xterm = new Terminal({
+            cols: 100,
+            rows: 40,
+            cursorBlink: true,
+            scrollback: 30,
+            tabStopWidth: 4
+        });
+        xterm.open(document.getElementById('terminal'));
+        xterm.writeln('welcome to use web terminal!');
+        xterm.textarea.onkeydown = function (e) {
+            console.log('User pressed key with keyCode: ', e.keyCode);
+        }
+        xterm.on('output', arrayBuffer => {
+            console.log('output===', arrayBuffer);
+            xterm.write(arrayBuffer);
+        });
+        xterm.on('blur', arrayBuffer => {
+            console.log('blur===', arrayBuffer)
+            xterm.write(arrayBuffer);
+        });
+        xterm.on('focus', arrayBuffer => {
+            console.log('focus===', arrayBuffer)
+            xterm.write(arrayBuffer);
+        });
+        xterm.on('keydown', arrayBuffer => {
+            console.log('keydown===', arrayBuffer)
+            xterm.write(arrayBuffer);
+        });
+        xterm.on('lineFeed', arrayBuffer => {
+            console.log('lineFeed===',arrayBuffer)
+            xterm.write(arrayBuffer);
+        });
+    </script>
+</body>
+</html>

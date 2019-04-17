@@ -1,3 +1,14 @@
+# body-parser学习总结
+
+## 目录
+  1. [async和await](#async和await)
+  2.
+  3.
+
+## async和await
+
+**[⬆ 返回顶部](#async学习总结)**
+
 body-parser是一个HTTP请求体解析中间件，使用这个模块可以解析JSON、Raw、文本、URL-encoded格式的请求体，Express框架中就是使用这个模块做为请求体解析中间件。
 
 body-parser中间件用于解析客户端请求的body中的内容，内部使用JSON编码处理、url编码处理以及对于文件的上传处理。
@@ -7,7 +18,7 @@ body-parser中间件用于解析客户端请求的body中的内容，内部使�
 npm install body-parser -S
 ```
 #### 1.2 基本使用
-```
+```js
 const express = require('express');
 // 获取模块
 const bodyParser = require('body-parser');
@@ -16,7 +27,7 @@ const app = express();
 // 创建 application/json 解析
 const jsonParser = bodyParser.json();
 
-// 创建 application/x-www-form-urlencoded 解析
+// 创建 application/x-www-form-urlencoded解析
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // POST /login 获取 URL编码的请求体
@@ -107,8 +118,8 @@ POST 提交数据时，包含了 Content-Type 和消息主体编码方式两部�
 
 Content-Type常见的四种方式:
 
-1. application/x-www-form-urlencoded:提交的数据按照key1=val1&key2=val2 的方式进行编码，key 和 val 都进行了 URL 转码。
-2. multipart/form-data:使用表单上传文件时，必须让 <form> 表单的 enctype 等于 multipart/form-data；
+1. application/x-www-form-urlencoded: 提交的数据按照key1=val1&key2=val2 的方式进行编码，key 和 val 都进行了 URL 转码。
+2. multipart/form-data: 使用表单上传文件时，必须让 <form> 表单的 enctype 等于 multipart/form-data；
 3. application/json: 用来告诉服务端消息主体是序列化后的 JSON 字符串；
 4. text/xml: 它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。
 
