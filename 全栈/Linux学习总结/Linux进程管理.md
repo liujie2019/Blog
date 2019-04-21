@@ -33,8 +33,8 @@ pstree [选项]
 -u: 显示进程的所属用户
 ```
 #### 3.1 mac中
-![](../static/linux-top.png)
-![](../static/linux-top-info.png)
+![](../../static/linux-top.png)
+![](../../static/linux-top-info.png)
 #### 3.2 linux系统中
 
 * PID: 进程的ID
