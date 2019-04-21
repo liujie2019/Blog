@@ -1,10 +1,10 @@
 ### 1. 安装包
-```
+```js
 $ npm install --save-dev babel-eslint eslint eslint-plugin-react
 ```
 在项目根目录下新建配置文件 `.eslintrc`：
 
-```
+```js
 {
     "extends":"eslint:recommended",
     "ecmaFeatures":{
@@ -22,7 +22,7 @@ $ npm install --save-dev babel-eslint eslint eslint-plugin-react
         "valid-jsdoc":2, //2表示不符合规则的话会以错误形式提示
         "react/jsx-uses-react":2, //1表示不符合规则的话会以警告形式提示
         "react/jsx-uses-vars":2,
-        "react/react-in-jsx-scope":2  
+        "react/react-in-jsx-scope":2
     },
     "plugins":[
         "react"
@@ -32,8 +32,8 @@ $ npm install --save-dev babel-eslint eslint eslint-plugin-react
 ### 2. 常用规则说明
 >**ps: 配置的value对应的值：**
 
-* 0 => off 
-* 1 => warning 
+* 0 => off
+* 1 => warning
 * 2 => error
 
 >**具体规则如下：**

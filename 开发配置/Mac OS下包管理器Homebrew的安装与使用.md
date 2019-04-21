@@ -8,7 +8,7 @@ Mac OS X是基于Unix的，它可以使用非常多Linux平台上开源的优秀
 有一个开源的项目叫Homebrew，完美解决了Mac OS X上没有包管理器的尴尬。
 
 #### 1.1 安装
-```
+```js
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 #### 1.2 基本使用
@@ -32,23 +32,23 @@ brew info wget
 brew uninstall wget
 
 #查看你的包是否需要更新
-brew outdated  
+brew outdated
 
 #更新包
-brew upgrade <package_name>  
+brew upgrade <package_name>
 
 #Homebrew将会把老版本的包缓存下来，以便当你想回滚至旧版本时使用。但这是比较少使用的情况，当你想清理旧版本的包缓存时，可以运行:
-brew cleanup  
+brew cleanup
 
 #查看你安装过的包列表（包括版本号)
-brew list --versions 
+brew list --versions
 ```
 #### 1.3 Homebrew Cask
 你已经感受到了使用 Homebrew 安装命令行程序的便利。那么接下来，我们将通过 Homebrew Cask 优雅、简单、快速的安装和管理 OS X 图形界面程序，比如 Google Chrome 和 Dropbox。
 
 如果我想安装Chrome浏览器怎么办？试试下面的命令：
 
-```
+```js
 brew install google-chrome
 ```
 发现并不能安装，没有该软件。怎么办？好消息是一个叫做homebrew-cask的工具扩充了homebrew。
@@ -59,7 +59,7 @@ brew install google-chrome
 brew tap caskroom/cask  //添加 Github 上的 caskroom/cask 库
 brew install brew-cask  //安装 brew-cask
 brew cask install google-chrome //安装 Google 浏览器
-brew update && brew upgrade brew-cask && brew cleanup //更新  
+brew update && brew upgrade brew-cask && brew cleanup //更新
 ```
 ```
 #安装

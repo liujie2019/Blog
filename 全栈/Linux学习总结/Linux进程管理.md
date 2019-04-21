@@ -22,8 +22,8 @@ x: 显示没有控制终端的进程
 -l: 长格式显示。显示更加详细的信息
 -e: 显示所有进程,和-A作用一致
 ```
-![](../static/linux-ps.png)
-![](../static/linux-ps2.png)
+![](../../static/linux-ps.png)
+![](../../static/linux-ps2.png)
 
 ```
 #查看进程树
@@ -52,11 +52,11 @@ pstree [选项]
 
 默认情况下，`top`命令在启动时会按照`%CPU`值对进程排序。
 
-![](../static/linux-top-infos.png)
-![](../static/linux-top-tasks.png)
-![](../static/linux-cpu.png)
-![](../static/linux-mem.png)
-![](../static/linux-swap.png)
+![](../../static/linux-top-infos.png)
+![](../../static/linux-top-tasks.png)
+![](../../static/linux-cpu.png)
+![](../../static/linux-mem.png)
+![](../../static/linux-swap.png)
 
 **top命令结果解释：**（buffers缓冲用来加速数据写入，cached缓存用来加速数据读取）
 
@@ -84,7 +84,7 @@ top -b -n 1 > /root/top.log 将执行的top命令结果输出到log日志文件�
 #### 4.1 kill命令
 kill命令可通过进程ID给进程发信号。要发送进程信号，必须是进程的属主或登录为root用户。
 
-![](../static/linux-kill.png)
+![](../../static/linux-kill.png)
 
 ```
 #查看可用的进程信号
@@ -121,8 +121,8 @@ pkill -9 -t pts/1
 ### 5. 修改进程的优先级
 #### 5.1 进程优先级简介
 Linux操作系统是一个多用户、多任务的操作系统，Linux系统中通知运行着非常多的进程。但是CPU在同一个时钟周期内只能运算一个指令。进程优先级决定了每个进程处理的先后顺序。
-![](../static/linux-pri.png)
-![](../static/linux-pri2.png)
+![](../../static/linux-pri.png)
+![](../../static/linux-pri2.png)
 #### 5.2 nice命令(不能修改已经存在进程的NI值)
 ```
 #nice命令可以给新执行的命令直接赋予NI值，但是不能修改已经存在进程的NI值
@@ -157,4 +157,4 @@ nohup命令对server.js进程做了三件事。
 
 ### 参考博文
 1. [Linux 守护进程的启动方法](http://www.ruanyifeng.com/blog/2016/02/linux-daemon.html)
-2. 
+2.

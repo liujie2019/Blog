@@ -12,7 +12,7 @@ sudo tar -zxvf mongodb-osx-x86_64-3.4.2.tgz
 // 重命名为 mongodb 目录
 sudo mv mongodb-osx-x86_64-3.4.2 mongodb
 ```
-安装完成后，我们可以把`MongoDB`的二进制命令文件目录（安装目录/bin）添加到`PATH`路径中：
+安装完成后，我们可以把`MongoDB`的二进制命令文件目录(安装目录/bin)添加到`PATH`路径中：
 
 ```js
 export PATH=/usr/local/mongodb/bin:$PATH
@@ -22,8 +22,31 @@ export PATH=/usr/local/mongodb/bin:$PATH
 sudo brew install mongodb
 ```
 ## 配置环境变量
+Mac下配置环境变量的方式：
+首先打开终端 ，然后 cd ~
+
+>环境变量的位置在以下几个文件中：
+
 ```js
-vim ~/.bash_profile
+cat /etc/profile
+cat /etc/paths
+cat ~/.bash_profile
+```
+>输入内容：
+```js
+➜  ~ cat /etc/paths
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+```
+```js
+vi /etc/paths
+```
+我目前电脑已经列出了所有的环境变量执行目录，可以看到/usr/local/bin已经是环境变量目录了，而我电脑所有的软件执行文件基本都在这个目录下，因此不需要特意在去添加mongodb的目录，大家可以直接通过一个软连接的方式把文件配置到这个目录就可以了。
+```js
+vi ~/.bash_profile
 ```
 ```js
 // 添加下面两行
@@ -48,9 +71,11 @@ source ~/.bash_profile
 sudo mkdir -p /data/db
 ```
 ### 启动MongoDB服务端
-安装好MongoDB数据库和配置好数据存储目录后，需要启用`MongoDB`服务端才能使用。启用服务的命令是：`mongod`，这样MongoDB服务就启动了，默认端口是27017，默认数据库目录即为`/data/db`。
+安装好MongoDB数据库和配置好数据存储目录后，需要启用`MongoDB`服务端才能使用。启用服务的命令是：`mongod`，这样MongoDB服务就启动了，默认端口是`27017`，默认数据库目录为`/data/db`。
 ```js
 // 配置好path路径后，直接运行
+mongod --port 27017 --dbpath /data/db
+// 或者直接运行，因为上述命令中的端口和数据库目录是默认的
 mongod
 ```
 ### 链接服务
@@ -71,3 +96,5 @@ db.version()
 ## 参考文档
 1. [Mac下安装MongoDB 及使用教程](https://segmentfault.com/a/1190000002547229)
 2. [mac下mongodb的安装和使用\(使用终端操作\)](https://blog.csdn.net/qq_34629352/article/details/78166482)
+3. [Mac环境下安装和配置MongoDB](https://www.imooc.com/article/22733)
+4. [在Mac上安装MongoDB](https://www.cnblogs.com/quickcodes/p/5390482.html#4013861)
