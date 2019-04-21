@@ -55,32 +55,32 @@ history [选项] [历史命令保存文件]
 
 **命令与文件补全：**在Bash中，命令与文件补全是非常方便与常用的功能，我们只要在输入命令或文件时，按'Tab'键就会自动进行补全。
 #### 3.3 输出重定向
-![](../static/shell2.png)
-![](../static/shell.png)
+![](../../static/shell2.png)
+![](../../static/shell.png)
 
 ```
 # 举例说明
 # 输出到屏幕上
-ifconfig 
-# 以覆盖的方式，把命令的正确输出输出到test.log文件中   
-ifconfig > test.log 
+ifconfig
+# 以覆盖的方式，把命令的正确输出输出到test.log文件中
+ifconfig > test.log
 # 以追加的方式，把命令的正确输出输出到test.log文件中，不覆盖原文件
-ifconfig >> test.log 
+ifconfig >> test.log
 # 以覆盖的方式，把命令的错误输出输出到test.log文件中(2后面和test.log前面都不能有空格)
-ifconfig 2>test.log 
+ifconfig 2>test.log
 # 以追加的方式，把命令的错误输出输出到test.log文件中，不覆盖原文件
-ifconfig 2>>test.log 
+ifconfig 2>>test.log
 ```
 标准输出重定向，前提是已知命令是否正确，用作记录命令和脚本执行的日志。
 
 **特别注意：** 标准输出重定向的`>`与文件之间有空格，标准错误输出重定向的`>`与文件之间没有空格
-![](../static/shell3.png)
+![](../../static/shell3.png)
 
 ```
 # 以覆盖的方式，把命令的正确输出和错误输出都保存到test.log文件中
-ifconfig > test.log>&1 
+ifconfig > test.log>&1
 # 以追加的方式，把命令的正确输出和错误输出都保存到test.log文件中
-ifconfig >> test.log>&1 
+ifconfig >> test.log>&1
 ```
 ```
 # 查看xdy文件，文件不存在，错误信息输出到test.log文件中
@@ -99,7 +99,7 @@ cat xdy.log >> test.log 2>>err.log（2后面不能加空格）
 ```
 
 #### 3.4 多命令顺序执行(管道符)
-![](../static/shell4.png)
+![](../../static/shell4.png)
 
 ```
 # 命令格式
@@ -107,5 +107,5 @@ cat xdy.log >> test.log 2>>err.log（2后面不能加空格）
 命令1 | 命令2
 ```
 #### 3.5 Shell中特殊符号(通配符)
-![](../static/Shell5.png)
-![](../static/Shell6.png)
+![](../../static/Shell5.png)
+![](../../static/Shell6.png)
