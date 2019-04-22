@@ -35,7 +35,7 @@ Git保存的不是文件的变化或者差异，而是一系列不同时刻的�
 ![](../static/git_way.png)
 
 * **Workspace:** 工作区(本地电脑存放项目文件的地方)，执行`git add .`命令就把改动提交到了暂存区，执行`git pull`命令将远程仓库的数据拉到当前分支并合并，执行`git checkout [branch-name]`切换分支；
-* **Index/Stage:** 暂存区，在使用git管理项目文件的时候，其本地的项目文件会多出一个`.git`的文件夹，将这个`.git`文件夹称之为版本库。其中`.git`文件夹中包含了两个部分，一个是暂存区（Index或者Stage）,顾名思义就是暂时存放文件的地方，通常使用add命令将工作区的文件添加到暂存区里。执行`git commit -m '说明'`命令就把改动提交到了仓库区（当前分支）；
+* **Index/Stage:** 暂存区，在使用git管理项目文件的时候，其本地的项目文件会多出一个`.git`的文件夹，将这个`.git`文件夹称之为版本库。其中`.git`文件夹中包含了两个部分，一个是暂存区（Index或者Stage），顾名思义就是暂时存放文件的地方，通常使用`git add`命令将工作区的文件添加到暂存区里。执行`git commit -m '说明'`命令就把改动提交到了仓库区（当前分支）；
 * **Repository:** 仓库区（或本地仓库），`.git`文件夹里还包括git自动创建的master分支，并且将HEAD指针指向master分支。执行`git push origin master`提交到远程仓库，执行`git clone 地址`将克隆远程仓库到本地；
 * **Remote:** 远程仓库，就是类似github，coding等网站所提供的仓库。
 
@@ -59,8 +59,19 @@ git config --list
 公钥即`Ssh Key`。
 ```
 ssh-keygen -t rsa
+// 生成的公钥在用户家目录下的.ssh目录下
 cd $HOME/.ssh/
 # 目录下的id_rsa.pub即公钥
+```
+```js
+➜  ~ echo $HOME
+/Users/liujie26
+// Mac下默认是在家目录下
+➜  ~ pwd
+/Users/liujie26
+➜  ~ cd .ssh
+➜  .ssh ls
+config      id_rsa      id_rsa.pub  known_hosts
 ```
 添加Ssh Key到gitgub
 ```
