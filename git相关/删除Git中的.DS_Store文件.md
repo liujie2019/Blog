@@ -34,5 +34,3 @@ defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 
 ### 参考文档
 1. [如何删除GIT中的.DS_Store](https://www.jianshu.com/p/fdaa8be7f6c3)
-
-

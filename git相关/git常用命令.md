@@ -1,6 +1,6 @@
 Git常用命令
 查看、添加、提交、删除、找回，重置修改文件
-
+```js
 git help <command> # 显示command的help
 
 git show # 显示某次提交的内容 git show $id
@@ -44,9 +44,9 @@ git diff --staged # 比较暂存区和版本库差异
 git diff --cached # 比较暂存区和版本库差异
 
 git diff --stat # 仅仅比较统计信息
-
+```
 查看提交记录
-
+```
 git log git log <file> # 查看该文件每次提交记录
 
 git log -p <file> # 查看每次详细修改内容的diff
@@ -54,7 +54,7 @@ git log -p <file> # 查看每次详细修改内容的diff
 git log -p -2 # 查看最近两次详细修改内容的diff
 
 git log --stat #查看提交统计信息
-
+```
 tig
 
 Mac上可以使用tig代替diff和log，brew install tig
@@ -62,7 +62,7 @@ Mac上可以使用tig代替diff和log，brew install tig
 Git 本地分支管理
 
 查看、切换、创建和删除分支
-
+```js
 git br -r # 查看远程分支
 
 git br <new_branch> # 创建新的分支
@@ -86,9 +86,9 @@ git co $id -b <new_branch> # 把某次历史提交记录checkout出来，创建�
 git br -d <branch> # 删除某个分支
 
 git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
-
+```
  分支合并和rebase
-
+```js
 git merge <branch> # 将branch分支合并到当前分支
 
 git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交
@@ -102,9 +102,9 @@ git diff > ../sync.patch # 生成补丁
 git apply ../sync.patch # 打补丁
 
 git apply --check ../sync.patch #测试补丁能否成功
-
+```
  Git暂存管理
-
+```js
 git stash # 暂存
 
 git stash list # 列所有stash
@@ -112,9 +112,9 @@ git stash list # 列所有stash
 git stash apply # 恢复暂存的内容
 
 git stash drop # 删除暂存区
-
+```
 Git远程分支管理
-
+```js
 git pull # 抓取远程仓库所有分支更新并合并到本地
 
 git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并
@@ -138,11 +138,11 @@ git push origin <local_branch> # 创建远程分支， origin是远程仓库名
 git push origin <local_branch>:<remote_branch> # 创建远程分支
 
 git push origin :<remote_branch> #先删除本地分支(git br -d <branch>)，然后再push删除远程分支
-
+```
 Git远程仓库管理
 
 GitHub
-
+```js
 git remote -v # 查看远程服务器地址和仓库名称
 
 git remote show origin # 查看远程服务器仓库状态
@@ -150,9 +150,9 @@ git remote show origin # 查看远程服务器仓库状态
 git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址
 
 git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm <repository> # 删除远程仓库
-
+```
 创建远程仓库
-
+```js
 git clone --bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库
 
 scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上
@@ -172,3 +172,4 @@ git remote set-head origin master # 设置远程仓库的HEAD指向master分支
 git branch --set-upstream master origin/master
 
 git branch --set-upstream develop origin/develop
+```
