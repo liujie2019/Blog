@@ -7,6 +7,7 @@
     - [umask命令](#umask命令)
   - [环境变量配置文件的功能](#环境变量配置文件的功能)
   - [Shell登录信息](#Shell登录信息)
+  - [问题汇总](#问题汇总)
 
 ## 环境变量配置文件
 变量类型：
@@ -33,13 +34,13 @@ source 配置文件
 
 常见环境变量配置文件：
 
-* /etc/profile
-* /etc/profile.d/*.sh
-* ~/.bash_profile
-* ~/.bashrc
-* /etc/bashrc
+* /etc/profile：是全局的profile文件，设置后会影响到所有用户；
+* /etc/profile.d/*.sh：全局的
+* ~/.bash_profile：用户级别的，每个用户在自己的用户目录下都有自己的`.bash_profile`文件；
+* ~/.bashrc：用户级别的，每个用户在自己的用户目录下都有自己的`.bashrc`文件；
+* /etc/bashrc：为每一个运行`bash shell`的用户执行此文件，当`bash shell`被打开时，该文件被读取；
 
->特别注意：`.bash_profile`是隐藏文件，在Linux中所有以`.`开头文件都是隐藏文件。放在`/etc`目录下的环境变量配置文件对所有用户有效；放在`~/`目录下的环境变量配置文件只对当前用户有效。
+>特别注意：`.bash_profile`是隐藏文件，在Linux中所有以`.`开头文件都是隐藏文件，需要使用`ls -a`命令才能看到。放在`/etc`目录下的环境变量配置文件对所有用户有效；放在`~/`目录下的环境变量配置文件只对当前用户有效。
 
 ![](../../../static/linux-profile.png)
 
@@ -64,12 +65,16 @@ source 配置文件
 - 定义命令别名alias
 - 调用`/etc/bashrc`文件
 
+>`.bashrc`文件类似于`/etc/bashrc`，不需要重启生效，重新打开一个bash即可生效。`/etc/bashrc`对所有用户新打开的bash都生效，但`~/.bashrc`只对当前用户新打开的bash生效。
+
 >`.zshrc`也有相同作用，用来定义命令别名。
 ### /etc/bashrc环境变量配置文件的作用
 - PS1(修改登录提示符)变量
 - umask
 - PATH变量
 - 调用/etc/profile.d/*.sh文件
+
+>如果我们想对所有用户修改某个配置，并在修改以后新打开的bash时都生效。可以通过修改这个文件来实现，修改这个文件不用重启，**重新打开一个bash即可生效**。
 ### .bash_history
 保存历史命令。
 ### /etc/sysconfig/i18n
@@ -158,5 +163,25 @@ zsh: permission denied: ./demo.sh
 不管是本地登录，还是远程登录，都可以显示此欢迎信息。
 
 **[⬆ 返回顶部](#shell编程之环境变量配置文件)**
+## 问题汇总
+### Mac每次都要执行`source ~/.bash_profile`配置的环境变量才生效
+当我们在`~/.bash_profile`中配置环境变量后，每次重启终端后配置的不生效。需要重新执行:
+```js
+$source ~/.bash_profile
+```
+发现zsh加载的是`~/.zshrc`文件，而`.zshrc`文件中并没有定义任务环境变量。
+
+>解决办法：在`~/.zshrc`文件最后增加一行：
+```js
+source ~/.bash_profile
+```
+
+**[⬆ 返回顶部](#shell编程之环境变量配置文件)**
 ## 参考文档
 1. [shell编程之环境变量配置文件](https://www.imooc.com/learn/361)
+2. [~/.profile ~/.bashrc和~./bash_profile的理解以及zsh的使用](https://www.jianshu.com/p/b39fd35e2360)
+3. [强大的zsh配置文件](http://www.cnblogs.com/ma6174/archive/2012/05/08/2490921.html)
+4. [Linux中profile、bashrc、bash_profile之间的区别和联系](https://blog.csdn.net/chenchong08/article/details/7833242)
+5. [Linux| 用户目录下三个bash文件的作用(.bash_history,.bash_logout,.bash_profile,.bashrc)](https://blog.csdn.net/u011479200/article/details/86501366)
+6. [MAC 设置环境变量path的几种方法](https://www.cnblogs.com/shineqiujuan/p/4693404.html)
+7. [nodejs 中的 NODE_PATH](https://segmentfault.com/a/1190000002478924)

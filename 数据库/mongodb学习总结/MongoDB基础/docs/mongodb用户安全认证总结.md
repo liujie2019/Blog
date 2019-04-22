@@ -1,8 +1,8 @@
 # mongodb用户安全认证总结
 ## 目录
-  1. [mongodb默认权限](#mongodb默认权限)
-  2. [启用验证](#启用验证)
-  3.
+  - [mongodb默认权限](#mongodb默认权限)
+  - [启用验证](#启用验证)
+    - [创建用户管理员账户](#创建用户管理员账户)
 
 ## mongodb默认权限
 在默认情况下，mongod是监听在127.0.0.1上的，任何客户端都可以直接连接27017，且没有认证。这样做的好处是：用户可以即时上手，不用担心被一堆配置弄的心烦意乱。然而坏处也是显而易见，如果直接在公网服务器上如此搭建MongoDB，那么所有人都可以直接访问并修改数据库数据了。
@@ -37,13 +37,13 @@ Successfully added user: {
 	]
 }
 ```
-### 用户验证登陆
+### 开启用户验证登陆
 启动带访问控制的`Mongodb`，新建终端：
 
 ```js
 mongod --auth --port 27017 --dbpath /data/db
 ```
-### 用户身份的验证
+### 用户身份验证
 >有两种方式：
 
 >方式一：类似MySql，客户端连接时，指定用户名，密码，db名称。
@@ -76,7 +76,7 @@ Successfully added user: {
 	]
 }
 ```
->创建一个普通用户：
+### 创建一个普通用户
 ```js
 > db.createUser({
 ... user: "liujie",
@@ -136,3 +136,6 @@ Successfully added user: {
 
 ### 参考文档
 1. [MongoDB 用户名密码登录](https://www.jianshu.com/p/79caa1cc49a5)
+2. [MongoDB给数据库创建用户](https://www.imooc.com/article/18439)
+3. [MongoDB 内置角色](https://www.cnblogs.com/zzw1787044/p/5773178.html)
+4. [mongodb用户安全认证详解](https://blog.csdn.net/su377486/article/details/51756053)
