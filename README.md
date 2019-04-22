@@ -83,7 +83,7 @@
  * [x] 3. [node交互式命令行工具 Inquirer.js学习](https://github.com/liujie1990/Blog/blob/master/%E5%85%A8%E6%A0%88/node%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/node%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%20Inquirer.js%E5%AD%A6%E4%B9%A0.md)
  * [x] 4. [Node命令行程序开发学习总结](https://github.com/liujie1990/Blog/issues/20)
 ### <a id="Koa"></a>Koa
- * [x] 1. [Koa学习总结](https://github.com/liujie1990/Blog/issues/2)
+ * [x] 1. [Koa基础学习总结](https://github.com/liujie1990/Blog/blob/master/%E5%85%A8%E6%A0%88/node%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/Koa/Koa%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/README.md#Koa%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93)
 ### <a id="Express"></a> Express
 
 ## <a id="Nginx"></a>Nginx
