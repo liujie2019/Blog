@@ -3,7 +3,7 @@
 当前的发展趋势，就是前端设备层出不穷（手机、平板、桌面电脑、其他专用设备......）。
 因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信，在这种情况下RESTful API产生了。
 ### 协议
-HTTP、HTTPS 应用层协议。 
+HTTP、HTTPS 应用层协议。
 联网的设备 和 服务器之前的通信。
 ### 域名
 1.应该尽量将API部署在专用域名之下。
@@ -146,4 +146,3 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
 3. [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 4. [基于swagger的RESTful API开发实践](https://yq.aliyun.com/articles/773)
 5. [Swagger入门教程](https://www.cnblogs.com/JoiT/p/6378086.html)
-6. []()
