@@ -51,7 +51,7 @@ Git保存的不是文件的变化或者差异，而是一系列不同时刻的�
 **[⬆ 返回顶部](#git操作经验相关总结)**
 ## 配置git信息
 ```
-# 设置用户名和邮箱
+# 设置全局的用户名和邮箱
 git config --global user.email "你的邮箱"
 git config --global user.name "你的名字"
 
@@ -62,7 +62,7 @@ git config --list
 公钥即`Ssh Key`。
 ```
 ssh-keygen -t rsa
-// 生成的公钥在用户家目录下的.ssh目录下
+// 生成的公钥在用户家目录($HOME)下的.ssh目录下
 cd $HOME/.ssh/
 # 目录下的id_rsa.pub即公钥
 ```
