@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if/v-show和v-for指令</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- <div v-if="isVisiable">hello vue</div> -->
+        <div v-show="isVisiable">hello vue</div>
+        <button @click="handleClick">toggle</button>
+        <ul>
+            <!-- :key用来提升渲染性能,index作为key是不推荐的 -->
+            <li
+                v-for="(item, index) of list"
+                :key="index"
+            >
+                {{item}}
+            </li>
+        </ul>
+    </>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                isVisiable: true,
+                list: ['a', 'b', 'c']
+            },
+            methods: {
+                handleClick: function() {
+                    this.isVisiable = !this.isVisiable;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

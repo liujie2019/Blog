@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToList</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <input v-model="inputValue" />
+            <button @click="addTodoItem">提交</butto>
+        </div>
+        <ul>
+            <li
+                v-for="(item, index) of list"
+                :key="index"
+            >
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                inputValue: 'todo',
+                list: []
+            },
+            methods: {
+                addTodoItem: function() {
+                    this.list.push(this.inputValue);
+                    this.inputValue = '';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

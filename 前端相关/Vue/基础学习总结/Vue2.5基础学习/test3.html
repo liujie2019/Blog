@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性绑定和双向数据绑定</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-bind:title="'我是表达式不是字符串' + title">
+            hello vue
+        </div>
+        <input v-model="content"/>
+        <div>{{content}}</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                title: 'this is a vue demo',
+                content: '我是双向绑定的数据'
+            }
+        })
+    </script>
+</body>
+</html>

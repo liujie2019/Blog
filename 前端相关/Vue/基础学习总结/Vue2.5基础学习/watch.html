@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>侦听器watch</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>{{count}}</h1>
+        <button
+            v-bind:class="['active', 'test', {'test2': count > 2}]"
+            v-bind:style="styleMsg"
+            @click="create"
+        >
+            增加
+        </button>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                count: 0,
+                styleMsg: {
+                    color: 'red',
+                    textShadow: '0 0 5px green'
+                }
+            },
+            methods: {
+                create: function() {
+                    this.count++;
+                }
+            },
+            watch: {
+                count: function(newVal, oldVal) {
+                    console.log('newVal is: ' + newVal);
+                    console.log('oldVal is: ' + oldVal);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

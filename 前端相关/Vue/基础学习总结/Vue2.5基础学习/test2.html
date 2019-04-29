@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据、事件和方法</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>hello {{msg}}</h1>
+        <!-- <h1 v-text="number"></h1> -->
+        <div v-text="content"></div>
+        <div v-html="content"></div>
+        <h1 v-on:click="handleClick">{{number}}</h1>
+    </div>
+    <!-- 挂载点，模板，实例之间的关系 -->
+    <script>
+        // 创建一个Vue实例
+        new Vue({
+            el: '#root', // 指定挂载点
+            // 数据
+            data: {
+                msg: 'world',
+                number: 666,
+                content: '<h1>hello test</h1>'
+            },
+            methods: {
+                handleClick: function () {
+                    console.log(this);
+                    this.number = 888;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

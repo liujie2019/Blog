@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToList 删除功能</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <input v-model="inputValue" />
+            <button @click="addTodoItem">提交</butto>
+        </div>
+        <ul>
+            <todo-item
+                v-for="(item, index) of list"
+                :key="index"
+                :content="item"
+                :index="index"
+                @delete="deleteTodoItem"
+            >
+            </todo-item>
+        </ul>
+    </div>
+    <script>
+        // Vue.component定义的组件是全局组件
+        // 每一个Vue的组件也是一个Vue实例
+        Vue.component('todo-item', {
+            props: ['content', 'index'],
+            template: '<li @click="handleClick(content)">{{content}}</li>',
+            methods: {
+                handleClick: function() {
+                    // alert(this.content);
+                    this.$emit('delete', this.index);
+                }
+            }
+        })
+        // 局部组件
+        // var TodoItem = {
+        //     template: '<li>item11</li>'
+        // }
+        new Vue({
+            el: '#root',
+            // 局部组件需要通过components注册才能使用
+            // components: {
+            //    'todo-item': TodoItem
+            // },
+            data: {
+                inputValue: 'todo',
+                list: []
+            },
+            methods: {
+                addTodoItem: function() {
+                    this.list.push(this.inputValue);
+                    this.inputValue = '';
+                },
+                deleteTodoItem: function(index) {
+                    // alert(index);
+                    this.list.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
