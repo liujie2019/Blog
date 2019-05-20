@@ -7,7 +7,7 @@
 // 我们需要做的就是把所有需要被外部访问的成员挂载到exports对象上
 const b = require('./b');
 
-console.log(b); //{ test: 'test' }
+console.log(b); // { test: 'test' }
 console.log(b.test); // test
 console.log(b.add(1, 2)); // 3
 

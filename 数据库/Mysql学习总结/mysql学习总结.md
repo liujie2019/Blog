@@ -1,20 +1,21 @@
 [TOC]
 ### 1. 定义mysql别名
 
-```js
-// 输入alias命令
+```bash
+#输入alias命令
 alias mysql=/usr/local/mysql/bin/mysql
-// 回车，再输入
+
+#回车，再输入
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 ```
 
 ### 2. 设置mysql root帐号的密码
 
-```js
-// 设置初始密码
+```bash
+#设置初始密码
 mysqladmin -u root password 当前密码
 
-// 如果设置完密码后，需要修改，执行命令
+#如果设置完密码后，需要修改，执行命令
 mysqladmin -u root -p  password
 ```
 执行修改密码命令后，输入一次旧密码，再输入两次新密码。

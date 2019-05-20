@@ -1,0 +1,22 @@
+{
+  "name": "Koa-Github-OAuth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "liujie",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "axios": "^0.18.0",
+    "koa": "^2.7.0",
+    "koa-art-template": "^1.1.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.12.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.0"
+  }
+}

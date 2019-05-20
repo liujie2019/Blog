@@ -8,24 +8,35 @@ const fs = require('fs');
 const server = http.createServer();
 
 let wwwDir = './www';
-server.on('request', (request, response) => {
-    console.log('收到客户端请求了', request.url);
-    let url = request.url;
-    let filePath = '/index.html';
-    // 设置响应头，解决中文乱码问题
-    if (url !== '/') {
-        filePath = url;
-    }
-    fs.readFile(wwwDir + filePath, (error, data) => {
+server.on('request', (req, res) => {
+    console.log('收到客户端请求了', req.url);
+    let url = req.url;
+    fs.readFile('./template.html', (error, data) => {
         if (error) {
             return response.end('404 Not Found');
         }
-        // response.setHeader('Content-Type', 'text/html;charset=utf-8');
-        response.end(data);
+        fs.readdir(wwwDir, (err, files) => {
+            if (err) {
+                return res.end('Can not find www dir.')
+            }
+            let content = '';
+            files.forEach(item => {
+                content += `
+                <tr>
+                    <td data-value="apple/"><a class="icon dir" href="/www/${item}">${item}/</a></td>
+                    <td class="detailsColumn" data-value="0"></td>
+                    <td class="detailsColumn" data-value="1509589967">2017/11/2 上午10:32:47</td>
+                </tr>
+                `;
+            });
+            data = data.toString();
+            data = data.replace('^_^', content);
+            res.end(data);
+        });
     });
 });
 
 // 绑定端口，启动服务器
-server.listen(8088, () => {
-    console.log('服务监听在8088端口');
+server.listen(8093, () => {
+    console.log('服务监听在8093端口');
 });

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>在浏览器中使用art-template</title>
+</head>
+<body>
+</body>
+<!--
+    注意：在浏览器中需要引用 lib/template-web.js 文件
+    强调：模板引擎不关心字符串内容，只关心自己能认识的模板标记语法，例如 {{}}
+    {{}} 语法被称之为 mustache 语法，八字胡啊。
+-->
+<script src="node_modules/art-template/lib/template-web.js"></script>
+<script type="text/template" id="tpl-user">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>大家好, 我叫 {{ name }}</p>
+        <p>今年 {{ age }}岁了</p>
+        <p>我的爱好是{{each hobbies}}{{ $value }}{{/each}}</p>
+    </body>
+    </html>
+</script>
+<script>
+    const res = template('tpl-user', {
+        name: '李四',
+        age: 23,
+        hobbies: ['篮球', '足球']
+    });
+    console.log(res);
+</script>
+</html>
