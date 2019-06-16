@@ -1,0 +1,9 @@
+.t-collapse {
+  background-color: aqua;
+}
+.t-collapse > .collapse-body {
+  display: none;
+}
+.t-collapse > .collapse-body:target {
+  display: block;
+}

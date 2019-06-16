@@ -1,0 +1,12 @@
+input:valid {
+  border-color: green;
+  box-shadow: inset 5px 0 0 green;
+}
+input:invalid {
+  border-color: red;
+  box-shadow: inset 5px 0 0 red;
+}
+input:required {
+  border-color: red;
+  box-shadow: inset 5px 0 0 red;
+}

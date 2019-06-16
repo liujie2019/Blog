@@ -1,0 +1,11 @@
+@bgcolor: aqua;
+
+.t-collapse {
+    background-color: @bgcolor;
+    >.collapse-body {
+        display: none;
+        &:target {
+            display: block;
+        }
+    }
+}

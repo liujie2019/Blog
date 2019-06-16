@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪元素画分割线</title>
+    <style>
+        .spliter::before, .spliter::after {
+            content: '';
+            display: inline-block;
+            border-top: 1px solid #000;
+            width: 200px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p class="spliter">分割线</p>
+</body>
+</html>

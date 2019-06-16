@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖放</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .one {
+            background-color: aqua;
+        }
+        .two {
+            background-color: bisque;
+        }
+        .three {
+            background-color: blue;
+        }
+    </style>
+    <script>
+        var currentBox = null;
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+        function drag(e, box) {
+            currentBox = box;
+            e.dataTransfer.setData('text/html', box.innerHTML);
+        }
+        function drop(e, box) {
+            e.preventDefault();
+            if (currentBox !== box) {
+                currentBox.innerHTML = box.innerHTML;
+                box.innerHTML = e.dataTransfer.getData('text/html');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="one" ondrop="drop(event, this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">div1</div>
+    <div class="two" ondrop="drop(event, this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">div2</div>
+    <div class="three" ondrop="drop(event, this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">div3</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS伪元素清除浮动</title>
+    <style>
+        .box {
+            border: 3px solid rosybrown;
+            border-radius: .5em;
+            width: 600px;
+            /* height: 400px; */
+            padding: 10px;
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            float: left;
+            margin: 0 10px 0 0;
+        }
+        .box::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- 给父元素添加伪元素::after实现清除浮动 -->
+    <div class="box">
+        <div class="inner"></div>
+        <p>我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要</p>
+    </div>
+</body>
+</html>

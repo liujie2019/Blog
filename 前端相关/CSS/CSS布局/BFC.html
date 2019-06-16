@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>块级格式化上下文（Block Formatting Context）</title>
+    <style>
+        .box {
+            border: 3px solid rosybrown;
+            border-radius: .5em;
+            width: 600px;
+            /* height: 400px; */
+            padding: 10px;
+            display: flow-root; /* 特殊 */
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            float: left;
+            margin: 0 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- display: flow-root做的唯一的一件事就是去创建一个BFC -->
+    <div class="box">
+        <div class="inner"></div>
+        <p>我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要实现环绕我要</p>
+    </div>
+</body>
+</html>

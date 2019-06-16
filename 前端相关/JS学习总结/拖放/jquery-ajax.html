@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        <div><input type="text" name="a" value="1" id="a" /></div>
+        <div><input type="text" name="b" value="2" id="b" /></div>
+        <div><input type="hidden" name="c" value="3" id="c" /></div>
+        <div>
+            <textarea name="d" rows="8" cols="40">4</textarea>
+        </div>
+        <div><select name="e">
+            <option value="5" selected="selected">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select></div>
+        <div>
+            <input type="checkbox" name="f" value="8" id="f" />
+        </div>
+        <div>
+            <input type="submit" name="g" value="Submit" id="g" />
+        </div>
+    </form>
+    <script>
+        $('form').submit(function() {
+            console.log($(this));
+            console.log($(this).serialize());
+            return false;
+        });
+    </script>
+</body>
+</html>

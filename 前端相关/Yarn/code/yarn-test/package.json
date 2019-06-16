@@ -1,0 +1,11 @@
+{
+  "name": "yarn-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "liujie",
+  "license": "MIT",
+  "dependencies": {
+    "timers-browserify": "^2.0.10",
+    "webpack": "^4.32.2"
+  }
+}

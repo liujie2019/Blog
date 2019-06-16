@@ -1,5 +1,4 @@
 ## 目录
-
 - [目录](#%E7%9B%AE%E5%BD%95)
 - [webpack基础配置](#webpack%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE)
   - [项目初始化](#%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96)
@@ -24,6 +23,9 @@
   - [copy-webpack-plugin](#copy-webpack-plugin)
   - [BannerPlugin](#bannerplugin)
 - [webpack跨域问题](#webpack%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98)
+  - [特殊场景一：如果后端给的请求路径中没有`/api`：](#%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF%E4%B8%80%E5%A6%82%E6%9E%9C%E5%90%8E%E7%AB%AF%E7%BB%99%E7%9A%84%E8%AF%B7%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%AD%E6%B2%A1%E6%9C%89api)
+  - [特殊场景二：前端单纯mock数据](#%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF%E4%BA%8C%E5%89%8D%E7%AB%AF%E5%8D%95%E7%BA%AFmock%E6%95%B0%E6%8D%AE)
+  - [特殊场景三：有服务端，不用代理](#%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF%E4%B8%89%E6%9C%89%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8D%E7%94%A8%E4%BB%A3%E7%90%86)
 - [resolve属性的配置](#resolve%E5%B1%9E%E6%80%A7%E7%9A%84%E9%85%8D%E7%BD%AE)
 - [定义环境变量](#%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
 - [区分不同环境](#%E5%8C%BA%E5%88%86%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83)
@@ -72,7 +74,7 @@
 
 ## webpack基础配置
 ### 项目初始化
-```
+```bash
 npm init -y
 npm i webpack webpack-cli -D
 ```
@@ -84,7 +86,7 @@ module.exports = {
     mode: 'production', // 模式，默认production和development两种
     entry: './src/index', // 入口
     output: {
-        filename: 'bundle.[hash:8].js', // 打包后的文件名 hash: 8只显示8位
+        filename: 'bundle.[hash:8].js', // 打包后的文件名hash: 8只显示8位
         path: path.resolve(__dirname, 'dist'), // 路径必须是一个绝对路径
         publicPath: 'http://www.baidu.cn' // 给所有打包文件引入时加前缀，包括css，js，img，如果只想处理图片可以单独在url-loader配置中加publicPath
     }
@@ -137,11 +139,10 @@ module.exports = {
 ```
 npm i webpack-dev-server -D
 ```
-
 ```js
 devServer: {
     port: 3000,
-    progress: true, // 滚动条
+    progress: true, // 打包进度条
     // contentBase: '', // 起服务的地址
     open: true, // 自动打开浏览器
     // compress: true // 压缩
@@ -707,7 +708,7 @@ app.listen(3000, () => {
 const xhr = new XMLHttpRequest();
 // 默认访问 http://localhost:8080 webpack-dev-server的服务，再转发给3000
 xhr.open('GET', '/api/user', true);
-xhr.onload = function () {
+xhr.onload = () => {
     console.log(xhr.response);
 }
 xhr.send();
@@ -721,7 +722,7 @@ devServer: {
   }
 },
 ```
->特殊场景一：如果后端给的请求路径中没有`/api`：
+### 特殊场景一：如果后端给的请求路径中没有`/api`：
 
 我们的请求还以`/api`开头，在请求转发的时候删掉`/api`，具体配置如下：
 
@@ -735,7 +736,7 @@ devServer: {
     }
 }
 ```
->特殊场景二：前端单纯mock数据
+### 特殊场景二：前端单纯mock数据
 ```js
 devServer: {
     before(app) {  // 钩子
@@ -745,9 +746,10 @@ devServer: {
     }
 },
 ```
->特殊场景三：有服务端，不用代理，在服务端启动webpack，端口用服务端端口。
+### 特殊场景三：有服务端，不用代理
+在服务端启动webpack，端口用服务端端口。
 
->`server.js`中启动`webpack`
+>在`server.js`中启动`webpack`：
 
 ```
 npm i webpack-dev-middleware -D
@@ -1436,17 +1438,25 @@ document.body.appendChild(button);
 [返回目录](#目录)
 ## 热更新
 
->热更新：即当页面改变只更新改变的部分，而不是重新打包。
+>热更新：即当页面只更新改变的部分，而不是重新打包。
 
 >`webpack.config.js`：
 
 ```js
+devServer: {
+    hot: true, // 启动热更新
+    port: 3000,
+    progress: true, // 打包进度条
+    // contentBase: '', // 起服务的地址
+    open: true, // 自动打开浏览器
+    // compress: true // 压缩
+},
 plugins: [
     new HtmlWebpackPlugin({
         template: './src/index.html',
         filename: 'index.html'
     }),
-    new webpack.NameModulesPlugin(), // 打印更新的模块路径，即说明哪个文件热更新了
+    new webpack.NameModulesPlugin(), // 打印更新的模块路径，说明哪个文件热更新了
     new webpack.HotModuleReplacementPlugin() // 热更新插件
 ]
 ```
@@ -1460,6 +1470,8 @@ console.log(str);
 if (module.hot) {
     module.hot.accept('./source', () => {
         console.log('文件更新了');
+        // 文件更新后，用require重新引入新的文件
+        // 这里用require来引入文件而不是用import，原因是import只能写在文件顶部
         let str = require('./source');
         console.log(str);
     })
@@ -1470,7 +1482,7 @@ if (module.hot) {
 
 [tapable](https://juejin.im/post/5abf33f16fb9a028e46ec352)
 
-`Webpack`本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是`Tapable`，`Tapable`有点类似于nodejs的events库，核心原理也是依赖于发布订阅模式。
+`Webpack`本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是`Tapable`，`Tapable`有点类似于nodejs的events库，核心原理也是依赖于**发布-订阅模式**。
 ```js
 const {
 	SyncHook,
@@ -1698,6 +1710,7 @@ hook.tap('webpack', function (data) {
 hook.call('liujie');
 ```
 [返回目录](#目录)
+
 ### SyncLoopHook
 `SyncLoopHook`当监听函数被触发的时候，如果该监听函数返回`true`时则这个监听函数会多次执行，如果返回`undefined`，则表示退出循环。
 
@@ -2252,7 +2265,7 @@ npm i webpack webpack-cli -D
 >`webpack.config.js`：
 
 ```js
-let path = require('path');
+const path = require('path');
 
 module.exports = {
     mode: 'development',
@@ -2307,15 +2320,12 @@ module.exports = {
 
 });
 ```
-新建项目用于自己的`webpack`,这里叫`may-pack`
+新建项目用于自己的`webpack`，这里叫`may-pack`
 
-```
+```bash
 npm init -y
 ```
-
-如果在node里想执行命令，创建`bin`文件,再创建`may-pack.js`
-
-配置`package.json`
+在node中，如果想执行命令，需要创建`bin`文件，再创建`may-pack.js`。配置`package.json`：
 
 ```js
 {
@@ -2336,9 +2346,32 @@ npm init -y
 // node环境
 console.log('start');
 ```
-运行`npm link`将npm 模块链接到对应的运行项目中去，方便地对模块进行调试和测试
+运行`npm link`将npm模块链接到对应的运行项目中去，方便地对模块进行调试和测试。
 
-在想运行`may-pack`的项目中运行，`npm link may-pack` 得到`start`。
+link成功后，在我们本地`/Users/liujie26/.nvm/versions/node/v8.16.0/bin`目录下就会多一个`my-webpack`文件，其对应是`/Users/liujie26/.nvm/versions/node/v8.16.0/lib`目录下的`/node_modules/my-webpack/bin/my-webpack.js`文件。
+```js
+/Users/liujie26/.nvm/versions/node/v8.16.0/bin/my-webpack -> /Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack/bin/my-webpack.js
+/Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
+```
+>运行：
+```js
+my-webpack
+// 输出
+hello my-webpack
+```
+在想运行`my-webpack`的项目中运行`npm link my-webpack`。
+```js
+npm link my-webpack
+/Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/webpack-dev/node_modules/my-webpack -> /Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
+```
+>运行：
+```js
+npx my-webpack
+// 输出
+hello my-webpack
+```
+
+>需要注意：`#!  /usr/bin/env node`是说明当前代码需要在Node环境下执行。
 
 [返回目录](#目录)
 ## webpack分析及处理
@@ -2387,6 +2420,8 @@ class Compiler {
     }
 
     // 构建模块
+    // modulePath表示模块路径
+    // isEntry标识是否是入口模块
     buildModule(modulePath, isEntry) {
 
     }
@@ -2397,7 +2432,8 @@ class Compiler {
     }
 
     run() {
-        // 执行 创建模块的依赖关系
+        // 执行创建模块的依赖关系
+        // true表示是入口模块
         this.buildModule(path.resolve(this.root, this.entry), true)  // path.resolve(this.root, this.entry) 得到入口文件的绝对路径
         // 发射打包后的文件
         this.emitFile()
@@ -2534,13 +2570,14 @@ class Compiler {
                 if(node.callee.name === 'require') {
                    node.callee.name = '__webpack_require__'
                     let moduledName = node.arguments[0].value   // 取到模块的引用名字
-                    moduledName = moduledName + (path.extname(moduledName) ? '': '.js');  // ./a.js
+                    moduledName = moduledName + (path.extname(moduledName) ? '' : '.js');  // ./a.js
                     moduledName = './' + path.join(parentPath, moduledName)  // './src/a.js'
                     dependencies.push(moduledName)
                     node.arguments = [type.stringLiteral(moduledName)] // 改掉源码
                 }
             }
         })
+        // 重新生成
         let sourceCode = generator(ast).code
         return { sourceCode, dependencies }
     }
@@ -2559,6 +2596,7 @@ class Compiler {
         // 把相对路径和模块中的内容对应起来
         this.modules[moduleName] = sourceCode
         dependencies.forEach(dep => {  // 附模块的加载 递归加载
+             // false标识不是入口模块
             this.buildModule(path.join(this.root, dep), false)
         })
     }
@@ -2579,7 +2617,7 @@ class Compiler {
 
 }
 
-module.exports = Compiler
+module.exports = Compiler;
 
 ```
 [返回目录](#目录)

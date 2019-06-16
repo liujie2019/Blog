@@ -1,0 +1,21 @@
+div {
+    width: 1000px;
+    height: 300px;
+    border: 1px solid rosybrown;
+    margin-bottom: 10px;
+}
+.box1 {
+    background-image: url(static/sprite-c0028.min.png);
+    background-position: 0px -674px;
+    background-size: 1652px 1484px;
+}
+.box2 {
+    background-image: url(static/sprite-c0028.min.png);
+    background-position: 0px 0px;
+    background-size: 1652px 1484px;
+}
+.box3 {
+    background-image: url(static/sprite-c0028.min.png);
+    background-position: 0px -1350px;
+    background-size: 1652px 1484px;
+}
