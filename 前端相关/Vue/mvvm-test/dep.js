@@ -1,4 +1,4 @@
-class Dep{
+class Dep {
     constructor() {
         //订阅的数组
         this.subs = [];

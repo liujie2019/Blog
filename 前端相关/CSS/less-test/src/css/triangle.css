@@ -1,0 +1,22 @@
+/*less匹配模式*/
+.base {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+.box {
+  border-width: 40px;
+  border-color: transparent transparent yellow transparent;
+  border-style: dashed dashed solid dashed;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+.box2 {
+  border-width: 30px;
+  border-color: transparent green transparent transparent;
+  border-style: dashed solid dashed dashed;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}

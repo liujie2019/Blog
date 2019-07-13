@@ -37,8 +37,8 @@ class Observer {
         const dep = new Dep();
         // 通过Object.defineProperty方法, 把data对象的所有属性，改成访问器类型属性，添加get和set方法
         Object.defineProperty(obj, key, {
-            enumerable:true, //可枚举
-            configurable:true, // 可删除
+            enumerable: true, //可枚举
+            configurable: true, // 可删除
             // 取值时调用的方法
             get() {
                 //Dep.target是Watcher实例，实例化Watcher后，才有Dep.target，只有Dep.target存在才执行这条语句
@@ -49,7 +49,7 @@ class Observer {
             set(newValue) {
                 if(newValue !== value) {
                     value = newValue;
-                    dep.notify();//通知全体，数据更新了
+                    dep.notify(); //通知全体，数据更新了
                 }
             }
         });

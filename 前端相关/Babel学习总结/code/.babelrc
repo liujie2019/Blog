@@ -1,12 +1,11 @@
- {
+{
+    // polyfill
     "presets": [
-        "@babel/env"
+        ["@babel/env", {
+            "useBuiltIns": "usage",
+            "corejs": 3
+        }]
     ],
-    "plugins": [
-        ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        ["@babel/plugin-proposal-class-properties", {
-            "loose" : true
-        }],
-        "@babel/plugin-transform-runtime"
-    ]
+    // runtime
+    "plugins": ["@babel/plugin-transform-runtime"]
 }

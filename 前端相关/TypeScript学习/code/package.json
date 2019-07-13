@@ -1,0 +1,11 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "liujie",
+  "license": "MIT",
+  "dependencies": {
+    "global": "^4.4.0",
+    "typescript": "^3.5.2"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        function debounce(fn, delay) {
+            // 记录上一次的定时器
+            let timer = null;
+            return function () {
+                // 清除上一次的定时器
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.call(this);
+                }, delay);
+            };
+        }
+        document.querySelector('#btn').onclick = debounce(function() {
+            console.log('按钮被点击了');
+        }, 2000);
+    </script>
+</body>
+</html>

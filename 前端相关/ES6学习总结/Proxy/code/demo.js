@@ -14,7 +14,7 @@ const p = new Proxy(obj, {
     }
 });
 
-console.log(obj.a);
-console.log(obj.c);
-console.log(p.a);
-console.log(p.c);
+console.log(obj.a); // 1
+console.log(obj.c); // undefined
+console.log(p.a); // 1
+console.log(p.c); // 自定义结果

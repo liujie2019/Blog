@@ -1,0 +1,49 @@
+/*less匹配模式*/
+
+//箭头向上的三角形
+.triangle(top, @w:10px, @c:red) {
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+    border-style: dashed dashed solid dashed; // 设置dashed(虚线)是为了兼容ie6导致的黑色背景问题
+    .base;
+}
+//箭头向右的三角形
+.triangle(right, @w:10px, @c:red) {
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+    border-style: dashed solid dashed dashed;
+    .base;
+}
+//箭头向下的三角形
+.triangle(bottom, @w:10px, @c:red) {
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    .base;
+}
+
+//箭头向左的三角形
+.triangle(left, @w:10px, @c:red) {
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+    border-style: dashed dashed dashed solid;
+    .base;
+}
+
+// 公共代码，不管选择哪中模式都会匹配
+// .triangle(@_, @w:10px, @c:red) {
+// 	width: 0px;
+// 	height: 0px;
+// 	overflow: hidden; // 处理ie6下最小高度问题
+// }
+.base {
+    width: 0px;
+    height: 0px;
+    overflow: hidden; // 处理ie6下最小高度问题
+}
+.box {
+	.triangle(top, 40px, yellow);
+}
+.box2 {
+	.triangle(right, 30px, green);
+}

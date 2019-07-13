@@ -16,7 +16,7 @@
   float: left;
 }
 .list a:hover {
-  color: red;
+  color: darkcyan;
 }
 .list span {
   float: right;

@@ -1,2 +1,12 @@
-/*我是被编译的注释*/
+/*我是被编译的注释哈哈*/
 // 我也是被编译的
+// 避免编译
+.box {
+    width: ~'calc(100% - 35)'; // calc是浏览器去计算，而不是less编译过程中计算
+    .border !important;
+}
+.border {
+    width: 100px;
+    height: 200px;
+    background: red;
+}
