@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>b</title>
+</head>
+<body>
+    <h2>b页面</h2>
+    <script>
+        // window.parent是拿到b的parent 即c.html
+        // window.parent.parent是拿到c的parent 即a.html
+        window.parent.parent.location.hash = location.hash;
+    </script>
+</body>
+</html>

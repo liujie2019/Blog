@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 域名 一级域名和二级域名 -->
+    <!-- www.baidu.com -->
+    <!-- video.baidu.com -->
+    <!-- a.html通过http://a.baidu.com:3000/a.html -->
+    <iframe src="http://b.baidu.com:3000/b.html" id="iframe" onload="load()" frameborder="0"></iframe>
+    <script>
+        document.domain = 'baidu.com';
+        const iframe = document.querySelector('#iframe');
+        function load() {
+            console.log(iframe.contentWindow.a);
+        }
+    </script>
+</body>
+</html>

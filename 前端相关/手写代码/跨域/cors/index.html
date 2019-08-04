@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>hello world</h2>
+    <script>
+        let xhr = new XMLHttpRequest;
+        // cookie是不能跨域的
+        document.cookie = 'name=liujie';
+        // 允许跨域携带cookie
+        xhr.withCredentials = true;
+        xhr.open('put', 'http://localhost:4000/getName', true);
+        xhr.setRequestHeader('name', 'liujie');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    console.log(xhr.response);
+                    console.log(xhr.getResponseHeader('name'));
+                }
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>

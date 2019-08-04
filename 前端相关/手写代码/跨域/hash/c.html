@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>c</title>
+</head>
+<body>
+    <h2>c页面</h2>
+    <script>
+        console.log(decodeURIComponent(location.hash));
+        let iframe = document.createElement('iframe');
+        iframe.src = 'http://localhost:3000/b.html#我是c页面';
+        document.body.appendChild(iframe);
+    </script>
+</body>
+</html>

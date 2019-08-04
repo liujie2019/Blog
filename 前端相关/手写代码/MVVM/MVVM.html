@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手写MVVM</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message.a" />
+        <div>{{message.a}}</div>
+        <ul>
+            <li></li>
+        </ul>
+        {{message.a}}
+    </div>
+    <script src="./watcher.js"></script>
+    <script src="./observer.js"></script>
+    <script src="./compile.js"></script>
+    <script src="./MVVM.js"></script>
+    <script>
+        // 我们的数据一般都挂载在vm上
+        let vm = new MVVM({
+            el: '#app',
+            data: {
+                message: {
+                    a: 'hello vue'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

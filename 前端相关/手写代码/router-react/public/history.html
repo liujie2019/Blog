@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="push('/a')">去a</button>
+    <button onclick="push('/b')">去b</button>
+    <script>
+        function push(path) {
+            history.pushState({path}, null, path);
+        }
+        // popstate事件无法监听到pushState方法，只能监听到浏览器的前进和后退
+        window.addEventListener('popstate', e => {
+            console.log(e);
+        });
+    </script>
+</body>
+</html>

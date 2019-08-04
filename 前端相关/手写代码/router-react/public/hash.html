@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hash</title>
+</head>
+<body>
+    <a href="#/a">去a</a>
+    <a href="#/b">去b</a>
+    <script>
+        // 监听hash变化
+        window.addEventListener('hashchange', () => {
+            console.log(location.hash);
+        });
+    </script>
+</body>
+</html>

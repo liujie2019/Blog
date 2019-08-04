@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>postMessage</title>
+    <style>
+        body {
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <h2>我是a页面</h2>
+    <iframe
+        src="http://localhost:4000/b.html"
+        id="frame"
+        frameborder="10"
+        onload="load()"
+    >
+    </iframe>
+    <script>
+        function load() {
+            const frame = document.querySelector('#frame');
+            frame.contentWindow.postMessage('我是父页面a', 'http://localhost:4000');
+            window.onmessage = function(e) {
+                console.log(e);
+                console.log(e.data);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -14,7 +14,7 @@
                 this.key = key; // 节点值
                 this.left = null; // 左子树
                 this.right = null; // 右子树
-            }
+            };
             var root = null; // 根节点
             // 插入节点
             // node是老节点，newNode是新节点
@@ -25,6 +25,7 @@
                     if (node.left === null) {
                         node.left = newNode;
                     } else { // 如果老节点的左子树不为null
+                        // 递归插入
                         insertNode(node.left, newNode);
                     }
                 }
@@ -36,8 +37,10 @@
                     }
                 }
             }
+            // 插入节点动作
             this.insert = function(key) {
                 var newNode = new Node(key);
+                // 如果root为空，则将当前节点作为根节点
                 if (root === null) {
                     root = newNode;
                 } else {
@@ -55,6 +58,7 @@
             this.inOrderTraverse = function(callback) {
                 inOrderTraverseNode(root, callback);
             }
+
             var preOrderTraverseNode = function(node, callback) {
                 if (node !== null) {
                     callback(node.key);
@@ -66,22 +70,25 @@
             this.preOrderTraverse = function(callback) {
                 preOrderTraverseNode(root, callback);
             }
+
             var postOrderTraverseNode = function(node, callback) {
                 if (node !== null) {
                     postOrderTraverseNodev(node.left, callback);
                     postOrderTraverseNodev(node.right, callback);
                     callback(node.key);
                 }
-            }
+            };
             // 后序遍历接口--左右根
             this.postOrderTraverse = function(callback) {
                 postOrderTraverseNode(root, callback);
-            }
+            };
+
             var minNode = function(node) {
                 if (node) {
+                    // 如果当前节点存在且其有左子树
                     while (node && node.left !== null) {
                         node = node.left;
-                    }
+                    };
                     return node.key;
                 }
                 return null;
@@ -89,7 +96,7 @@
             // 查找二叉树中的最小值
             this.min = function() {
                 return minNode(root);
-            }
+            };
             var maxNode = function(node) {
                 if (node) {
                     while (node && node.right !== null) {
@@ -107,9 +114,11 @@
                 if (node === null) { // 如果当前节点不存在，表示查找失败
                     return false;
                 }
+                // 如果要查找的值小于当前节点，则继续查找当前节点的左子树
                 if (key < node.key) {
                     return searchNode(node.left, key);
                 }
+                // 如果要查找的值大于当前节点，则继续查找当前节点的右子树
                 else if (key > node.key) {
                     return searchNode(node.right, key);
                 }
@@ -179,9 +188,10 @@
         var callback = function(key) {
             console.log(key);
         }
-        // binaryTree.inOrderTraverse(callback);
+        // 中序遍历
+        binaryTree.inOrderTraverse(callback);
         // binaryTree.preOrderTraverse(callback);
-        binaryTree.postOrderTraverse(callback);
+        // binaryTree.postOrderTraverse(callback);
 
         console.log('min node is: ' + binaryTree.min());
         console.log('max node is: ' + binaryTree.max());
