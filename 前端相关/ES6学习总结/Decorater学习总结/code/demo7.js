@@ -15,7 +15,7 @@ let viewOn = decoratorGenerator('event', Symbol('test'));
 
 class Math {
     @viewOn('111')
-    add(e) {
+    add() {
         console.log(123);
     }
 }

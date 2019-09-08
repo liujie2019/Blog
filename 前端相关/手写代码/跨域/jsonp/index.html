@@ -15,6 +15,7 @@
                 let script = document.createElement('script');
                 window[cb] = data => {
                     resolve(data);
+                    // 移除动态创建的script标签
                     document.body.removeChild(script);
                 };
                 params = {...params, cb};

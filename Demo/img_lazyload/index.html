@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片懒加载</title>
+    <style>
+        .image {
+            display: block;
+            margin-bottom: 20px;
+            height: 300px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <img class='image' src="" alt="pic" lazyload="true" data-src="./img/1.jpg">
+    <img class='image' src="" alt="pic" lazyload="true" data-src="./img/2.jpg">
+    <img class='image' src="" alt="pic" lazyload="true" data-src="./img/3.jpg">
+    <img class='image' src="" alt="pic" lazyload="true" data-src="./img/4.jpg">
+    <img class='image' src="" alt="pic" lazyload="true" data-src="./img/5.jpg">
+    <script>
+        function lazyload() {
+            let viewHeight = document.documentElement.clientHeight; // 获取可视区域的高度
+            // 获取页面滚动的高度
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            let imageList = document.querySelectorAll('.image');
+            [...imageList].forEach((image, index) => {
+                // image.dataset为DOMStringMap {src: "./img/1.jpg"}
+                // image.getAttribute('data-src')为./img/1.jpg
+                // console.log(image.getAttribute('data-src'));
+                // console.log(image.offsetTop);
+                if (image.offsetTop < viewHeight + scrollTop) {
+                    setTimeout(function() {
+                        image.src = image.dataset.src;
+                    }, 1000);
+                }
+            });
+        }
+        lazyload();
+        document.addEventListener('scroll', lazyload);
+    </script>
+</body>
+</html>

@@ -167,12 +167,12 @@
 var $btn = $('#face-btn'),
 	$panel = $('.panel');
 var imgs = [];//保存图片路径
-for(var i = 0;i<100;i++){
+for(var i = 0; i<100; i++) {
 	imgs[i] = '../QQ/' + (i+1) + '.gif';
 }
 var len = imgs.length;
-$btn.on('click',function(e){
-	e.stopPropagation();//阻止事件冒泡
+$btn.on('click',function(e) {
+	e.stopPropagation(); // 阻止事件冒泡
 	$panel.show();
 	$.preload(imgs,{
 		all: function(){
@@ -184,7 +184,7 @@ $btn.on('click',function(e){
 			html += '</ul>';
 			setTimeout(function(){
 				$panel.html(html);
-			},2000);
+			}, 2000);
 		}
 	});
 });

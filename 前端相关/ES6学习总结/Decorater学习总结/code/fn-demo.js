@@ -7,3 +7,5 @@ var add = function () {
 @add
 function foo() {
 }
+foo();
+console.log(counter);

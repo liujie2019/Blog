@@ -8,28 +8,45 @@
         ev.preventDefault();
     }
     var srcdiv = null;
-    function drag(ev, divdom) {
+    function drag(e, divdom) {
         srcdiv=divdom;
-        ev.dataTransfer.setData("text/html", divdom.innerHTML);
+        e.dataTransfer.setData('text/html', divdom.innerHTML);
     }
-    function drop(ev, divdom) {
-        ev.preventDefault();
-        if(srcdiv != divdom) {
+    function drop(e, divdom) {
+        e.preventDefault();
+        if(srcdiv !== divdom) {
             srcdiv.innerHTML = divdom.innerHTML;
-            divdom.innerHTML=ev.dataTransfer.getData("text/html");
+            divdom.innerHTML = e.dataTransfer.getData('text/html');
         }
     }
 </script>
 </head>
 <body>
-<div style="width: 50px;height:50px;"  ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">
-  div1!
-</div>
-<div style="width: 50px;height:50px;" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">
-div2!
-</div>
-<div style="width: 50px;height:50px;" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">
-div3
-</div>
-
+    <div
+        style="width: 50px;height:50px;"
+        ondrop="drop(event, this)"
+        ondragover="allowDrop(event)"
+        draggable="true"
+        ondragstart="drag(event, this)"
+    >
+        div1
+    </div>
+    <div
+        style="width: 50px;height:50px;"
+        ondrop="drop(event, this)"
+        ondragover="allowDrop(event)"
+        draggable="true"
+        ondragstart="drag(event, this)"
+    >
+    div2
+    </div>
+    <div
+        style="width: 50px;height:50px;"
+        ondrop="drop(event, this)"
+        ondragover="allowDrop(event)"
+        draggable="true"
+        ondragstart="drag(event, this)"
+    >
+    div3
+    </div>
 </body>

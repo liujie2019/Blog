@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Count numbers:<span id="res"></span></h2>
+    <button onclick="startWorker()">Start Worker</button>
+    <button onclick="stopWorker()">Stop Worker</button>
+    <input type="text" value="" />
+    <script>
+        let worker = null;
+        function startWorker() {
+            console.log(worker);
+            if (typeof Worker !== 'undefined') {
+                if (!worker) {
+                    worker = new Worker('./worker.js');
+                }
+                worker.onmessage = function (event) {
+                    document.querySelector('#res').innerText = event.data;
+                };
+            }
+            else {
+                document.querySelector('#res').innerText = '当前浏览器不支持 Web Worker';
+            }
+        }
+        function stopWorker() {
+            worker.terminate();
+            worker = null;
+        }
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 function mixins(list) {
     return target => {
         console.log(target); // [Function: Myclass]
-        // 给类的原型添加方法
+        // 批量给类的原型添加方法
         Object.assign(target.prototype, list);
     }
 }

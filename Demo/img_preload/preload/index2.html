@@ -15,7 +15,7 @@
 			text-align: center;
 		}
 		.btn{
-			display: inline;
+			display: inline-block;
 			height: 30px;
 			line-height: 30px;
 			border:1px solid #ccc;
@@ -45,24 +45,27 @@
 </head>
 <body>
 <div class="box">
-	<img src="http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg" alt="pic" id="img" style="width: 500px;">
+    <img src="https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true" alt="pic" id="img" style="width: 1000px;">
 	<p>
-			<a href="javascript:;" class="btn" data-control="prev">上一页</a>
-			<a href="javascript:;" class="btn" data-control="next">下一页</a>
+        <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+        <a href="javascript:;" class="btn" data-control="next">下一页</a>
 	</p>
 </div>
 <div class="loading">
 	<p class="progress">0%</p>
 </div>
-<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="preload.js"></script>
 <script type="text/javascript">
 var imgs = [
-	"http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21382885.jpg",
-	"http://img06.tooopen.com/images/20160924/tooopen_sy_179893728711.jpg",
-	"http://img06.tooopen.com/images/20160802/tooopen_sy_173677692116.jpg"
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-002.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-003.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-004.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-005.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-006.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-007.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-008.jpg?raw=true"
 ];
 var index = 0,len = imgs.length,$progress = $('.progress');
 $.preload(imgs,{

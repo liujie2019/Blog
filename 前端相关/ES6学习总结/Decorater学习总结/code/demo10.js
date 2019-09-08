@@ -12,7 +12,7 @@ function log(fn) {
         console.log(`call ${fn.name}(${args}) used ${used}ms`);
     }
 }
-
+//curry
 caculate = log(caculate);
 caculate(1000000);
 caculate(10000000);

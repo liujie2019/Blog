@@ -15,7 +15,7 @@
 			text-align: center;
 		}
 		.btn{
-			display: inline;
+			display: inline-block;
 			height: 30px;
 			line-height: 30px;
 			border:1px solid #ccc;
@@ -32,44 +32,51 @@
 </head>
 <body>
 <div class="box">
-	<img src="http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg" alt="pic" id="img" style="width: 500px;">
+	<img src="https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true" alt="pic" id="img" style="width: 1000px;">
 	<p>
-			<a href="javascript:;" class="btn" data-control="prev">上一页</a>
-			<a href="javascript:;" class="btn" data-control="next">下一页</a>
+        <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+        <a href="javascript:;" class="btn" data-control="next">下一页</a>
 	</p>
 </div>
-<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 var imgs = [
-	"http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21382885.jpg",
-	"http://img06.tooopen.com/images/20160924/tooopen_sy_179893728711.jpg",
-	"http://img06.tooopen.com/images/20160802/tooopen_sy_173677692116.jpg"
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-002.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-003.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-004.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-005.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-006.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-007.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-008.jpg?raw=true"
 ];
-var len = imgs.length,count = 0,index = 0;
-load();
-//有序预加载
-function load(){
+var len = imgs.length,
+    count = 0, // 当前加载了几张图片
+    index = 0; // 当前图片索引，默认为第一张
+load(); // 进行图片加载
+// 有序预加载
+function load() {
+    // 实例化一个Image对象
 	var imgObj = new Image();
-	$(imgObj).on('load error',function(){
-		if(count >= len){
-			//所有图片都加载完成
-		}else{
-			load();//否则继续调用自身进行加载
+	$(imgObj).on('load error', function() {
+        // 每加载完成一张，判断是否全部加载完成，没有加载完成递归进行加载
+		if(count >= len) {
+			// 所有图片都加载完成
+		} else {
+			load(); // 否则继续调用自身进行加载(递归加载)
 		}
 		count++;
 	});
 	imgObj.src = imgs[count];
 }
-$(".btn").on("click",function(){
-	if($(this).data("control") === "prev"){//上一张
-		index = Math.max(0,--index);
-	}else{//下一张
-		index = Math.min(len-1,++index);
+$(".btn").on("click",function() {
+	if($(this).data("control") === "prev"){ //上一张
+		index = Math.max(0, --index);
+	} else { //下一张
+		index = Math.min(len-1, ++index);
 	}
 	document.title = (index + 1) + '/' +len;
-	$('#img').attr('src',imgs[index]);
+	$('#img').attr('src', imgs[index]);
 });
 </script>
 </body>

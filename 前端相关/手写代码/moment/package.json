@@ -1,0 +1,10 @@
+{
+  "name": "moment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "liujie",
+  "license": "MIT",
+  "devDependencies": {
+    "moment": "^2.24.0"
+  }
+}

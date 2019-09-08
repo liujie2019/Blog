@@ -6,8 +6,10 @@ function curry_fn(fn, curArgs) {
         }
         // console.log(fn.length); // 3 fn函数形参的个数
         if (args.length < fn.length) {
+            // 递归
             return curry_fn(fn, args);
         }
+        // 递归出口
         return fn.apply(null, args);
     };
 }

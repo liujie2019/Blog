@@ -5,17 +5,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>图片预加载-无序加载</title>
 	<style type="text/css">
-		html,body{
+		html, body{
 			height: 100%;
 		}
 		a{
 			text-decoration: none;
 		}
-		.box{
+		.box {
 			text-align: center;
 		}
-		.btn{
-			display: inline;
+		.btn {
+			display: inline-block;
 			height: 30px;
 			line-height: 30px;
 			border:1px solid #ccc;
@@ -25,7 +25,7 @@
 			color: #333;
 			text-decoration: none;
 		}
-		.btn:hover{
+		.btn:hover {
 			background-color: #eee;
 		}
 		.loading{
@@ -45,45 +45,61 @@
 </head>
 <body>
 <div class="box">
-	<img src="http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg" alt="pic" id="img" style="width: 500px;">
+	<img src="https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true" alt="pic" id="img" style="width: 1000px;">
 	<p>
-			<a href="javascript:;" class="btn" data-control="prev">上一页</a>
-			<a href="javascript:;" class="btn" data-control="next">下一页</a>
+        <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+        <a href="javascript:;" class="btn" data-control="next">下一页</a>
 	</p>
 </div>
 <div class="loading">
 	<p class="progress">0%</p>
 </div>
-<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 var imgs = [
-	"http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg",
-	"http://img04.tooopen.com/images/20130617/tooopen_21382885.jpg",
-	"http://img06.tooopen.com/images/20160924/tooopen_sy_179893728711.jpg",
-	"http://img06.tooopen.com/images/20160802/tooopen_sy_173677692116.jpg"
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-001.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-002.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-003.jpg?raw=true",
+	"https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-004.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-005.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-006.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-007.jpg?raw=true",
+    "https://github.com/liujie2019/static_data/blob/master/preload_img/guanlan_gaoshou-008.jpg?raw=true"
 ];
-var index = 0,len = imgs.length,count = 0,$progress = $('.progress');
-$.each(imgs,function(i,src){
-	var imgObj = new Image();
-	$(imgObj).on('load error',function(){
-		$progress.html(Math.round((count + 1) / len * 100) + '%');
-		if(count >= len - 1){
+var index = 0, // 当前图片索引，默认为第一张
+    len = imgs.length,
+    count = 0, // 当前加载了几张图片
+    $progress = $('.progress'); // 进度元素
+// 遍历图片数组
+// i是图片索引值 src是图片地址
+$.each(imgs, function(i, src) {
+    // 预加载使用了Image对象，这里为每一张图片都实例化了一个Image对象
+    var imgObj = new Image();
+    // Image对象有两个事件，图片正常加载完成会触发load事件，加载失败会触发error事件
+    // 这里两个事件都监听，是为了防止一张图片加载失败而阻塞其他图片资源加载
+    // $(imgObj)是将每个图片对象转化为jquery对象
+    // 监听图片的加载事件
+	$(imgObj).on('load error', function() {
+        $progress.html(Math.round((count + 1) / len * 100) + '%');
+        // 当加载完所有图片才会执行以下逻辑
+		if(count >= len - 1) {
+            // 加载完所有图片后隐藏加载页面
 			$('.loading').hide();
 			document.title = '1/' + len;
 		}
 		count++;
-	});
+    });
+    // 将图片地址赋值给图片对象的src属性，进行图片的加载
 	imgObj.src = src;
 });
-$(".btn").on("click",function(){
-	if($(this).data("control") === "prev"){//上一张
-		index = Math.max(0,--index);
-	}else{//下一张
-		index = Math.min(len-1,++index);
+$(".btn").on("click", function(){
+	if ($(this).data("control") === "prev") { // 上一张
+		index = Math.max(0, --index);
+	} else { // 下一张
+		index = Math.min(len-1, ++index);
 	}
 	document.title = (index + 1) + '/' +len;
-	$('#img').attr('src',imgs[index]);
+	$('#img').attr('src', imgs[index]);
 });
 </script>
 </body>
