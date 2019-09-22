@@ -1,5 +1,4 @@
 ### 1. js 统计一个字符串出现频率最高的字母/数字
-
 ```
 let str = 'asdfghjklaqwertyuiopiaia';
 const strChar = str => {
@@ -138,7 +137,7 @@ console.log(sort(arr))  // [1, 5, 9, 22, 32, 43]
 /**
  * 数组平均数
  * 使用reduce()将每个值添加到累加器，初始值为0，总和除以数组长度。
- * @param {*} arr 
+ * @param {*} arr
  * array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
  * total 必需。初始值, 或者计算结束后的返回值。
  * currentValue	必需。当前元素

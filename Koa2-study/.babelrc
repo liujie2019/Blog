@@ -1,0 +1,24 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "target": {
+                    "node": "current" // 表示当前的node环境
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "absoluteRuntime": false,
+            "corejs": false,
+            "helpers": true,
+            "regenerator": true,
+            "useESModules": false
+          }
+        ]
+      ]
+}

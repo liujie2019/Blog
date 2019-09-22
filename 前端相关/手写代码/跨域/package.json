@@ -14,5 +14,8 @@
     "express": "^4.17.1",
     "nodemon": "^1.19.1",
     "ws": "^7.1.1"
+  },
+  "dependencies": {
+    "http-proxy-middleware": "^0.20.0"
   }
 }

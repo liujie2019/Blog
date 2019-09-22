@@ -3,7 +3,7 @@
  * 该loader将less转为css
  */
 const less = require('less');
-// source是对应的源码
+// source是对应的源码，source是loader的参数
 const myLessLoader = source => {
     let css = '';
     less.render(source, (err, output) => {

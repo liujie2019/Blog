@@ -15,9 +15,10 @@
     <h2>我是b页面</h2>
     <script>
         window.onmessage = function(e) {
-            // console.log(e);
             const {source, data, origin} = e;
-            console.log(data);
+            console.log(e);
+            // console.log(window.parent);
+            // window.parent.postMessage('我是子页面b', origin);
             source.postMessage('我是子页面b', origin);
         }
     </script>

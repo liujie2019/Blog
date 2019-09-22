@@ -1,13 +1,11 @@
 {
     "presets": [
       [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "entry",
-          "targets": {
-            "browsers": ["last 2 versions"]
-          }
-        }
+        "@babel/preset-env"
       ]
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-transform-runtime"]
     ]
 }

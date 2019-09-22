@@ -6,12 +6,13 @@ const loaderUtils = require('loader-utils');
 function loader(source) {
     // this是loader的上下文
     const options = loaderUtils.getOptions(this);
-    console.log(options);
-    console.log(this.resourcePath);
+    // console.log(Object.keys(this));
+    // console.log(options);
+    // console.log(this.resourcePath);
     // babel的转换是异步的，同步的返回是不行的，不能用return
     // 同步就是直接调用，异步会在async中
     const callback = this.async();
-    console.log(this.resourcePath.split('/').pop());
+    // console.log(this.resourcePath.split('/').pop());
     babel.transform(source, {
         ...options,
         sourceMap: true, // 设置生成sourceMap，还需要再webpack.config.js中配置devtool: 'source-map'
@@ -19,8 +20,8 @@ function loader(source) {
         // 给生成的source-map指定名字
         filename: this.resourcePath.split('/').pop()
     }, function (err, result) {
-        // result有问题，是undeifned
-        // console.log(result);
+        // console.log(Object.keys(result)); // [ 'metadata', 'options', 'ast', 'code', 'map', 'sourceType' ]
+        // result.map是sourceMap
         callback(err, result.code, result.map);
     });
     // return source; // 不起作用了

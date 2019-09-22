@@ -16,7 +16,7 @@ let MyVisitor = function({types: t}) {
     };
 }
 
-const code = `name = lisi`;
+const code = 'name = lisi';
 let demo = babel.transform(code, {
     //使用插件
     plugins: [MyVisitor]

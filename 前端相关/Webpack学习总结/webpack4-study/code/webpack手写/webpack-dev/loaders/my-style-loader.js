@@ -3,7 +3,7 @@
  * @param {*} source
  */
 const myStyleLoader = source => {
-    // JSON.stringify(source) 是将css代码转为一行
+    // JSON.stringify(source)是将css代码转为一行
     const style = `
         const style = document.createElement('style');
         style.innerHTML = ${JSON.stringify(source)};

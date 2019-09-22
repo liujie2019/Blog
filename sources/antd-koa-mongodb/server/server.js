@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const app = new Koa();
+const app = new Koa(); // 实例化一个app
 const Router = require('koa-router');
 const cors = require('koa2-cors');
 // 获取post请求参数

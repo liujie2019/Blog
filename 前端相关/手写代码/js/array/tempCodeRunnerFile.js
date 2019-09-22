@@ -1,1 +1,1 @@
-this
+onsole.log(Reflect.apply(Math.min, Math, arr));

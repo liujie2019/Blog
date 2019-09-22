@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>匿名函数自执行模式</title>
+</head>
+<body>
+    <script src="./module.js"></script>
+    <script>
+        myModule.foo(); // foo() module
+        myModule.bar(); // bar() module 我是内部私有函数
+        console.log(myModule.a); // undefined 不能访问模块内部数据
+        myModule.a = '全局'; // 这里不是修改的模块内部的a
+        myModule.foo(); // foo() module 模块内部的a并没有被改变
+    </script>
+</body>
+</html>

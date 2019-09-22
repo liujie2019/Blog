@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡</title>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <script>
+        const outer = document.querySelector('.outer');
+        const inner = document.querySelector('.inner');
+        window.onclick = function() {
+            console.log('window');
+        }
+        document.onclick = function() {
+            console.log('document');
+        }
+        document.documentElement.onclick = function() {
+            console.log('html');
+        }
+        document.body.onclick = function() {
+            console.log('body');
+        }
+        outer.onclick = function() {
+            console.log('outer');
+        }
+        inner.onclick = function() {
+            console.log('inner');
+        }
+    </script>
+</body>
+</html>

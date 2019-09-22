@@ -121,7 +121,7 @@ function () {
   return Animal;
 }();
 
-var dog = new Animal('小黄');
+var dog = new Animal('小黄111');
 console.log(dog.sayName());
 
 /***/ })

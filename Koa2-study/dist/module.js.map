@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/module.js"],"names":[],"mappings":";;AAEA","sourcesContent":["// const fs = require('fs');\n// import fs from 'fs';\nimport {readFile} from 'fs';\n// import export\n\n// 获取fs模块中的方法\n// 以下两种都是运行时加载，需要先加载fs模块的所有方法\n// 方式1 fs.writeFile\n// 方式2 const {writeFile} = require('fs');\n\n// ES6模块化 静态加载即在编译的时候就进行加载\n\n// export"],"file":"module.js"}

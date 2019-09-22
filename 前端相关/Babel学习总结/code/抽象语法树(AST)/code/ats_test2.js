@@ -1,12 +1,12 @@
-//预计算插件
+// 预计算插件
 
-let code = `const result = 1000 * 60 * 60 * 24`;
-let babel = require('babel-core');//核心模块
-let types = require('babel-types');//类型模块
-//预计算
+const code = 'const result = 1000 * 60 * 60 * 24';
+const babel = require('@babel/core'); // 核心模块
+const types = require('@babel/types'); // 类型模块
+// 预计算
 let visitor = {
     BinaryExpression(path) {
-        console.log(path);
+        // console.log(path);
         let node = path.node;
         if(!isNaN(node.left.value)&&!isNaN(node.right.value)) {
             let result = eval(node.left.value + node.operator + node.right.value);
@@ -24,4 +24,4 @@ let res = babel.transform(code, {
         {visitor}
     ]
 });
-console.log(res.code);
+console.log(res.code); // const result = 86400000;

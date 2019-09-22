@@ -11,6 +11,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                // use: [path.resolve(__dirname, 'loaders', 'my-loader')]
                 loader: 'my-loader' // 如何找到自定义的my-loader
             }
         ]

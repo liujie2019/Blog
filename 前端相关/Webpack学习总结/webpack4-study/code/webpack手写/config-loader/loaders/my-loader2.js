@@ -1,5 +1,4 @@
 /**
- *
  * @param {*} source参数就是文件源码
  */
 const loader = source => {
@@ -9,6 +8,7 @@ const loader = source => {
 }
 
 loader.pitch = () => {
+    // console.log('我是loader2 的pitch');
     return '我有返回值-阻断了';
 }
 

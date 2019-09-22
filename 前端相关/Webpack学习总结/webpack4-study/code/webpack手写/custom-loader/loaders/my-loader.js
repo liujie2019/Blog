@@ -1,5 +1,5 @@
 /**
- *
+ * loader就是一个函数，参数就是文件源码
  * @param {*} source参数就是文件源码
  */
 const loader = source => {

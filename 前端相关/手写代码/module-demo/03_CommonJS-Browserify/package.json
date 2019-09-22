@@ -1,0 +1,11 @@
+{
+  "name": "02_CommonJS-Node",
+  "version": "1.0.0",
+  "description": "commonjs",
+  "main": "index.js",
+  "author": "liujie",
+  "license": "MIT",
+  "dependencies": {
+    "uniq": "^1.0.1"
+  }
+}

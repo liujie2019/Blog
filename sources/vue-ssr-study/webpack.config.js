@@ -30,7 +30,7 @@ const config = {
                         loader: 'url-loader',
                         options: {
                             limit: 1024, // 对于小于1024的图片转成base64代码写在代码中，不单独生成图片文件，减少http请求
-                            name: '[name].[ext]' //ext是文件的扩展名
+                            name: '[name].[ext]' // ext是文件的扩展名
                         }
                     }
                 ]
@@ -46,7 +46,7 @@ const config = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin()
     ]
-}
+};
 
 if (isDev) { // 开发环境
     config.module.rules.push({

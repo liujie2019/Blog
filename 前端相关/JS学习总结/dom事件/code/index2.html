@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件代理</title>
+</head>
+<body>
+    <ul id="list">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+    </ul>
+    <script>
+        document.querySelector('#list').addEventListener('click', function(e) {
+            // 浏览器兼容性处理
+            var e = e || window.event;
+            var target = e.target || e.srcElement;
+            // 判断是否匹配目标元素
+            if (target.nodeName.toLowerCase() === 'li') {
+                console.log('The content is: ', + target.innerHTML);
+            }
+        });
+    </script>
+</body>
+</html>

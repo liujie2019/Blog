@@ -8,17 +8,24 @@ function define(moduleName, dependencies, factory) {
 }
 
 function require(mods, callback) {
-    let result = mods.map(function(mod) { // name, age
-        let factory = factories[mod];
+    // result为结果数组
+    const result = mods.map(function(mod) { // name, age
+        // console.log(mod);
+        const factory = factories[mod];
         let exports;
-        let dependencies = factory.dependencies; // ['name]
+        // 获取当前模块的依赖
+        const dependencies = factory.dependencies;
+        // 递归调用
+        // name和weight的dependencies都是[]
         require(dependencies, function() {
-            console.log(arguments);
+            // console.log(arguments);
             // ...args
             exports = factory.apply(null, arguments);
         });
+        // console.log(exports);
         return exports;
     });
+    // console.log(result);
     // 这里不改变this指向，所以传入null
     callback.apply(null, result);
 }
@@ -26,11 +33,18 @@ function require(mods, callback) {
 define('name', [], function() {
     return 'lisi';
 });
-// age依赖name
-define('age', ['name'], function(name) {
-    return name + 23;
+define('weight', [], function() {
+    return '90';
+});
+// age模块依赖name模块
+define('age', ['name', 'weight'], function(name, weight) {
+    return name + 23 + '---' + weight;
 });
 
 require(['age'], function(age) {
     console.log(age);
 });
+/**
+1. require(['age'])
+2. require(['name', 'weight']
+*/

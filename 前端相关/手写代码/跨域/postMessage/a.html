@@ -22,7 +22,7 @@
     </iframe>
     <script>
         function load() {
-            const frame = document.querySelector('#frame');
+            const frame = document.querySelector('#frame'); // 获取到iframe
             frame.contentWindow.postMessage('我是父页面a', 'http://localhost:4000');
             window.onmessage = function(e) {
                 console.log(e);

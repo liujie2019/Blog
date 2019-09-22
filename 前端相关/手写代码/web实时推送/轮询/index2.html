@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>长轮询</title>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <script>
+        const timeText = document.querySelector('#time');
+        function send() {
+            const xhr = new XMLHttpRequest;
+            xhr.timeout = 2000; // 设置请求超时时间为2秒
+            xhr.open('GET', '/time', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // 如果成功了，则显示结果
+                        timeText.innerHTML = xhr.responseText;
+                    }
+                    send(); // 不管成功还是失败都会发送下一次请求
+                }
+            }
+            xhr.ontimeout = function() {
+                send();
+            }
+            xhr.send();
+        }
+        send();
+    </script>
+</body>
+</html>

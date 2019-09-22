@@ -21,14 +21,12 @@ module.exports = {
                     loader: 'my-loader'
                 },
                 enforce: 'pre' // 指定my-loader最先使用
-            },
-            {
+            }, {
                 test: /\.js$/,
                 use: {
                     loader: 'my-loader2' // 默认为normal
                 }
-            },
-            {
+            }, {
                 test: /\.js$/,
                 use: {
                     loader: 'my-loader3'

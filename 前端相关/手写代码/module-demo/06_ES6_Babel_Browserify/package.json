@@ -1,0 +1,13 @@
+{
+  "name": "06_ES6_Babel_Browserify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "liujie",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0"
+  }
+}
