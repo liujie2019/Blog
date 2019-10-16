@@ -21,4 +21,4 @@ hook.tap('node', (name, age) => {
     console.log('node', `${name}--${age}`);
 });
 
-hook.call('lisi', 12);
+hook.call('tom', 12);

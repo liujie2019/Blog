@@ -268,7 +268,7 @@ my-loader3
 [返回目录](#目录)
 ### babel-loader实现
 ```bash
-yarn add @babel/core @babel/preset-env
+yarn add @babel/core @babel/preset-env loader-utils
 ```
 webpack.config.js：
 ```js
@@ -314,17 +314,16 @@ module.exports = loader;
 ```
 `index.js`
 ```js
-class May {
-    constructor () {
-        this.name = 'may';
+class Animal {
+    constructor(name) {
+        this.name = name;
     }
-    getName () {
+    sayName() {
         return this.name;
     }
 }
-let may = new May();
-
-console.log(may.getName());
+const dog = new Animal('小黄111');
+console.log(dog.sayName());
 ```
 `npx webpack`
 
@@ -344,19 +343,17 @@ console.log(may.getName());
     }
 }
 ```
-`banner.js`
-
+banner.js：
 ```js
 二次星球中毒
 ```
-在`loader`文件创建`banner-loader.js`
+在loader文件创建banner-loader.js
 
-`npm i schema-utils` 校验自己写的`loader`格式是否正确
+`npm i schema-utils`校验自己写的loader格式是否正确
 
 [schema-utils](https://github.com/webpack-contrib/schema-utils)
 
-`banner-loader.js`
-
+banner-loader.js
 ```js
 // 拿到loader的配置
 let loaderUtils = require('loader-utils');
@@ -411,23 +408,23 @@ mime主要用途是：设置某种扩展名的文件的响应程序类型。
 
 创建my-file-loader.js
 ```js
-// 拿到babel的参数 需要工具 loaderUtils
+// 拿到loader的参数 需要工具包loaderUtils
 const loaderUtils = require('loader-utils');
 
-function loader(source) {  // loader的参数就是源代码
+function loader(source) { // loader的参数就是源代码
     // file-loader需要返回路径
     // interpolateName根据文件内容生成新的文件名
     const filename = loaderUtils.interpolateName(this, '[hash].[ext]', {content: source })
     this.emitFile(filename, source); // 发射文件
-    console.log('loader1');
+    console.log('my-file-loader');
     return `module.exports="${filename}"`;
 }
 loader.raw = true; // 二进制
 module.exports = loader;
 ```
-创建url-loader.js
+创建my-url-loader.js
 ```js
-// 拿到babel的参数 需要工具 loaderUtils
+// 拿到loader的参数 需要工具包loaderUtils
 let loaderUtils = require('loader-utils');
 let mime = require('mime');  // 作用是设置某种扩展名的文件的响应程序类型
 
@@ -459,7 +456,7 @@ webpack.config.js
     }
 }
 ```
-`index.js`引入图片
+index.js引入图片：
 ```js
 import p from './photo.png';
 
@@ -472,103 +469,96 @@ document.body.appendChild(img);
 
 ### less-loader和css-loader实现
 先安装less
-```js
+```bash
 yarn add less
 ```
-分别创建style-loader、css-loader、less-loader。
+分别创建my-style-loader、my-css-loader、my-less-loader。
 
-#### css-loader
+#### my-css-loader
 主要用来处理css中的图片链接，需要把url转换成require。
-`webpack.config.js`
+webpack.config.js
 ```js
 {
     test: /\.less$/,
-    use: ['style-loader', 'css-loader', 'less-loader']
+    use: ['my-style-loader', 'my-css-loader', 'my-less-loader']
 }
 ```
 创建index.less
 ```css
-@base: #f938ab;
+@color: #ff0000;
 body {
-  background: @base;
-  background: url('./photo.png');
+  background: @color;
 }
 ```
-less-loader.js
+my-less-loader.js
 ```js
 // 将less转为css
-let less = require('less');
+const less = require('less');
 
 function loader(source) {
-    let css = ''
-    // console.log(source, 2222);
-    less.render(source, function (err, output) {
+    let css = '';
+    less.render(source, (err, output) => {
         // console.log(output);
         css = output.css
     })
     // css = css.replace(/\n/g, '\\n');
-    return css
+    return css;
 }
 
-module.exports = loader
+module.exports = loader;
 ```
-`css-loader.js`
+my-css-loader.js
 ```js
 // css-loader 用来解析@import这种语法，包括css中引入的图片
 function loader(source) {
-    let reg = /url\((.+?)\)/g; // 匹配括号
+    const reg = /url\((.+?)\)/g;
     let pos = 0;
     let current;
     let arr = ['let list = []'];
     while (current = reg.exec(source)) {
-        let [matchUrl, g] = current;  // matchUrl -> 'url("./photo.png")', g  -> '"./photo.png"'
-        // console.log(matchUrl, g);
+        const [matchUrl, g] = current;  // console.log(matchUrl, g);// url('./avatar.jpg') './avatar.jpg'
         let lastIndex = reg.lastIndex - matchUrl.length; // 拿到css从开通到地址链接之前的index
         arr.push(`list.push(${JSON.stringify(source.slice(pos, lastIndex))})`); // 拼入开始和地址之前的代码
         pos = reg.lastIndex
         // 把g替换成require的写法
-        arr.push(`list.push('url('+ require(${g}) +')')`)    // 拼入图片地址
+        arr.push(`list.push('url('+ require(${g}) +')')`) // 拼入图片地址
     }
-    arr.push(`list.push(${JSON.stringify(source.slice(pos))})`);  // 拼入地址到结尾的代码
+    arr.push(`list.push(${JSON.stringify(source.slice(pos))})`); // 拼入地址到结尾的代码
     arr.push(`module.exports = list.join('')`);
     // console.log(arr.join('\r\n'));
-    // let list = []
-    // list.push("body {\\n  background: #f938ab;\\n  background: ")
-    // list.push('url('+ require("./photo.png") +')')
-    // list.push(";\\n}\\n")
-    // module.exports = list.join('')
     return arr.join('\r\n');
 }
 module.exports = loader;
 ```
-`style-loader.js`
+my-style-loader.js
 ```js
 const loaderUtils = require('loader-utils');
 
 // 将css插入到html头部
 function loader(source) {
-    let str = `
-    let style = document.createElement('style')
-    style.innerHTML = ${JSON.stringify(source)}
-    document.head.appendChild(style)
+    // 这里使用JSON.stringify将变量source转为字符串，同时处理换行(\r\n)
+    const str = `
+       const style = document.createElement('style');
+       style.innerHTML = ${JSON.stringify(source)};
+       document.head.appendChild(style);
    `;
     return str;
 }
 
-// style-loader写了pitch，有返回后面的跳过，自己的写不会走
-// remainingRequest-剩余的请求
+// 在style-loader上写了pitch，有返回，后面的跳过，自己的写不会走
+// remainingRequest：剩余的请求
 loader.pitch = function (remainingRequest) {
-    console.log(loaderUtils.stringifyRequest(this, '!!' + remainingRequest));
+    // console.log(loaderUtils.stringifyRequest(this, '!!' + remainingRequest));
     // 让style-loader 处理 less-loader 和css-loader拼接的结果
     // 得到 /Users/liuhuimin/work/webpack/loader/css-loader2.js!/Users/liuhuimin/work/webpack/loader/less-loader2.js!/Users/liuhuimin/work/webpack/src/index.less
     // 剩余的请求 css-loader!less-loader!./index.less
     // console.log(remainingRequest, 1223);
     // require路径 返回的就是css-loader处理好的结果require('!!css-loader!less-loader!./index.less')
-    let str = `
-    let style = document.createElement('style')
-    style.innerHTML = require(${loaderUtils.stringifyRequest(this, '!!' + remainingRequest)})
-    document.head.appendChild(style)
-   `
+    const str = `
+       let style = document.createElement('style')
+       style.innerHTML = require(${loaderUtils.stringifyRequest(this, '!!' + remainingRequest)})
+       document.head.appendChild(style)
+   `;
     // stringifyRequest方法用来将绝对路径转为相对路径
     return str;
 }
@@ -585,18 +575,19 @@ pitch   style-loader2 → css-loader2  less-loader2
                ↙
 normal  style-loader2  css-loader2  less-loader2
 ```
-
-在`style-loader`中引用了`less-loader`、`css-loader`和`less`文件。
+在style-loader中引用了less-loader、css-loader和less文件。
 
 [返回目录](#目录)
 ## webpack中的插件
-`yarn add webpack webpack-cil -D`
+```js
+yarn add webpack webpack-cil -D
+```
 
 webpack.config.js
 ```js
-let path = require('path');
-let DonePlugin = require('./plugins/DonePlugins');
-let AsyncPlugins = require('./plugins/AsyncPlugins');
+const path = require('path');
+const DonePlugin = require('./plugins/DonePlugins');
+const AsyncPlugins = require('./plugins/AsyncPlugins');
 
 module.exports = {
     mode: 'development',
@@ -736,8 +727,7 @@ yarn add --dev html-webpack-plugin@next
 
 [HTML Webpack Plugin](https://github.com/jantimon/html-webpack-plugin)
 
-`webpack.config.js`
-
+webpack.config.js
 ```js
 let path = require('path')
 let DonePlugin = require('./plugins/DonePlugins')
@@ -781,11 +771,9 @@ module.exports = {
         // })
     ]
 }
-
 ```
 
-`InlineSourcePlugins.js`
-
+InlineSourcePlugins.js
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 

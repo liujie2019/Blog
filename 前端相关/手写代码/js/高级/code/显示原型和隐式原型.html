@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>显式原型和隐式原型</title>
+</head>
+<body>
+<!--
+1. 每个函数都有一个prototype属性，即显式原型属性
+2. 每个实例对象都有一个__proto__属性，称为隐式原型属性
+3. 对象的隐式原型的值等于其对应构造函数的显式原型的值
+4. 内存结构图
+5. 总结：
+    * 函数的prototype属性：在定义函数时自动添加的，默认值是一个Object空对象
+    * 对象的__proto__属性：创建对象时自动添加的，默认值为构造函数的prototype属性值
+    * 我们可以直接操作显式原型，但不能直接操作隐式原型(ES6之前)
+-->
+</body>
+<script>
+function Person() { // 内部语句：this.prototype = {}
+
+}
+console.log(Person.prototype);
+let p = new Person(); // 内部语句：this.__proto__ = Person.prototype
+console.log(p.__proto__);
+// Person.prototype和p.__proto__都是引用类型变量，保存的是原型对象的地址值。
+console.log(Person.prototype === p.__proto__); // true
+
+Person.prototype.sayName = function() {
+    console.log('sayName()');
+}
+
+p.sayName();
+</script>
+</html>

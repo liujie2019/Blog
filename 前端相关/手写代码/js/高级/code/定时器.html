@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">执行定时器</button>
+<script>
+    document.querySelector('#btn').onclick = function() {
+        let start = Date.now();
+        console.log('启动定时器前');
+        setTimeout(function() {
+            console.log('定时器执行了', Date.now() - start);
+        }, 300);
+        console.log('启动定时器后');
+
+        // 一个耗时久的操作
+        for (let i = 0; i < 1000000000; i++) {}
+    }
+</script>
+</body>
+</html>

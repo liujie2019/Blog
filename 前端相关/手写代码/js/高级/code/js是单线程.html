@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+setTimeout(function() {
+    console.log('2222');
+}, 2000);
+setTimeout(function() {
+    console.log('1111');
+}, 1000);
+function fn() {
+    console.log('fn');
+}
+fn();
+
+console.log('alert执行之前');
+alert('------'); // alert会暂停当前主线程的执行，同时也会暂停定时器，点击确定后，恢复程序执行和定时器计数。
+console.log('alert执行之后');
+</script>
+</body>
+</html>

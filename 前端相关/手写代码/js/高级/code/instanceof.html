@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>instanceof</title>
+</head>
+<body>
+<!--
+1. instanceof是如何判断的？
+* 表达式：A instanceof B(A是实例对象，B是构造函数)
+* 如果B函数的显式原型对象在A对象的原型链上，返回true，否则返回false
+2. Function是通过new自身产生的实例
+-->
+<script>
+// 题目1
+function Person() {}
+let p1 = new Person();
+console.log(p1 instanceof Person); // true
+console.log(p1 instanceof Object); // true
+// 题目2
+// 任何函数都是new Function()产生的，Object构造函数也是一样
+console.log(Object instanceof Function); // true
+console.log(Object instanceof Object); // true
+// 任何函数都是new Function()产生的，Function构造函数也是一样
+console.log(Function instanceof Function); // true
+// Function也是对象
+console.log(Function instanceof Object); // true
+
+function Animal() {}
+console.log(Object instanceof Animal); // false
+</script>
+</body>
+</html>

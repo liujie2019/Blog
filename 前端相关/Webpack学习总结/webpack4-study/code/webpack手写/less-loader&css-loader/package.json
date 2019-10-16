@@ -9,6 +9,11 @@
     "loader-utils": "^1.2.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "file-loader": "^4.2.0",
+    "url-loader": "^2.2.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
   }

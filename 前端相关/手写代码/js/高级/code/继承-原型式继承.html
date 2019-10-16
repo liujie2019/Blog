@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function object(o) {
+        function F() {}
+        F.prototype = o;
+        return new F();
+    }
+    let person = {
+        name: 'lisi',
+        family: ['brother', 'sister', 'me']
+    };
+    let p1 = object(person);
+    p1.name = 'wangwu';
+    p1.family.push('mother');
+    console.log(p1.name); // wangwu
+    console.log(p1.family); // ["brother", "sister", "me", "mother"]
+
+    let p2 = object(person);
+    p2.name = 'zhaoliu';
+    p2.family.push('father');
+    console.log(p2.name); // zhaoliu
+    console.log(p2.family); // ["brother", "sister", "me", "mother", "father"]
+    console.log(person.name); // lisi
+    console.log(person.family); // ["brother", "sister", "me", "mother", "father"]
+</script>
+</body>
+</html>

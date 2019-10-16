@@ -1,7 +1,5 @@
 [TOC]
 ## tapable介绍
-[tapable](https://juejin.im/post/5abf33f16fb9a028e46ec352)
-
 Webpack本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是Tapable，Tapable有点类似于nodejs的events库，核心原理也是依赖于**发布-订阅模式**。
 ```js
 const {
@@ -195,7 +193,6 @@ class Lesson {
 }
 
 const l = new Lesson();
-console.log(l.hooks.arch);
 l.tap(); // 注册监听函数
 console.log(l.hooks.arch.taps);
 l.start(); // 启动钩子
@@ -588,11 +585,11 @@ class AsyncSeriesHook {
     }
 
     callAsync(...args) {
-        let finalCallback = args.pop();
+        const finalCallback = args.pop();
         let index = 0;
-        let next = () => {
+        const next = () => {
             if (this.tasks.length === index) return finalCallback();
-            let task = this.tasks[index++];
+            const task = this.tasks[index++];
             task(...args, next);
         }
         next();
@@ -602,12 +599,12 @@ class AsyncSeriesHook {
         // 将promise串联起来
         let [first, ...other] = this.tasks;
         return other.reduce((p, n) => { // 类似redux源码
-             return p.then(() => n (...args))
+             return p.then(() => n(...args));
         }, first(...args));
     }
 }
 
-let hook = new AsyncSeriesHook(['name'])
+const hook = new AsyncSeriesHook(['name'])
 // hook.tapAsync('react', function (name, callback) {
 //     setTimeout(() => {
 //         console.log('react', name);
@@ -813,3 +810,8 @@ hook.promise('liujie').then(function () {
 })
 ```
 [返回目录](#目录)
+
+## 参考文档
+1. [webpack4.0源码分析之Tapable](https://juejin.im/post/5abf33f16fb9a028e46ec352)
+2. [webpack插件机制之Tapable](https://juejin.im/post/5abf33f16fb9a028e46ec352)
+3. [webpack系列之二Tapable](https://juejin.im/post/5c25f920e51d45593b4bc719)

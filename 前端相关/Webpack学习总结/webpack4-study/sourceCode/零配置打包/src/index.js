@@ -1,0 +1,1 @@
+console.log('webpack4支持零配置打包喔');

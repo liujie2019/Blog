@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--
+1. H5规范提供了js多线程的实现，成为Web Workers
+2. 相关API
+* Worker：构造函数，加载子线程执行的js文件
+* Worker.prototype.onmessage：用于接收另一个线程消息的回调函数
+* Worker.prototype.postMessage：向另一个线程发送消息
+3. 不足
+* Worker内代码不能操作DOM(更新UI)
+* 不能跨域加载JS
+* 不是所有浏览器都支持这个新特性
+
+Web Workers是HTML5提供的一个javascript多线程解决方案，我们可以将一些计算量大的代码交给Web Worker子线程运行而不冻结用户界面。但是子线程完全受主线程控制，且不能操作DOM。所以，这个新特性并没有改变javascript单线程的本质。
+-->
+<input type="text" placeholder="请输入数值" id="num">
+<button id="btn">计算</button>
+<script>
+let input = document.querySelector('#num');
+document.querySelector('#btn').onclick = function() {
+    let num = input.value;
+    // 创建一个Worker对象
+    let worker = new Worker('worker.js');
+    worker.onmessage = function(event) {
+        console.log('主线程接收到子线程返回的数据:' + event.data);
+    }
+    // 主线程向子线程发送数据
+    console.log('主线程向子线程发送数据:' + num);
+    worker.postMessage(num);
+}
+</script>
+</body>
+</html>

@@ -15,7 +15,7 @@ class SyncBailHook {
         // 至少要执行一个回调
         // 当前回调返回undefined且还有回调未执行的话再继续执行
         do {
-            // 回调函数执行的时候，需要利用数组的展开运算符，将数组中的参数分别传递给
+            // 回调函数执行的时候，需要利用数组的展开运算符，将数组中的参数分别传递给订阅函数
             res = this.tasks[index++](...args);
         } while (res === undefined && this.tasks.length > index);
     }
@@ -31,4 +31,4 @@ hook.tap('node', (name, age) => {
     console.log('node', `${name}--${age}`);
 });
 
-hook.call('lisi', 12);
+hook.call('tom', 12);

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链继承</title>
+</head>
+<body>
+<script>
+    function Parent() {}
+    Parent.prototype.sayName = function() {
+        console.log(this.name)
+    }
+    function Child(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // 实现的本质是用父类的实例对象来重写子类的原型对象(子类默认的原型对象是一个Object的空对象)。
+    // 这样一来，原来存在于父类实例上的属性和方法，也会存在于子类的原型对象上。同时，Child.prototype中也会包含一个指向Parent.prototype的指针
+    // 形成原型链：c ==> Child.prototype ==> Parent.prototype ==> Object.prototype ==> null
+    // 需要注意：Child.prototype.constructor将指向Parent，因为子类原型被重写后，Child.prototype将不再有constructor属性，因此会沿着原型链向上查找。
+    Child.prototype = new Parent();
+    let child = new Child('lisi', 12);
+    child.sayName(); // lisi
+    console.log(child instanceof Child); // true
+    console.log(child instanceof Parent); // true
+
+    console.log(Child.prototype.isPrototypeOf(child)); // true
+    console.log(Parent.prototype.isPrototypeOf(Child.prototype)); // true
+    console.log(Parent.prototype);
+</script>
+</body>
+</html>

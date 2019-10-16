@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import * as jwt_decode from 'jwt-decode';
 export default {
   name: 'register',
   data() {
@@ -31,15 +32,62 @@ export default {
         email: '',
         password: ''
       },
-      rules: {}
+      rules: {
+        email: [
+          {
+            type: "email",
+            required: true,
+            message: "邮箱格式不正确",
+            trigger: "change"
+          }
+        ],
+        password: [
+          { required: true, message: "密码不能为空", trigger: "blur" },
+          { min: 6, max: 30, message: "长度在 6 到 30 个字符", trigger: "blur" }
+        ]
+      }
     }
-  },
-  components: {
-
   },
   methods: {
     submitForm(formName) {
-
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$axios.post('/api/users/login', this.loginUser)
+            .then(res => {
+              if (res.status === 200) {
+                // 登录成功
+                const {token} = res.data;
+                localStorage.setItem('eleToken', token);
+                // 解析token
+                const decode = jwt_decode(token);
+                // 存储数据
+                this.$store.dispatch('setIsAuthenticated', !this.isEmpty(decode));
+                this.$store.dispatch('setUser', decode);
+                // 页面跳转
+                this.$router.push('/index');
+              }
+            }).catch(err => {
+              this.$message({
+                message: '登录失败',
+                type: 'warning'
+              });
+            });
+        } else {
+          this.$message({
+            message: 'error submit!!',
+            type: 'warning'
+          });
+          return false;
+        }
+      })
+    },
+    isEmpty(value) {
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0)
+      );
     }
   }
 }

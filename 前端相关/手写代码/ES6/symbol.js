@@ -15,8 +15,7 @@ let obj = {
     [s2]: 1 // 对象的属性为Symbol类型的话，该属性不可枚举
 }
 console.log(obj); // { name: 'lisi', [Symbol()]: 1 }
-console.log(obj[s2]);
-console.log(s1 === s2); // false
+console.log(obj[s2]); // 1
 
 for (let key in obj) {
     console.log(obj[key]);
@@ -37,24 +36,26 @@ console.log(s5 === s6); // true
 // Symbol内置对象 Symbol.iterator 实现对象的遍历
 // 实现元编程 可以对原生js的操作进行修改
 
-let instance = {
+let obj = {
     // 改写对象的instanceof方法
     [Symbol.hasInstance](value) {
+        console.log(value); // { a: 1 }
+        // 只要value中存在a属性就返回true
         return 'a' in value;
     }
 };
-console.log({a: 1} instanceof instance); // true
+console.log({a: 1} instanceof obj); // true
 
 let arr = [1, 2, 3];
 // 设置在使用concat方法进行数组拼接时，不展开arr
 arr[Symbol.isConcatSpreadable] = false;
 
-console.log([].concat(arr, [1, 2, 3]));
+console.log([].concat(arr, [4, 5, 6]));
 /*
 [ [ 1, 2, 3, [Symbol(Symbol.isConcatSpreadable)]: false ],
-  1,
-  2,
-  3 ]
+  4,
+  5,
+  6 ]
 */
 
 // match split search
@@ -64,10 +65,12 @@ let obj = {
     }
 }
 console.log('12'.match(obj)); // true
+console.log('123'.match(obj)); // false
 
 // species 衍生对象
 class MyArray extends Array {
-    constructor(...args) { // 先将类数组转为数组
+    constructor(...args) { // 先将类数组转为数组[1, 2, 3]
+        // 调用父类的构造函数
         super(...args); // 再展开
     }
     // 强制修改一下
@@ -90,13 +93,13 @@ console.log(arr2 instanceof Array); // true
 // 数据类型转化
 let obj = {
     [Symbol.toPrimitive](type) {
-        console.log(type); // number
-        return;
+        console.log(type); // default
+        return 11;
     }
 }
 
-// console.log(obj++);
-console.log(obj + '11'); // default
+// console.log(obj++); // 11
+console.log(obj + '22'); // 1122
 
 // Symbol.toStringTag
 
@@ -109,7 +112,7 @@ console.log(Object.prototype.toString.call(obj)); // [object test]
 
 with({name: 1}){
     // with内部会以{name: 1}对象为this指向来取值
-    console.log(name);
+    console.log(name); // 1
 }
 
 let arr = [];
@@ -124,7 +127,9 @@ console.log(arr[Symbol.unscopables]);
   keys: true }
   这些方法默认取不到，这些方法不在数组的作用域内
 */
+let arr = [];
 with(arr){
+    // with内部会以arr为this指向来取值
     console.log(forEach); // [Function: forEach]
     console.log(findIndex); // ReferenceError: findIndex is not defined
 }

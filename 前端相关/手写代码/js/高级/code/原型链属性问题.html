@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--
+1. 读取对象的属性值时会自动到原型链中查找。
+2. 设置对象的属性值时，不会查找原型链，如果当前对象中没有该属性，直接添加该属性并设置其值。
+3. 方法一般定义在原型中，属性一般通过构造函数定义在对象自身上
+-->
+<script>
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.sayName = function() {
+    console.log(this.name);
+}
+let p1 = new Person('lisi', 12);
+p1.sayName();
+console.log(p1);
+
+let p2 = new Person('wangwu', 13);
+p2.sayAge = function() {
+    console.log(this.age);
+}
+p2.sayName();
+p2.sayAge();
+console.log(p2);
+console.log(p1.__proto__ === p2.__proto__); // true
+</script>
+</body>
+</html>

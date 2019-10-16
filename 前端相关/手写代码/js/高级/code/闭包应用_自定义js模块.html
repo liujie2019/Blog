@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义js模块</title>
+</head>
+<body>
+<!--
+闭包应用2：定义js模块
+* 具有特定功能的js文件
+* 将所有的数据和功能都封装在一个函数内部(私有的数据)
+* 只向外暴露一个包含n个方法的对象或函数
+* 模块的使用者只需要通过模块暴露的对象调用方法来实现对应的功能
+-->
+<script src="./module.js"></script>
+<script src="./module2.js"></script>
+<script>
+    var obj = myModule();
+    obj.foo(); // foo--- LISI
+    obj.bar(); // bar--- lisi
+    module.foo(); // foo--- WANGWU
+    module.bar(); // foo--- wangwu
+</script>
+</body>
+</html>

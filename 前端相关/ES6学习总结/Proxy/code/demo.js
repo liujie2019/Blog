@@ -4,7 +4,7 @@ let obj = {
 };
 
 const p = new Proxy(obj, {
-    get(target, key, value) {
+    get(target, key) {
         if(key in target) {
             return target[key]
         }

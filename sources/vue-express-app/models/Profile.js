@@ -13,7 +13,7 @@ const ProfileSchema = new Schema({
         type: Number,
         required: true
     },
-    expand: { // 支出
+    expend: { // 支出
         type: Number
     },
     cash: { //

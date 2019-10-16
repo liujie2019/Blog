@@ -1,5 +1,5 @@
 // 递归拷贝
-// hash = new WeakMap 解决循环引用问题
+// hash = new WeakMap 哈希表解决循环引用问题
 // WeakMap 弱引用，不能用Map，会导致内存泄露
 function deepClone(value, hash = new WeakMap) {
     // 先把特殊情况全部过滤掉
@@ -16,6 +16,7 @@ function deepClone(value, hash = new WeakMap) {
     }
     // 函数是不需要拷贝的
     // 排除不是对象类型，包括函数和基本数据类型
+    // typeof function name(params){} // 'function'
     if (typeof value !== 'object') {
         return value;
     }

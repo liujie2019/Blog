@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型</title>
+</head>
+<body>
+<!--
+1. 函数的prototype属性
+    * 每个函数都有一个prototype属性，它默认指向一个Object空对象(即原型对象)
+    * 原型对象中有一个属性constructor，它指向函数对象
+2. 给原型对象添加属性(一般都是方法)
+    * 作用：构造函数的所有实例对象自动拥有构造函数原型中的属性和方法
+-->
+<script>
+console.log(Date.prototype, typeof Date.prototype);
+function fn() {
+
+}
+console.log(fn.prototype);
+// 给原型对象添加方法==>一般给实例使用
+fn.prototype.sayName = function() {}
+console.log(fn.prototype); // 默认指向一个Object空对象(空对象即没有自定义的属性和方法)
+
+// 原型对象中有一个属性constructor，它指向函数对象
+console.log(Date.prototype.constructor === Date); // true
+console.log(fn.prototype.constructor === fn); // true
+</script>
+</body>
+</html>

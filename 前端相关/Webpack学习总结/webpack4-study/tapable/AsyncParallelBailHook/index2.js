@@ -8,7 +8,7 @@ class Lesson {
         }
     }
     start() {
-        this.hooks.arch.promise('lisi').then(() => {
+        this.hooks.arch.promise('tom').then(() => {
             console.log('end');
         });
     }
@@ -43,7 +43,7 @@ l.tap(); // 注册两个监听函数
 l.start(); // 启动钩子
 /**
 执行结果：
-webpack lisi
-node lisi
+webpack tom
+node tom
 end
 */

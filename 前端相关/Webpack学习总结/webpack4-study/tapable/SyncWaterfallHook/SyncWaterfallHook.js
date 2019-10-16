@@ -12,7 +12,7 @@ class SyncWaterfallHook { // 同步钩子-瀑布
     call(...args) {
         // 解构获取第一个task和其余剩余的task
         const [first, ...others] = this.tasks;
-        const res = first(...args); // 第一个tash回调函数的返回值
+        const res = first(...args); // 获取第一个tash回调函数的返回值
         // reduce迭代
         // pre是前一个task的返回结果，cur是当前task
         others.reduce((pre, cur) => {
@@ -34,10 +34,10 @@ hook.tap('vue', data => {
     console.log('vue', data);
 });
 
-hook.call('lisi', 12);
+hook.call('tom', 12);
 /**
 执行结果：
-webpack lisi--12
+webpack tom--12
 node webpack学的不错喔
 vue node学的不错喔
 */

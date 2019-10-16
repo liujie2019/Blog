@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],[,,function(o,e,n){"use strict";n.r(e);n(4);console.log("this id pageB"),e.default="pageB"},,function(o,e){o.exports="module-test"}]]);

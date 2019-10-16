@@ -7,7 +7,7 @@
 // 尽可能使用const，如果这个值需要更改才使用let
 var a = 1;
 {
-    var a = 2;
+    var a = 2; // es5没有块级作用域，这里的声明会覆盖花括号上面的声明
 }
 console.log(a); // 2
 
@@ -32,3 +32,5 @@ for (var i = 0; i < 10; i++) {
         console.log(i); // 打印出10个10
     }); // 最小延迟4ms
 }
+
+// eslint let自动转为const

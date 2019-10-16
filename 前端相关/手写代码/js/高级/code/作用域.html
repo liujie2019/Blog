@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域</title>
+</head>
+<body>
+<!--
+1. 理解
+    * 作用域就是一块"地盘"，一个代码段所在的区域
+    * 它是静态的(相对于执行上下文对象)，在编写代码时就确定了
+    * 执行上下文对象是函数调用时产生的，而作用域是在函数定义时就确定了的，多次调用函数会产生多个执行上下文，但不会产生多个作用域。
+    * 一个程序包含n+1个作用域，n表示有n个函数定义，1表示全局作用域。
+2. 分类
+    * 全局作用域
+    * 函数作用域
+    * 没有块级作用域(ES6有)
+3. 作用
+    * 隔离变量，不同作用域下同名变量不会有冲突
+-->
+<script>
+// 没有块级作用域
+if (true) {
+    var a = 2;
+}
+console.log(a); // 2
+
+var b = 3;
+function bar() {
+    var c = 4;
+    console.log('bar', c);
+}
+console.log('global', b);
+bar();
+</script>
+</body>
+</html>

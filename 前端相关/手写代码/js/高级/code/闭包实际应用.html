@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包应用</title>
+</head>
+<body>
+<script>
+    // 闭包实际应用可以用于封装变量，收敛权限
+    function isFirstLoad() {
+        var _list = [];
+        return function (id) {
+            if (_list.indexOf(id) >= 0) {
+                return false;
+            } else {
+                _list.push(id);
+                return true;
+            }
+        }
+    }
+    // 使用
+    let firstLoad = isFirstLoad();
+    console.log(firstLoad(1)); // true
+    console.log(firstLoad(1)); // false
+    console.log(firstLoad(2)); // true
+</script>
+</body>
+</html>

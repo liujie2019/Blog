@@ -11,7 +11,7 @@
 // console.log('minus(1, 2) = ', minus(1, 2));
 
 // // AMD
-// require(['./vender/multi'], function(multi) {
-//     console.log('multi(1, 2) = ', multi(1, 2));
-// });
+require(['./vender/multi'], function(multi) {
+    console.log('multi(1, 2) = ', multi(1, 2));
+});
 console.log(1, '------');

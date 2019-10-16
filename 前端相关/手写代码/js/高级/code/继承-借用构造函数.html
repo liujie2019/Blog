@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>借用构造函数</title>
+</head>
+<body>
+<script>
+    function Parent(name) {
+        this.colors = ['red','blue','green'];
+        this.name = name;
+    }
+    function Child(name) {
+        // 继承父类，同时还可以向父类构造函数传递参数
+        Parent.call(this, name);
+    }
+    let child1 = new Child('lisi');
+    let child2 = new Child('wangwu');
+    console.log(child1.name); // lisi
+    console.log(child2.name); // wangwu
+    child1.colors.push('yellow');
+    console.log(child1.colors); // ["red", "blue", "green", "yellow"]
+    console.log(child2.colors); // ["red", "blue", "green"]
+</script>
+</body>
+</html>

@@ -8,14 +8,14 @@
 </head>
 <body>
     <script>
-        class My{}
-        let my = new My();
+        class Person{}
+        let p = new Person();
         // map有引用计数
-        let map = new Map([['a', 1], ['a', 20], ['b', 2]]);
-        map.set(my, 1);
-        // 这里并不会将my从内存中清除
-        // 可以在控制台的memory面板中查看
-        my = null;
+        // let map = new Map();
+        let map = new WeakMap();
+        map.set(p, 1);
+        // 这里并不会将p从内存中清除，可以在控制台的memory面板中查看
+        p = null;
     </script>
 </body>
 </html>

@@ -9,17 +9,17 @@ class Lesson {
     }
     start() {
         // 发布
-        // this.hooks.arch.callAsync('lisi', () => {
+        // this.hooks.arch.callAsync('tom', () => {
         //     console.log('end');
         // })
         // 另一种发布
-        this.hooks.arch.promise('lisi').then(() => {
+        this.hooks.arch.promise('tom').then(() => {
                 console.log('end');
             }
         )
     }
 
-    tap() { // 注册监听函数,订阅
+    tap() { // 注册监听函数，订阅
         // this.hooks.arch.tapAsync('node', (name, callback) => {
         //     setTimeout(() => {
         //         console.log('node', name)
@@ -53,6 +53,5 @@ class Lesson {
 }
 
 let l = new Lesson();
-
 l.tap();  // 注册两个函数
 l.start(); // 启动钩子

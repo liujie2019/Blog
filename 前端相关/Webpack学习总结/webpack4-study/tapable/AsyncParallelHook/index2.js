@@ -8,7 +8,7 @@ class Lesson {
         }
     }
     start() {
-        this.hooks.arch.promise('lisi').then(() => {
+        this.hooks.arch.promise('tom').then(() => {
             console.log('end');
         })
     }
@@ -16,34 +16,29 @@ class Lesson {
         // tapPromise异步订阅
         this.hooks.arch.tapPromise('webpack', name => {
             return new Promise((resolve, reject) => {
-                {
-                    setTimeout(() => {
-                        console.log('webpack', name);
-                        resolve();
-                    }, 1000);
-                }
+                setTimeout(() => {
+                    console.log('webpack', name);
+                    resolve();
+                }, 1000);
             })
-        })
+        });
         this.hooks.arch.tapPromise('node', name => {
             return new Promise((resolve, reject) => {
-                {
-                    setTimeout(() => {
-                        console.log('node', name);
-                        resolve();
-                    }, 1000);
-                }
-            })
-        })
+                setTimeout(() => {
+                    console.log('node', name);
+                    resolve();
+                }, 1000);
+            });
+        });
     }
 }
 
 let l = new Lesson();
-
 l.tap(); // 注册两个监听函数
 l.start(); // 启动钩子
 /**
 执行结果：
-webpack lisi
-node lisi
+webpack tom
+node tom
 end
 */

@@ -7,8 +7,8 @@ function loader(source) {
     // this是loader的上下文
     const options = loaderUtils.getOptions(this);
     // console.log(Object.keys(this));
-    // console.log(options);
-    // console.log(this.resourcePath);
+    // console.log(options); // { presets: [ '@babel/preset-env' ] }
+    // console.log(this.resourcePath); // /Users/xxxx/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/babel-loader-demo/src/index.js
     // babel的转换是异步的，同步的返回是不行的，不能用return
     // 同步就是直接调用，异步会在async中
     const callback = this.async();
@@ -19,7 +19,7 @@ function loader(source) {
         // pop方法删除数组的最后一个元素，并返回该元素，会影响原数组
         // 给生成的source-map指定名字
         filename: this.resourcePath.split('/').pop()
-    }, function (err, result) {
+    }, (err, result) => {
         // console.log(Object.keys(result)); // [ 'metadata', 'options', 'ast', 'code', 'map', 'sourceType' ]
         // result.map是sourceMap
         callback(err, result.code, result.map);

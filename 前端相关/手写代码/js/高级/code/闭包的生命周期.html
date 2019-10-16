@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包的生命周期</title>
+</head>
+<body>
+<!--
+1. 产生：在嵌套的内部函数定义执行完时就产生了(而不是在内部函数调用的时候)
+2. 死亡：在嵌套的内部函数成为垃圾对象时
+-->
+<script>
+function fn1() {
+    // 这里闭包就已经产生了(因为函数声明提升，内部函数对象已经创建了)
+    var a = 1;
+    function fn2() {
+        a++;
+        console.log(a);
+    }
+    return fn2;
+}
+var f = fn1(); // 产生一个闭包
+f(); // 2
+f(); // 3
+f = null; // 闭包死亡，切断了全局变量f与包含闭包的函数对象的引用关系，使得包含闭包的函数对象成为垃圾对象。
+</script>
+</body>
+</html>

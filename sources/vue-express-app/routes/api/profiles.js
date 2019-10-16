@@ -21,12 +21,12 @@ router.post(
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
     // console.log(req.body);
-    const {type, describtion, income, expand, cash, remark} = req.body;
+    const {type, describtion, income, expend, cash, remark} = req.body;
     const profileFields = Object.assign({}, {
         type,
         describtion,
         income,
-        expand,
+        expend,
         cash,
         remark
     });

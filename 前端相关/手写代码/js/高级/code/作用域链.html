@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域链</title>
+</head>
+<body>
+<!--
+1. 理解
+    * 多个上下级关系的作用域形成的链，它的方向是从内向外的(内部作用域可以访问外部作用域，反之则不行)
+    * 查找变量时就是沿着作用域链来查找的
+2. 变量查找规则
+    * 在当前作用域下的执行上下文中查找对应的属性，如果有则直接返回，否则进入步骤2
+    * 在上一级作用域的执行上下文中查找对应的属性，如果有直接返回，否则进入步骤3
+    * 再次执行步骤2的查找操作，直到全局作用域，如果还没有找到就抛出找不到的异常。
+-->
+<script>
+// var a = 1;
+// function fn() {
+//     var b = 2;
+//     function bar() {
+//         var c = 3;
+//         console.log(a); // 1
+//         console.log(b); // 2
+//         console.log(c); // 3
+//         console.log(d); // Uncaught ReferenceError: d is not defined
+//     }
+//     bar();
+// }
+// fn();
+
+// 面试题1
+// var x = 10;
+// function fn() {
+//     console.log(x); // 10
+// }
+// function show(fn) {
+//     var x = 20;
+//     fn();
+// }
+// show(fn);
+
+// 面试题2
+var fn = function() {
+    console.log(fn);
+}
+fn();
+var obj = {
+    fn2: function() {
+        console.log(fn2); // 报错 Uncaught ReferenceError: fn2 is not defined
+        // 正确写法
+        // console.log(this.fn2);
+    }
+};
+obj.fn2();
+</script>
+</body>
+</html>

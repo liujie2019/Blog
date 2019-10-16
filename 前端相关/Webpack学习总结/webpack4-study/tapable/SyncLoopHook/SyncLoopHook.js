@@ -33,12 +33,12 @@ hook.tap('vue', name => {
     console.log('vue', name);
 });
 
-hook.call('lisi', 12);
+hook.call('tom', 12);
 /**
 执行结果：
-webpack lisi--12
-webpack lisi--12
-webpack lisi--12
-node lisi
-vue lisi
+webpack tom--12
+webpack tom--12
+webpack tom--12
+node tom
+vue tom
 */

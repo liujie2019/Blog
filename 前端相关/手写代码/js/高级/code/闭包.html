@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<!-- 要求：点击某个按钮，显示出点击的是第几个按钮 -->
+<script>
+    var btns = document.querySelectorAll('button');
+    // console.log(btns);
+    // for (var i = 0, len = btns.length; i < len; i++) {
+    //     var btn = btns[i];
+    //        当回调函数执行的时候，for循环已经执行完了，i的值已经变为4
+    //     btn.onclick = function() {
+    //         console.log(`第${i + 1}个按钮`);
+    //     }
+    // }
+    /*
+    for (var i = 0, len = btns.length; i < len; i++) {
+        var btn = btns[i];
+        // 将btn所对应的下标保存在btn的index属性上
+        btn.index = i;
+        btn.onclick = function() {
+            console.log(`第${this.index + 1}个按钮`);
+        }
+    }
+    */
+    // 这里的i是全局变量i
+    for (var i = 0, len = btns.length; i < len; i++) {
+        var btn = btns[i];
+        // 借助闭包实现
+        btn.onclick = (function(i) { // 这个i是形参i，即局部变量i
+            return function() {
+                console.log(`第${i + 1}个按钮`);
+            };
+        })(i); // 这个i是全局的i
+    }
+</script>
+</body>
+</html>

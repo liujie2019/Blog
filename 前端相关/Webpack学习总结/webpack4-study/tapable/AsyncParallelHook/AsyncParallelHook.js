@@ -55,7 +55,7 @@ const hook = new AsyncParallelHook(['name']);
 //     }, 1000);
 // });
 
-// hook.callAsync('lisi', () => {
+// hook.callAsync('tom', () => {
 //     console.log('end');
 // });
 hook.tapPromise('react', name => {
@@ -75,13 +75,13 @@ hook.tapPromise('node', name => {
         }, 1000);
     });
 });
-hook.promise('lisi').then(() => {
+hook.promise('tom').then(() => {
     console.log('end');
 });
 /**
 执行结果
-react lisi
-node lisi
-webpack lisi
+react tom
+node tom
+webpack tom
 end
 */

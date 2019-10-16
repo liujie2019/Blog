@@ -13,8 +13,8 @@ class Watcher {
         }, vm.$data);
     }
     get() {
-        Dep.target = this;//只要一创建Watcher实例,就把实例赋给Dep.target
-        let value = this.getVal(this.vm,this.expr);//这里一取属性就会调用属性的get()方法，在observer.js
+        Dep.target = this; //只要一创建Watcher实例,就把实例赋给Dep.target
+        let value = this.getVal(this.vm,this.expr); //这里一取属性就会调用属性的get()方法，在observer.js
         //更新完后后，要取消掉
         Dep.target = null;
         return value;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 题目1
+function Person() {}
+Person.prototype.a = 1;
+let p1 = new Person();
+// 重写原型
+Person.prototype = {
+    a: 2,
+    b: 3
+}
+let p2 = new Person();
+console.log(p1.a, p1.b, p2.a, p2.b); // 1 undefined 2 3
+
+// 题目2
+var F = function() {};
+Object.prototype.a = function() {
+    console.log('a()');
+}
+Function.prototype.b = function() {
+    console.log('b()');
+}
+var f = new F();
+f.a(); // a()
+f.b(); // Uncaught TypeError: f.b is not a function
+F.a(); // a()
+F.b(); // b()
+</script>
+</body>
+</html>

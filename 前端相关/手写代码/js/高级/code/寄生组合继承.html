@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function object(o) {
+        function F(){}
+        F.prototype = o;
+        return new F();
+    }
+    function createPrototype(Parent, Child) {
+        let prototype = object(Parent.prototype);
+        prototype.constructor = Child;
+        Child.prototype = prototype;
+
+    }
+
+    function Parent(name, age) {
+        this.name = name;
+        this.age = age;
+        this.family = ['brother', 'sister', 'me'];
+    }
+    Parent.prototype.sayName = function() {
+        console.log(this.name);
+    }
+    function Child(name, age) {
+        Parent.call(this, name, age);
+    }
+    createPrototype(Parent, Child);
+    Child.prototype.sayAge = function() {
+        console.log(this.age);
+    }
+    let child1 = new Child('lisi', 12);
+    child1.family.push('mother');
+    console.log(child1.family); // ["brother", "sister", "me", "mother"]
+    child1.sayAge(); // 12
+    child1.sayName(); // lisi
+
+    let child2 = new Child('wangwu', 13);
+    console.log(child2.family); // ["brother", "sister", "me"]
+    child2.sayAge(); // 13
+    child2.sayName(); // wangwu
+
+    console.log(Child.prototype);
+    console.log(Parent.prototype);
+</script>
+</body>
+</html>

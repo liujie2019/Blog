@@ -1,13 +1,13 @@
 // 解构赋值 结构相同，可以通过相同的结构来取值
 
 const {length} = [1, 2, 3];
+console.log(length); // 3
 const [,b, c] = [1, 2, 3];
 // 忽略个别值
 console.log(b, c); // 2 3
 // 剩余运算符
 const [a, ...args] = [1, 2, 3];
 console.log(a, args); // 1 [ 2, 3 ]
-console.log(length); // 3
 
 // 忽略第一个
 let [, age] = ['lisi', 12];
@@ -35,6 +35,19 @@ let arr = [1, 2, 3];
 let newArr = [...arr];
 // Object.assign也是浅拷贝
 console.log(arr === newArr); // false
+
+let arr = [{name: 'lisi'}, 1, 2];
+let newArr = [...arr];
+// Object.assign也是浅拷贝
+arr[0].name = 'wangwu';
+console.log(arr, newArr); // [ { name: 'wangwu' }, 1, 2 ] [ { name: 'wangwu' }, 1, 2 ]
+
+
+
+let obj = {name: 'lisi', age: 12};
+const obj2 = JSON.parse(JSON.stringify(obj));
+obj2.name = 'wangwu';
+console.log(obj, obj2); // { name: 'lisi', age: 12 } { name: 'wangwu', age: 12 }
 
 let obj = {name: 'lisi', age: 12, fn: function name() {}};
 // 实现深拷贝

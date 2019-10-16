@@ -1,21 +1,21 @@
-const {SyncLoopHook} = require('tapable'); // 解构同步勾子
+const {SyncLoopHook} = require('tapable'); // 解构同步钩子
 
 class Lesson {
     constructor() {
         this.index = 0;
         this.hooks = {
-            // 订阅勾子
+            // 订阅钩子
             arch: new SyncLoopHook(['name', 'age'])
         }
     }
     start() {
         // 利用钩子的call方法调用监听函数
-        this.hooks.arch.call('lisi', 12);
+        this.hooks.arch.call('tom', 12);
     }
     tap() {
         // 利用钩子的tap方法注册监听函数
         this.hooks.arch.tap('node', (name, age) => {
-            console.log('node', `${name}-${age}`); // node lisi-12
+            console.log('node', `${name}-${age}`); // node tom-12
             return ++this.index === 3 ? undefined : '继续学';
         });
         this.hooks.arch.tap('vue', name => {

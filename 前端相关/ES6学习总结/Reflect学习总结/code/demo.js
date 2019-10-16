@@ -1,1 +1,1 @@
-console.log(Reflect.has(Object, 'assign'));
+console.log(Reflect.has(Object, 'assign')); // true

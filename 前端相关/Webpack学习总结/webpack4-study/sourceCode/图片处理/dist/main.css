@@ -1,0 +1,20 @@
+.box {
+    width: 300px;
+    height: 300px;
+    /* background: url('../assets/avatar.jpg'); */
+}
+.sprite1 {
+    background-image: url(www.baidu.com/assets/images/sprite-48a6b2.min.png);
+    background-position: 0px 0px;
+    background-size: 108px 108px;
+}
+.sprite2 {
+    background-image: url(www.baidu.com/assets/images/sprite-48a6b2.min.png);
+    background-position: -54px 0px;
+    background-size: 108px 108px;
+}
+.sprite3 {
+    background-image: url(www.baidu.com/assets/images/sprite-48a6b2.min.png);
+    background-position: 0px -54px;
+    background-size: 108px 108px;
+}

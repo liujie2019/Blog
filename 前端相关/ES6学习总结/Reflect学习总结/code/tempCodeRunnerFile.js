@@ -1,0 +1,1 @@
+ole.log(target);

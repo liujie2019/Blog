@@ -81,19 +81,32 @@ export default {
       }
     }
   },
-  components: {
-
-  },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-
+          this.$axios
+            .post('/api/users/register', this.registerUser)
+            .then(res => {
+              if (res.status === 200) {
+                // 注册成功
+                this.$message({
+                  message: '注册用户成功!',
+                  type: 'success'
+                });
+                this.$router.push('/login');
+              }
+            }).catch(err => {
+              this.$message({
+                message: '注册用户失败!',
+                type: 'warning'
+              });
+            });
         } else {
-          // this.$message({
-          //   message: 'error submit!!',
-          //   type: 'warning'
-          // });
+          this.$message({
+            message: 'error submit!!',
+            type: 'warning'
+          });
           return false;
         }
       });
