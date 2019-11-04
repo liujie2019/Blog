@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+</head>
+<body>
+<h1>文件上传</h1>
+<input type="file" name="" id="files" multiple>
+<script>
+    const ele = document.querySelector('#files');
+    ele.onchange = function(event) {
+        console.log(event);
+        const files = event.target.files;
+        [...files].forEach(file => {
+            console.log(file);
+        });
+    }
+</script>
+</body>
+</html>

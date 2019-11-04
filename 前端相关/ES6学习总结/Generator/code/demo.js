@@ -5,6 +5,7 @@ function* testGenerator() {
 }
 
 const hw = testGenerator();
+console.log(hw);
 console.log(hw.next());
 console.log(hw.next());
 console.log(hw.next());

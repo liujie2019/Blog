@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],[function(e,n,t){e.exports=t(1)(0)},function(e,n){e.exports=react},function(e,n,t){e.exports=t(1)(8)},,function(e,n,t){"use strict";t.r(n);var r=t(0),o=t.n(r),s=t(2);class c extends r.Component{render(){return o.a.createElement("div",null,"This is List Page")}}t.n(s).a.render(o.a.createElement(c,null),document.querySelector("#root"))}],[[4,0]]]);
+//# sourceMappingURL=list.baa13c10282a766dcfba.js.map

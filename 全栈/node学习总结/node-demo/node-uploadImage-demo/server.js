@@ -20,7 +20,7 @@ app.use(imgUploade);
 
 var hostname = '127.0.0.1';
 var port = 3000;
-app.listen(port, hostname, (err) => {
+app.listen(port, hostname, err => {
     if(err) throw err;
     console.log('server running at http://'+ hostname + ':' + port);
 });

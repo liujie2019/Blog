@@ -604,7 +604,7 @@ module.exports = {
 ```
 `node_modules/webpack/lib`中查看`Compiler.js`
 
-1. 同步`plugins/DonePlugins`
+### 同步插件`plugins/DonePlugins`
 
 打包完成
 ```js
@@ -620,8 +620,7 @@ class DonePlugins {
 module.exports = DonePlugins;
 ```
 
-2. 异步`plugins/AsyncPlugins`
-
+### 异步插件`plugins/AsyncPlugins`
 ```js
 class AsyncPlugins {
     apply(compiler) {
@@ -645,10 +644,8 @@ class AsyncPlugins {
 module.exports = AsyncPlugins;
 ```
 [返回目录](#目录)
-### 文件列表插件
-希望生成一个文件，描述打包出来的文件。
-
-在`plugins`中新建`FileListPlugin`
+## 文件列表插件
+希望生成一个文件，描述打包出来的文件，在plugins中新建FileListPlugin。
 
 ```js
 class FileListPlugin {
@@ -711,20 +708,18 @@ module.exports = {
 ```
 生成`list.md`。
 [返回目录](#目录)
-### 内联webpack插件
+## 内联webpack插件
 新建`index.css`引入`index.js`
 ```js
 yarn add css-loader mini-css-extract-plugin -D
 ```
-
 希望打包后`css、js`内联在`index.html`文件中
 
-创建`plugins`中`InlineSourcePlugins.js`
+在plugins中新建InlineSourcePlugins.js
 
 ```js
 yarn add --dev html-webpack-plugin@next
 ```
-
 [HTML Webpack Plugin](https://github.com/jantimon/html-webpack-plugin)
 
 webpack.config.js
@@ -762,7 +757,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'index.css'
         }),
-        // 只处理js和css结尾的文件
+        // 只处理以js和css结尾的文件
         new InlineSourcePlugins({
             match: /\.(js|css)/
         }),
@@ -772,7 +767,6 @@ module.exports = {
     ]
 }
 ```
-
 InlineSourcePlugins.js
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');

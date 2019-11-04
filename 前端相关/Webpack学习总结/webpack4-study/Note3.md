@@ -2,9 +2,9 @@
 ## 手写webpack
 ```bash
 npm init -y
-npm i webpack webpack-cli -D
+yarn add webpack webpack-cli -D
 ```
->`webpack.config.js`：
+webpack.config.js：
 
 ```js
 const path = require('path');
@@ -18,7 +18,7 @@ module.exports = {
     }
 }
 ```
-执行`npx webpack`，生成文件`bundle.js`：
+执行npx webpack，生成文件bundle.js：
 
 ```js
 (function (modules) {
@@ -62,12 +62,12 @@ module.exports = {
 
 });
 ```
-新建项目用于自己的`webpack`，这里叫`may-pack`
+新建项目用于自己的webpack，这里叫may-pack:
 
 ```bash
 npm init -y
 ```
-在node中，如果想执行命令，需要创建`bin`文件，再创建`may-pack.js`。配置`package.json`：
+在node中，如果想执行命令，需要创建bin文件，再创建may-pack.js。配置package.json：
 
 ```js
 {
@@ -80,20 +80,18 @@ npm init -y
   }
 }
 ```
-
-`may-pack.js`
-
+my-webpack.js
 ```js
 #!  /usr/bin/env node
 // node环境
 console.log('start');
 ```
-运行`npm link`将npm模块链接到对应的运行项目中去，方便地对模块进行调试和测试。
+运行`npm link`，将当前的npm模块链接到全局中。
 
-link成功后，在我们本地`/Users/liujie26/.nvm/versions/node/v8.16.0/bin`目录下就会多一个`my-webpack`文件，其对应是`/Users/liujie26/.nvm/versions/node/v8.16.0/lib`目录下的`/node_modules/my-webpack/bin/my-webpack.js`文件。
+link成功后，在我们本地`/Users/xxxx/.nvm/versions/node/v8.16.0/bin`目录下就会多一个`my-webpack`文件，其对应是`/Users/xxxx/.nvm/versions/node/v8.16.0/lib`目录下的`/node_modules/my-webpack/bin/my-webpack.js`文件。
 ```js
-/Users/liujie26/.nvm/versions/node/v8.16.0/bin/my-webpack -> /Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack/bin/my-webpack.js
-/Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
+/Users/XXX/.nvm/versions/node/v8.16.0/bin/my-webpack -> /Users/XXX/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack/bin/my-webpack.js
+/Users/XXX/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/XXX/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
 ```
 >运行：
 ```js
@@ -101,57 +99,49 @@ my-webpack
 // 输出
 hello my-webpack
 ```
-在想运行`my-webpack`的项目中运行`npm link my-webpack`。
+在想要使用my-webpack的项目目录下运行`npm link my-webpack`，可以将全局中的my-webpack链接到对应的项目中。
 ```js
 npm link my-webpack
-/Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/webpack-dev/node_modules/my-webpack -> /Users/liujie26/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/liujie26/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
+
+/Users/xxx/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/webpack-dev/node_modules/my-webpack -> /Users/xxx/.nvm/versions/node/v8.16.0/lib/node_modules/my-webpack -> /Users/xxx/study/Blog/前端相关/Webpack学习总结/webpack4-study/code/webpack手写/my-webpack
 ```
->运行：
+运行：
 ```js
 npx my-webpack
 // 输出
 hello my-webpack
 ```
-
->需要注意：`#!  /usr/bin/env node`是说明当前代码需要在Node环境下执行。
+需要注意：`#! /usr/bin/env node`是说明当前代码需要在Node环境下执行。
 
 [返回目录](#目录)
 ## webpack分析及处理
-
-`may-pack.js`
-
+my-webpack.js：
 ```js
-#!  /usr/bin/env node
-
+#! /usr/bin/env node
 // node环境
 
 console.log('start');
 
-let path = require('path')
-
+const path = require('path');
 // 拿到配置文件webpack.config.js
-let config = require(path.resolve('webpack.config.js'));
-
-
-let Compiler = require('../lib/Compiler.js');
-
-let compiler = new Compiler(config);
+const config = require(path.resolve('webpack.config.js'));
+const Compiler = require('../lib/Compiler.js');
+const compiler = new Compiler(config);
 
 // 标识运行编译
-compiler.run()
+compiler.run();
 
 ```
-
-创建`lib`文件`Compiler.js`
+在lib目录下创建文件Compiler.js：
 
 ```js
-let path = require('path');
-let fs = require('fs');
+const path = require('path');
+const fs = require('fs');
 
 class Compiler {
     constructor(config) {
         // entry  output
-        this.config = config
+        this.config = config;
         // 需要保存入口文件的路径
         this.entryId = '';   // './src/index.js'
         // 需要保存所有的模块依赖
@@ -193,17 +183,17 @@ module.exports = Compiler;
 `may-pack`中`Compiler.js`
 
 ```js
-let path = require('path');
-let fs = require('fs');
+const path = require('path');
+const fs = require('fs');
 // babylon  主要把源码转成ast Babylon 是 Babel 中使用的 JavaScript 解析器。
 // @babel/traverse 对ast解析遍历语法树 负责替换，删除和添加节点
 // @babel/types 用于AST节点的Lodash-esque实用程序库
 // @babel/generator 结果生成
 
-let babylon = require('babylon');
-let traverse = require('@babel/traverse').default;
-let type = require('@babel/types');
-let generator = require('@babel/generator').default;
+const babylon = require('babylon');
+const traverse = require('@babel/traverse').default;
+const type = require('@babel/types');
+const generator = require('@babel/generator').default;
 class Compiler {
     constructor(config) {
         // entry  output
@@ -261,13 +251,13 @@ module.exports = Compiler;
 * `babylon`  主要把源码转成ast Babylon 是 Babel 中使用的 JavaScript 解析器。
 * `@babel/traverse` 对ast解析遍历语法树 负责替换，删除和添加节点；
 * `@babel/types` 用于AST节点的Lodash-esque实用程序库；
-*`@babel/generator`结果生成
+* `@babel/generator`结果生成
 
 ```bash
 npm i babylon @babel/traverse @babel/types @babel/generator
 ```
 
-`may-pack`中`Compiler.js`
+may-pack中`Compiler.js`
 
 ```js
 let path = require('path')
@@ -388,7 +378,6 @@ module.l = true;
 return module.exports;
 }
 
-
 // Load entry module and return exports
 return __webpack_require__(__webpack_require__.s = "<%-entryId %>");
 })({
@@ -432,13 +421,12 @@ let ejs = require('ejs');
 ## 增加loader
 
 创建`loader`文件夹，创建`less-loader.js`和`style-loader.js`
-
-`yarn add less`
-
+```js
+yarn add less
+```
 [less使用](http://lesscss.cn/#using-less)
 
-`less-loader`
-
+less-loader
 ```js
 // 将less转为css
 let less = require('less')
@@ -454,7 +442,7 @@ function loader(source) {
 
 module.exports = loader;
 ```
-`style-loader`：
+style-loader：
 
 ```js
 // 将css插入到html头部
@@ -470,7 +458,7 @@ function loader(source) {
 module.exports = loader;
 // JSON.stringify(source) 可以将代码转为一行
 ```
-`webpack.config.js`：
+webpack.config.js：
 ```js
 let path = require('path');
 
@@ -512,7 +500,7 @@ body {
 // 拿到模块内容
     getSource (modulePath) {
         // 匹配各种文件的规则
-        let rules= this.config.module.rules;   // webpack.config.js 中rules的数组
+        let rules= this.config.module.rules; // webpack.config.js 中rules的数组
         let content = fs.readFileSync(modulePath, 'utf8')
 
         for (let i = 0; i < rules.length; i++) {
@@ -543,12 +531,10 @@ body {
 
 [返回目录](#目录)
 ## 增加plugins
-```
+```bash
 npm i tapable
 ```
-
-`may-pack`中`Compiler.js`
-
+may-pack中Compiler.js
 ```js
 constructor(config) {
     // entry  output
@@ -639,19 +625,17 @@ compiler.run()
 ```js
 run() {
     this.hooks.run.call();
-
     this.hooks.compile.call();
     // 执行 创建模块的依赖关系
     this.buildModule(path.resolve(this.root, this.entry), true);  // path.resolve(this.root, this.entry) 得到入口文件的绝对路径
     // console.log(this.modules, this.entryId);
-    this.hooks.afterCompile.call()
+    this.hooks.afterCompile.call();
     // 发射打包后的文件
-    this.emitFile()
-    this.hooks.emit.call()
-    this.hooks.done.call()
+    this.emitFile();
+    this.hooks.emit.call();
+    this.hooks.done.call();
 }
 ```
-
 运行`npx may-pack`
 
 [返回目录](#目录)

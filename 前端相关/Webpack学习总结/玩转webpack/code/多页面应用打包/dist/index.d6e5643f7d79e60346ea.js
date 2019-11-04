@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[function(e,n,t){e.exports=t(1)(0)},function(e,n){e.exports=react},function(e,n,t){e.exports=t(1)(8)},function(e,n,t){"use strict";t.r(n);var o=t(0),r=t.n(o),c=t(2);class s extends o.Component{render(){return r.a.createElement("div",null,"This is Home Page")}}t.n(c).a.render(r.a.createElement(s,null),document.querySelector("#root"))}],[[3,0]]]);
+//# sourceMappingURL=index.d6e5643f7d79e60346ea.js.map
