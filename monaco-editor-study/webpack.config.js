@@ -1,31 +1,29 @@
-// const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
-const path = require("path");
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-    mode: "development",
-    entry: [
-        'webpack-dev-server/client?http://localhost:8093/',
-        'webpack/hot/only-dev-server',
-        './src/index.js'
-    ],
+    mode: 'development',
+    entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                use: "babel-loader"
-            },
+            // {
+            //     test: /\.js$/,
+            //     use: 'babel-loader'
+            // },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, "/"),
+        contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 8093,
         hot: true,
@@ -33,6 +31,11 @@ module.exports = {
         overlay: true
     },
     plugins: [
-        // new MonacoWebpackPlugin()
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            filename: 'index.html'
+        }),
+        new MonacoWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

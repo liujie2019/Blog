@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        function debounce(fn, delay) {
+            let timer;
+            return function() {
+                const that = this;
+                const args = arguments;
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(that, args);
+                    timer = null;
+                }, delay);
+            }
+        }
+        const box = document.querySelector('#box');
+        let count = 0;
+        window.addEventListener('resize', () => {
+            box.innerHTML = ++count;
+        }, false);
+        // 防抖处理
+        window.addEventListener('resize', debounce(() => {
+            box.innerHTML = ++count;
+        }, 200), false);
+    </script>
+</body>
+</html>

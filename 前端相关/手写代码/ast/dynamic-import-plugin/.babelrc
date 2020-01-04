@@ -1,0 +1,11 @@
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": [
+        [
+            "dynamic-import",
+            {
+                "library": "lodash", // 引用哪个库的时候使用我们写的这个插件
+            }
+        ]
+    ]
+}

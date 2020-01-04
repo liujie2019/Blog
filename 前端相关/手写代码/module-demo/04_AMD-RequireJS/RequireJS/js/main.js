@@ -9,10 +9,10 @@
             underscore: './libs/underscore',
             custom: './modules/custom'
         },
-        shim: { // shim可以理解成“垫片”，用来帮助require.js加载非AMD规范的库
+        shim: { // shim可以理解成'垫片'，用来帮助require.js加载非AMD规范的库
             'custom': {
                 deps: ['jquery'],
-                exports: 'obj'
+                exports: 'obj123'
             }
         }
     });

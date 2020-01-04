@@ -1,43 +1,29 @@
-import { render, Element } from "./element";
+import {
+    render,
+    Element
+} from './element';
+import {setAttr} from './element';
 
 let allPatches;
 let index = 0;
 // node是真实dom，给真实dom打补丁
 function patch(node, patches) {
     allPatches = patches;
-    walk(node);
-    // 给变化的元素打补丁
+    walk(node); // 给变化的元素打补丁
 }
 
+// 重新遍历老树，对变化的节点打补丁
 function walk(node) {
-    let currentPatch = allPatches[index++];
-    let childNodes = node.childNodes;
+    // 默认取出补丁包中的第一个补丁
+    const currentPatch = allPatches[index++];
+    // childNodes属性返回节点的子节点集合，是一个NodeList对象
+    const childNodes = node.childNodes;
     childNodes.forEach(child => {
         walk(child);
     });
     if (currentPatch) {
         // 打补丁的顺序是逆序，先给子节点打，最后给根节点打
         doPatch(node, currentPatch);
-    }
-}
-
-// 给元素设置属性
-function setAttr(node, key, value) {
-    switch (key) {
-        // key是value的情况，需要判断是否为输入框
-        case 'value': // node是一个input或者textarea
-            if(node.tagName.toUpperCase() === 'INPUT' || node.tagName.toUpperCase() === 'TEXTAREA') {
-                node.value = value;
-            } else {
-                node.setAttribute(key, value);
-            }
-            break;
-        case 'style':
-            node.style.cssText = value;
-            break;
-        default:
-            node.setAttribute(key, value);
-            break;
     }
 }
 
@@ -56,13 +42,15 @@ function doPatch(node, patches) {
                 }
                 break;
             case 'TEXT':
+                // textContent属性设置或者返回指定节点的文本内容
                 node.textContent = patch.text;
                 break;
-            case 'REPLACE':
+            case 'REPLACE': // 节点替换
+                // 如果新节点是一个Element，即虚拟DOM元素，需要先调用render方法将其渲染成真实的DOM
                 const newNode = patch.newNode instanceof Element ? render(patch.newNode) : document.createTextNode(patch.newNode);
                 node.parentNode.replaceChild(newNode, node);
                 break;
-            case 'REMOVE':
+            case 'REMOVE': // 节点删除
                 node.parentNode.removeChild(node);
                 break;
             default:

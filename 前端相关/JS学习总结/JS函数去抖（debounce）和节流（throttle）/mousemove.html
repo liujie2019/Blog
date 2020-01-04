@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+    <style>
+        #box, #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        function debounce(fn, delay) {
+            let timer;
+            return function() {
+                const that = this; // 缓存函数执行时的上下文
+                const args = arguments;
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(that, args);
+                    timer = null;
+                }, delay);
+            }
+        }
+        const box = document.querySelector('#box');
+        const box2 = document.querySelector('#box2');
+        let count = 0;
+        let count2 = 0;
+        // 不进行防抖处理
+        document.addEventListener('mousemove', () => {
+            count++;
+            box.innerHTML = count;
+        }, false);
+        document.addEventListener('mousemove', debounce(() => {
+            count2++;
+            box2.innerHTML = count2;
+        }, 200), false);
+    </script>
+</body>
+</html>

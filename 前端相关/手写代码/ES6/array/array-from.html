@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>篮球</li>
+        <li>足球</li>
+        <li>乒乓球</li>
+    </ul>
+    <script>
+        const liList = document.querySelectorAll('li');
+        const res = Array.from(liList, item => item.textContent);
+        console.log(res); // ["篮球", "足球", "乒乓球"]
+    </script>
+</body>
+</html>

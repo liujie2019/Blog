@@ -100,6 +100,7 @@ my-webpack
 hello my-webpack
 ```
 在想要使用my-webpack的项目目录下运行`npm link my-webpack`，可以将全局中的my-webpack链接到对应的项目中。
+直接在项目目录下运行`npx my-webpack`即可。
 ```js
 npm link my-webpack
 

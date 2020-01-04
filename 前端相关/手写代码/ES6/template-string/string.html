@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person = {
+            name: 'lisi',
+            age: 12,
+            hobbies: [
+                {name: '吃饭'},
+                {name: '睡觉'},
+                {name: '打豆豆'}
+            ]
+        };
+        const template = `
+            <ul>
+                ${person.hobbies.map(({name}) => {
+                    return `
+                        <li>${name}</li>
+                    `;
+                }).join('')}
+            </ul>
+        `;
+        document.body.innerHTML = template;
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+        .in {
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box');
+        box.addEventListener('click', function() { // 这里不能使用箭头函数，会导致this指向window而不是当前点击的box
+            this.classList.add('in');
+            setTimeout(() => { // 这里需要使用箭头函数，使得this指向其父作用域的this指向即box。不使用箭头函数则指向window。
+                this.classList.remove('in');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

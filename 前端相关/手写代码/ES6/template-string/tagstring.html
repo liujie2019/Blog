@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highlight {
+            color: aquamarine;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function highlight(strings, ...values) {
+            const highlighted = values.map(value => `<span class="highlight">${value}</span>`);
+            // let str = '';
+            // strings.forEach((string, index) => {
+            //     str += `${string}${highlighted[index] || ''}`;
+            // });
+            // return str;
+            return strings.reduce((pre, cur, index) => {
+                return `${pre}${cur}${highlighted[index] || ''}`;
+            }, '');
+        }
+        // 标签模板字符串
+        const name = 'lisi';
+        const age = 12;
+        const info = highlight`${name} is ${age} old`;
+        document.body.innerHTML = info;
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@ const path = require('path');
 class P {
     apply(compiler) {// 这里只是apply方法不是改变this指向
         // 绑定入口选项的回调
-        compiler.hooks.entryOption.tap('emit', () => {
+        compiler.hooks.entryOption.tap('entryOption', () => {
             console.log('entryOption');
         });
     }
@@ -11,7 +11,7 @@ class P {
 class P1 {
     apply(compiler) {// 这里只是apply方法不是改变this指向
         // 绑定开始编译的回调
-        compiler.hooks.compile.tap('emit', () => {
+        compiler.hooks.compile.tap('compile', () => {
             console.log('compile');
         });
     }
@@ -19,7 +19,7 @@ class P1 {
 class P2 {
     apply(compiler) {// 这里只是apply方法不是改变this指向
         // 绑定编译完成的回调
-        compiler.hooks.afterCompile.tap('emit', () => {
+        compiler.hooks.afterCompile.tap('afterCompile', () => {
             console.log('afterCompile');
         });
     }
@@ -27,7 +27,7 @@ class P2 {
 class P3 {
     apply(compiler) {
          // 绑定插件处理完成的回调
-        compiler.hooks.afterPlugins.tap('emit', () => {
+        compiler.hooks.afterPlugins.tap('afterPlugins', () => {
             console.log('afterPlugins');
         });
     }
@@ -35,7 +35,7 @@ class P3 {
 class P4 {
     apply(compiler) {
          // 绑定loader处理完成的回调
-        compiler.hooks.afterLoaders.tap('emit', () => {
+        compiler.hooks.afterLoaders.tap('afterLoaders', () => {
             console.log('afterLoaders');
         });
     }
@@ -43,7 +43,7 @@ class P4 {
 class P5 {
     apply(compiler) {// 这里只是apply方法不是改变this指向
         // 绑定开始运行的回调
-        compiler.hooks.run.tap('emit', () => {
+        compiler.hooks.run.tap('run', () => {
             console.log('run');
         });
     }
@@ -60,7 +60,7 @@ class P6 {
 class P7 {
     apply(compiler) {
          // 绑定编译完成的回调
-        compiler.hooks.done.tap('emit', () => {
+        compiler.hooks.done.tap('done', () => {
             console.log('done');
         });
     }

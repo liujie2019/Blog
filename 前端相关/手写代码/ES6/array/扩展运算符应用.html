@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: pink;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+        .head span {
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+        .head span:hover {
+            transform: translateY(-30px) rotate(20deg) scale(2);
+        }
+    </style>
+</head>
+<body>
+    <h2 class="head">HelloWorld!</h2>
+    <script>
+        const head = document.querySelector('.head');
+        head.innerHTML = warpWithSpan(head.textContent);
+        function warpWithSpan(str) {
+            return [...str].map(letter => `<span>${letter}</span>`).join('');
+        }
+    </script>
+</body>
+</html>

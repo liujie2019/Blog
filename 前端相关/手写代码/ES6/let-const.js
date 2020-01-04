@@ -5,6 +5,7 @@
 // 3. js之前并没有块级作用域，var声明的变量会污染全局变量，但是let声明的变量不会污染全局变量
 // 4.
 // 尽可能使用const，如果这个值需要更改才使用let
+
 var a = 1;
 {
     var a = 2; // es5没有块级作用域，这里的声明会覆盖花括号上面的声明
@@ -34,3 +35,29 @@ for (var i = 0; i < 10; i++) {
 }
 
 // eslint let自动转为const
+
+let a = 1;
+let a = 2;
+console.log(a);
+
+const name = 'lisi';
+name = 'wangwu';
+
+const obj = {
+    name: 'lisi',
+    age: 12
+};
+Object.freeze(obj);
+obj.name = 'wangwu';
+console.log(obj);
+
+(function() {
+    var a = 123;
+})();
+console.log(a);
+
+{
+    console.log(a);
+    let a = 123;
+}
+console.log(a); // ReferenceError: a is not defined

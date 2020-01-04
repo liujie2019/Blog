@@ -14,6 +14,7 @@
     <!-- a.html通过http://a.baidu.com:3000/a.html -->
     <iframe src="http://b.baidu.com:3000/b.html" id="iframe" onload="load()" frameborder="0"></iframe>
     <script>
+        var str = 'lisi';
         document.domain = 'baidu.com';
         const iframe = document.querySelector('#iframe');
         function load() {

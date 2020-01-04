@@ -1,16 +1,8 @@
-[Symbol.iterator]() {
-    //   const self = this;
-    //   let index = 0;
-    //   return {
-    //     next() {
-    //       if (index < self.data.length) {
-    //         return {
-    //           value: self.data[index++],
-    //           done: false
-    //         };
-    //       } else {
-    //         return { value: undefined, done: true };
-    //       }
-    //     }
-    //   };
-    // }
+const hobbies = ['🏀', '⚽️', '🏉'];
+
+hobbies.forEach(value => {
+    if (value === 1) {
+        break; // 报错
+    }
+    console.log(value);
+});

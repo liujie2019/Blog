@@ -5,13 +5,13 @@ function say(who) {
 }
 Function.prototype.before = function(fn) {
     // this = say
-    let that = this; // that就是原来的say方法
+    const that = this; // that就是原来的say方法
     return function() {
         fn(); // es6 展开运算符 把arguments参数展开依次传入
         that(...arguments);
-    }
+    };
 }
-let newFn = say.before(function() { // 新增的函数
+const newFn = say.before(function() { // 新增的函数
     console.log('我先执行');
 });
 newFn('我');

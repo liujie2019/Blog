@@ -1,0 +1,17 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "liujie",
+  "license": "ISC",
+  "devDependencies": {
+    "co": "^4.6.0",
+    "mz": "^2.7.0",
+    "thunkify": "^2.1.2"
+  }
+}

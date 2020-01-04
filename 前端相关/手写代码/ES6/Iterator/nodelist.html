@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .complated {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>篮球</li>
+        <li>足球</li>
+        <li>乒乓球</li>
+    </ul>
+    <script>
+        const liList = document.querySelectorAll('li');
+        // console.log(liList);
+        for (const li of liList) {
+            li.addEventListener('click', function() {
+                this.classList.toggle('complated');
+            });
+        }
+    </script>
+</body>
+</html>

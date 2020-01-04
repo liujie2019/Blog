@@ -8,12 +8,15 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="message.a" />
+        <input type="text" v-model="c" />
         <div>{{message.a}}</div>
-        <ul>
+        <!-- <ul>
             <li></li>
-        </ul>
-        {{message.a}}
+        </ul> -->
+        {{c}}
+        <p>{{getHelloWord}}</p>
+        <h1 v-html="htmlStr"></h1>
+        <button v-on:click="handleClick">点击切换</button>
     </div>
     <script src="./watcher.js"></script>
     <script src="./observer.js"></script>
@@ -21,11 +24,32 @@
     <script src="./MVVM.js"></script>
     <script>
         // 我们的数据一般都挂载在vm上
-        let vm = new MVVM({
+        const vm = new MVVM({
             el: '#app',
             data: {
+                c: 'hello123',
+                d: 'world',
                 message: {
-                    a: 'hello vue'
+                    a: 'hello',
+                    b: 'mvvm'
+                },
+                htmlStr: '<span style="color: green;">hello green</span>'
+            },
+            computed: {
+                getHelloWord() {
+                    return this.c + '---' + this.d;
+                }
+            },
+            mounted() {
+                setTimeout(() => {
+                    console.log('mounted触发了');
+                }, 1000);
+            },
+            methods: {
+                handleClick(e) {
+                    // this.htmlStr = '<span style="color: green;">hello green2222</span>';
+                    const randomStrArr = ['childOne', 'childTwo', 'childThree'];
+                    this.message.a = randomStrArr[Number.parseInt(Math.random() * 3)];
                 }
             }
         });

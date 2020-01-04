@@ -16,10 +16,10 @@
 <body>
     <div id="box"></div>
     <script>
-        var box = document.querySelector('#box');
-        var height = 100;
+        const box = document.querySelector('#box');
+        let height = 100;
         function debounce(fn, delay) {
-            var timer = null;
+            let timer = null;
             return function () {
                 var that = this;
                 clearTimeout(timer);

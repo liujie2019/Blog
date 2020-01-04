@@ -63,7 +63,7 @@ demo1().then(val => {
 ### await
 await 可以理解为是 `async wait`(异步等待)的简写。await关键字只能出现在 async 函数内部，不能单独使用。任何async函数都会默认返回promise，并且这个promise解析的值都将会是这个函数的返回值，而async函数必须等到内部所有的 await 命令的 Promise 对象执行完，才会发生状态改变。
 
-await 后面可以跟任何的JS 表达式。虽然说 await 可以等很多类型的东西，但是它最主要的意图是用来等待 Promise 对象的状态被 resolved。如果await的是 promise对象会造成异步函数停止执行并且等待 promise 的解决,如果等的是正常的表达式则立即执行。
+await 后面可以跟任何的JS 表达式。虽然说 await 可以等很多类型的东西，但是它最主要的意图是用来等待 Promise 对象的状态被 resolved。如果await的是 promise对象会造成异步函数停止执行并且等待promise的解决，如果等的是正常的表达式则立即执行。
 
 ### Async函数的错误处理
 ```js
@@ -76,7 +76,7 @@ const testFn = async () => {
 
 testFn().then(v => console.log(a));
 ```
->如上面代码所示：当 async 函数中只要一个 await 出现 reject 状态，则后面的 await 都不会被执行。解决办法：可以添加 try/catch。
+>如上面代码所示：当async函数中只要一个await出现reject状态，则后面的await都不会被执行。解决办法：可以添加try/catch。
 
 ```js
 let a;

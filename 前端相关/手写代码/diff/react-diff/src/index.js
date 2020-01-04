@@ -1,5 +1,5 @@
 import {
-    createElement,
+    createElement, // 创建虚拟DOM方法
     render,
     renderDom
 } from './element';
@@ -7,22 +7,24 @@ import diff from './diff';
 import patch from './patch';
 
 const virtualDom = createElement('ul', {class: 'list'}, [
-    createElement('li', {class: 'item'}, ['a']),
-    createElement('li', {class: 'item'}, ['b']),
-    createElement('li', {class: 'item'}, ['c'])
+    createElement('li', {class: 'item'}, ['科比']),
+    createElement('li', {class: 'item'}, ['詹姆斯']),
+    createElement('li', {class: 'item'}, ['罗斯'])
 ]);
 
 const virtualDom2 = createElement('ul', {class: 'list-group'}, [
-    createElement('li', {class: 'item'}, ['1']),
-    createElement('li', {class: 'item'}, ['b']),
-    createElement('div', {class: 'item'}, ['3'])
+    createElement('li', {class: 'item'}, ['韦德']),
+    createElement('li', {class: 'item'}, ['詹姆斯']),
+    createElement('div', {class: 'item'}, ['库里'])
 ]);
 
 // console.log(virtualDom);
 const el = render(virtualDom);
+console.log(el);
 // window.root与document.querySelector('#root')等价
 // 将虚拟dom转化为了真实的dom，并添加到页面中
 renderDom(el, window.root);
+
 // 通过diff算法产生一个补丁对象
 const patches = diff(virtualDom, virtualDom2);
 console.log(patches);
