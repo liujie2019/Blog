@@ -1,4 +1,3 @@
-
 // 函数类型接口
 // interface ConfigFn {
 //     (value1:string, value2:string):string;
@@ -23,14 +22,16 @@
 // console.log(getData<string>('a'));
 
 // 方法2
-interface ConfigFn<T> {
-    (value1:T):T;
-}
+// interface ConfigFn<T> {
+//     (value1:T):T;
+// }
 
-function getData<T>(value:T) {
-    return value;
-}
+// function getData<T>(value:T) {
+//     return value;
+// }
 
-let myGetData:ConfigFn<string> = getData;
+// let myGetData:ConfigFn<string> = getData;
+// let myGetData2:ConfigFn<number> = getData;
 
-console.log(getData<string>('aaa'));
+// console.log(myGetData('aaa')); // aaa
+// console.log(myGetData2(123)); // 123

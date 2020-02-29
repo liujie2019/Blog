@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        #box {
+            background-color: aquamarine;
+        }
+        #box2 {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        function throttle(fn, delay = 250) {
+            if(!fn instanceof Function) {
+                throw new TypeError('Expected a function');
+            }
+            let preTime = Date.now();
+            let timer = null;
+            return function(...args) {
+                let curTime = Date.now();
+                if (preTime + delay > curTime) {
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        fn.apply(this, args);
+                        preTime = curTime;
+                    }, delay);
+                } else {
+                    fn.apply(this, args);
+                    preTime = curTime;
+                }
+            }
+        }
+        const box = document.querySelector('#box');
+        const box2 = document.querySelector('#box2');
+        let count = 0;
+        let count2 = 0;
+        // 不节流
+        window.addEventListener('resize', () => {
+            box.innerHTML = ++count;
+        }, false);
+        window.addEventListener('resize', throttle(() => {
+            box2.innerHTML = ++count2;
+        }, 300), false);
+    </script>
+</body>
+</html>

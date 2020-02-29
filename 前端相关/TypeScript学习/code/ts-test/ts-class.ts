@@ -1,15 +1,19 @@
-// // class Person {
-// //     name:string; //属性 前面省略了public关键字
-// //     constructor(name:string) { // 构造函数 实例化类的时候调用的方法
-// //         this.name = name;
-// //     }
-// //     run():void {
-// //         console.log(this.name);
-// //     }
-// // }
-
-// // let p = new Person('lisi');
-// // p.run();
+class Person {
+    static name2:any = 'wangwu'; // 静态属性
+    name:string; // 类的属性 前面省略了public关键字
+    age:number;
+    constructor(name:string, age:number) { // 构造函数，实例化类的时候调用该方法
+        // 在上面必须用name:string;和age:number;声明，否则这里会报错
+        this.name = name;
+        this.age = age;
+    }
+    run():void {
+        console.log(`${this.name}-${this.age}`);
+    }
+}
+console.log(Person.name2); // 'wangwu'
+let p = new Person('lisi', 12);
+p.run(); // lisi-12
 
 // // class Person {
 // //     name:string; //属性 前面省略了public关键字

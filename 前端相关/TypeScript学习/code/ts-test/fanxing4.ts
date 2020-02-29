@@ -1,4 +1,4 @@
-// // 数据库接口
+// // 数据库泛型接口
 // interface DB<T> {
 //     get(id:number):any[];
 //     add(info:T):boolean;
@@ -17,7 +17,7 @@
 //     }
 //     add(info: T): boolean {
 //         console.log(info);
-//         return true;
+//         // return true;
 //         throw new Error("Method not implemented.");
 //     }
 //     update(info: T, id: number): boolean {
@@ -35,7 +35,7 @@
 //     }
 //     add(info: T): boolean {
 //         console.log(info);
-//         return true;
+//         // return true;
 //         throw new Error("Method not implemented.");
 //     }
 //     update(info: T, id: number): boolean {
@@ -47,7 +47,7 @@
 // }
 
 // // 操作用户表，定义一个User类和数据表做映射
-// class Users {
+// class User {
 //     username:string | undefined;
 //     password:string | undefined;
 //     constructor(username:string | undefined, password:string | undefined) {
@@ -56,9 +56,9 @@
 //     }
 // }
 
-// let users = new Users('lisi123', '123');
-// // let oMysql = new MysqlDB<Users>(); // Users类作为参数来约束数据传入的类型
-// // oMysql.add(users);
+// let user = new User('lisi123', '123');
+// let oMysql = new MysqlDB<User>(); // User类作为参数来约束数据传入的类型
+// oMysql.add(user);
 
-// let oMssql = new MsSqlDB<Users>(); // Users类作为参数来约束数据传入的类型
-// oMssql.add(users);
+// let oMssql = new MsSqlDB<User>(); // User类作为参数来约束数据传入的类型
+// oMssql.add(user);

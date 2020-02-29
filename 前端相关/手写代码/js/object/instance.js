@@ -17,5 +17,5 @@ class Person {
     }
 }
 const p = new Person('lisi');
-
 console.log(p instanceof Person); // true
+console.log(p instanceof Object); // true

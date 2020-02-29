@@ -1,15 +1,19 @@
 "use strict";
-// // class Person {
-// //     name:string; //属性 前面省略了public关键字
-// //     constructor(name:string) { // 构造函数 实例化类的时候调用的方法
-// //         this.name = name;
-// //     }
-// //     run():void {
-// //         console.log(this.name);
-// //     }
-// // }
-// // let p = new Person('lisi');
-// // p.run();
+var Person = /** @class */ (function () {
+    function Person(name, age) {
+        // 在上面必须用name:string;和age:number;声明，否则这里会报错
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.run = function () {
+        console.log(this.name + "-" + this.age);
+    };
+    Person.name2 = 'wangwu'; // 静态属性
+    return Person;
+}());
+console.log(Person.name2); // 'wangwu'
+var p = new Person('lisi', 12);
+p.run(); // lisi-12
 // // class Person {
 // //     name:string; //属性 前面省略了public关键字
 // //     constructor(name:string) { // 构造函数 实例化类的时候调用的方法

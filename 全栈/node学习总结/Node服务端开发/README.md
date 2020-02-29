@@ -1,4 +1,4 @@
-Node.js是一个基于Chrome V8 引擎的 JavaScript 运行环境。
+Node.js是一个基于Chrome V8 引擎的JavaScript运行环境。
 Node.js 使用了一个事件驱动(event-driven)、非阻塞式 I/O 的模型(non-blocking I/O model)，使其轻量又高效。
 
 - Node.js不是一门语言

@@ -1,27 +1,24 @@
 // es5中的类是通过构造函数来实现的
-// function Animal(name, age) {
-//     this.name = name;
-//     this.age = age;
-//     this.run = function() {
-//         console.log(`${this.name}在抓老鼠`);
-//     }
-// }
-
-// Animal.prototype.eat = function() {
-//     console.log(`${this.name}在吃饭啊`);
-// }
-
-// // 静态方法
-// Animal.sayName = function() {
-//     console.log('我是静态方法');
-// }
-
-// let cat = new Animal('小花', 1);
+function Animal(name, age) {
+    this.name = name;
+    this.age = age;
+    this.run = function() {
+        console.log(`${this.name}在抓老鼠`);
+    }
+}
+Animal.prototype.eat = function() {
+    console.log(`${this.name}在吃饭啊`);
+}
+// 静态方法
+Animal.sayName = function() {
+    console.log('我是静态方法');
+}
 // es5继承：对象冒充继承模式
-// function Cat() {
+// function Cat(name, age) {
 //     // 对象冒充实现继承
-//     Animal.call(this);
+//     Animal.call(this, name, age);
 // }
+// let cat = new Cat('小花', 1);
 // //  对象冒充可以继承构造函数里面的属性和方法，但是无法继承原型链上的属性和方法
 // cat.run(); // 小花在抓老鼠
 // cat.eat();

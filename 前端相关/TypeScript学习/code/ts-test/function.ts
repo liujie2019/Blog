@@ -9,7 +9,7 @@
 // }
 
 // // ts定义函数
-// function run(): string {
+// function run():string {
 //     return 'test';
 // }
 // // 函数表达式
@@ -35,16 +35,16 @@
 // es5中方法的实参和形参可以不一样，但是在ts中必须一样，如果不一样就需要配置可选参数
 
 // 默认参数
-// function test(name:string, age:number=20):string {
-//     let res:string = '';
-//     res = `找到了${name}`;
-//     if (age) {
-//         res += age;
-//     }
-//     return `${res}同学`;
-// }
-// console.log(test('lisi'));
-// console.log(test('lisi', 30));
+function test(name:string, age:number=20):string {
+    let res:string = '';
+    res = `找到了${name}`;
+    if (age) {
+        res += age;
+    }
+    return `${res}同学`;
+}
+console.log(test('lisi')); // 找到了lisi20同学
+console.log(test('lisi', 30)); // 找到了lisi30同学
 
 // 剩余参数，采用ES6中的剩余运算符
 // function sum(a:number, ...args:number[]):number {
@@ -79,7 +79,7 @@
 // 参数不一致
 function getInfo(name:string):string;
 function getInfo(name:string, age:number):string;
-function getInfo(name:any, age?:number):any {
+function getInfo(name:any, age?:any):any {
     if (age) {
         return `我叫${name},我的年龄是${age}`;
     }

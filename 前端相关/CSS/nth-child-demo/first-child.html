@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css让第一个和最后一个不被选中</title>
+    <style>
+        li {
+            width: 300px;
+            height: 30px;
+            background-color: red;
+        }
+        li:not(:last-child):not(:first-child) {
+            background-color: aqua;
+        }
+        nav {
+            margin: 30px;
+        }
+        nav a {
+            text-transform: capitalize;
+            text-decoration: none;
+            color: rgba(222, 128, 27);
+            font-family: sans-serif;
+            font-size: 20px;
+            padding: 10px 10px;
+            margin-top: 30px;
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+        }
+        nav a:not(:last-child) {
+            border-right: 5px solid palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Articles</a>
+        <a href="#">Contact Me</a>
+    </nav>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+</html>

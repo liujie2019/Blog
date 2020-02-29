@@ -11,15 +11,6 @@
 // @log
 // class HttpClient {
 //     constructor() {
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 //     }
 //     getData() {
 //     }
@@ -115,76 +106,67 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 // client.getData(123, 'test');
 // 装饰器执行顺序
 // 类装饰器
-function log1(params) {
-    return function (target) {
-        console.log('类装饰器1');
-    };
-}
-function log2(params) {
-    return function (target) {
-        console.log('类装饰器2');
-    };
-}
-// 属性装饰器
-function property(params) {
-    return function (target, attr) {
-        console.log('属性装饰器1');
-    };
-}
-function property2(params) {
-    return function (target, attr) {
-        console.log('属性装饰器2');
-    };
-}
-// 方法装饰器
-function methods(params) {
-    return function (target, methodName, desc) {
-        console.log('方法装饰器1');
-    };
-}
-function methods2(params) {
-    return function (target, methodName, desc) {
-        console.log('方法装饰器2');
-    };
-}
-// 方法参数装饰器
-function paramsMethods1(params) {
-    return function (target, methodName, desc) {
-        console.log('方法参数装饰器1');
-    };
-}
-function paramsMethods2(params) {
-    return function (target, methodName, desc) {
-        console.log('方法参数装饰器2');
-    };
-}
-var HttpClient = /** @class */ (function () {
-    function HttpClient() {
-    }
-    HttpClient.prototype.getData = function () {
-        console.log(this.url);
-    };
-    HttpClient.prototype.setData = function (attr1, attr2) {
-    };
-    __decorate([
-        property('www.baidu.com'),
-        property2('www.baidu.com2')
-    ], HttpClient.prototype, "url", void 0);
-    __decorate([
-        methods('get方法'),
-        methods2('get方法2')
-    ], HttpClient.prototype, "getData", null);
-    __decorate([
-        __param(0, paramsMethods1()), __param(1, paramsMethods2())
-    ], HttpClient.prototype, "setData", null);
-    HttpClient = __decorate([
-        log1('1'),
-        log2('2')
-    ], HttpClient);
-    return HttpClient;
-}());
-var client = new HttpClient();
-client.getData(123, 'test');
+// function log1(params:any) {
+//     return function(target:any) {
+//         console.log('类装饰器1');
+//     }
+// }
+// function log2(params:any) {
+//     return function(target:any) {
+//         console.log('类装饰器2');
+//     }
+// }
+// // 属性装饰器
+// function property(params:any) {
+//     return function(target:any, attr: any) {
+//         console.log('属性装饰器1');
+//     }
+// }
+// function property2(params:any) {
+//     return function(target:any, attr: any) {
+//         console.log('属性装饰器2');
+//     }
+// }
+// // 方法装饰器
+// function methods(params:any) {
+//     return function(target:any, methodName:any, desc: any) {
+//         console.log('方法装饰器1');
+//     }
+// }
+// function methods2(params:any) {
+//     return function(target:any, methodName:any, desc: any) {
+//         console.log('方法装饰器2');
+//     }
+// }
+// // 方法参数装饰器
+// function paramsMethods1(params:any) {
+//     return function(target:any, methodName:any, desc: any) {
+//         console.log('方法参数装饰器1');
+//     }
+// }
+// function paramsMethods2(params:any) {
+//     return function(target:any, methodName:any, desc: any) {
+//         console.log('方法参数装饰器2');
+//     }
+// }
+// @log1('1')
+// @log2('2')
+// class HttpClient {
+//     @property('www.baidu.com')
+//     @property2('www.baidu.com2')
+//     public url:string | undefined;
+//     constructor() {
+//     }
+//     @methods('get方法')
+//     @methods2('get方法2')
+//     getData() {
+//         console.log(this.url);
+//     }
+//     setData(@paramsMethods1() attr1:any, @paramsMethods2() attr2:any) {
+//     }
+// }
+// let client:any = new HttpClient();
+// client.getData(123, 'test');
 /*
 属性装饰器2
 属性装饰器1

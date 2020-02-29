@@ -180,9 +180,7 @@ module.exports = Compiler;
 
 [返回目录](#目录)
 ## 创建依赖关系
-
 `may-pack`中`Compiler.js`
-
 ```js
 const path = require('path');
 const fs = require('fs');
@@ -249,7 +247,7 @@ module.exports = Compiler;
 [返回目录](#目录)
 ## AST递归解析
 * `parse`方法主要靠解析语法树来进行转义；
-* `babylon`  主要把源码转成ast Babylon 是 Babel 中使用的 JavaScript 解析器。
+* `babylon`主要把源码转成ast Babylon 是 Babel 中使用的 JavaScript 解析器。
 * `@babel/traverse` 对ast解析遍历语法树 负责替换，删除和添加节点；
 * `@babel/types` 用于AST节点的Lodash-esque实用程序库；
 * `@babel/generator`结果生成
@@ -403,17 +401,17 @@ let ejs = require('ejs');
 
 ```js
 // 发射文件
-    emitFile() {
-        // 用数据 渲染想要的
-        // 输出到那个目录下
-        let main = path.join(this.config.output.path, this.config.output.filename)
-        let templateStr = this.getSource(path.join(__dirname, 'main.ejs'))
-        let code = ejs.render(templateStr, { entryId: this.entryId, modules: this.modules})
-        this.assets = {}
-        // 路径对应的代码
-        this.assets[main] = code
-        fs.writeFileSync(main, this.assets[main])
-    }
+emitFile() {
+    // 用数据 渲染想要的
+    // 输出到那个目录下
+    let main = path.join(this.config.output.path, this.config.output.filename)
+    let templateStr = this.getSource(path.join(__dirname, 'main.ejs'))
+    let code = ejs.render(templateStr, { entryId: this.entryId, modules: this.modules})
+    this.assets = {}
+    // 路径对应的代码
+    this.assets[main] = code
+    fs.writeFileSync(main, this.assets[main])
+}
 ```
 
 在`webpack-training`项目中运行`npx may-pack`, 得到`bundle.js`，运行得到结果。

@@ -1,3 +1,11 @@
+// 同时返回string类型和number类型，需要定义两个方法，代码冗余
+// function getData1(value:string):string {
+//     return value;
+// }
+// function getData2(value:number):number {
+//     return value;
+// }
+
 // // T表示泛型，具体什么类型是调用这个方法的时候决定的
 // function getInfo<T>(value:T):T {
 //     return value;
@@ -6,7 +14,7 @@
 // // console.log(getInfo<number>(111));
 // console.log(getInfo<string>('ceshi'));
 
-// // 泛型类
+// 泛型类
 // class MinClass {
 //     public list:number[] = [];
 //     add(num:number) {

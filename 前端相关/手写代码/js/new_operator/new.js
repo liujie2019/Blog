@@ -1,6 +1,4 @@
-function Animal() {
-
-}
+function Animal() {}
 
 let animal = new Animal();
 console.log(animal);
