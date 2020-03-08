@@ -1,6 +1,9 @@
 const moment = require('moment');
 
-const now = moment().format('YYYY-MM-DD HH:mm:ss');
+console.log(moment().format()); // 2020-03-04T14:07:35+08:00
+
+
+// const now = moment().format('YYYY-MM-DD HH:mm:ss');
 // console.log(now); // 2019-08-23 11:15:59
 
 // console.log(new Date().getTime());
@@ -13,5 +16,5 @@ const now = moment().format('YYYY-MM-DD HH:mm:ss');
 
 // console.log(moment().daysInMonth());
 
-console.log(typeof moment().format('x')); // string
-console.log(moment().unix()); // 1566530811
+// console.log(typeof moment().format('x')); // string
+// console.log(moment().unix()); // 1566530811

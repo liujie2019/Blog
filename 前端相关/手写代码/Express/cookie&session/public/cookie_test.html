@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+<body>
+    <button onclick="getCookie()">读取cookie</button>
+    <button onclick="deleteCookie()">删除cookie</button>
+    <button onclick="setCookie()">设置cookie</button>
+
+    <hr>
+    <a href="/cookie/test1">test1</a>
+    <a href="/cookie/test2">test2</a>
+    <script src="https://cdn.bootcss.com/js-cookie/2.2.1/js.cookie.min.js"></script>
+    <script>
+        function getCookie() {
+            const name = Cookies.get('name');
+            alert(name);
+        }
+        function deleteCookie() {
+            Cookies.remove('name');
+            alert(Cookies.get('name'));
+        }
+        function setCookie() {
+            Cookies.set('name2', 'lisi');
+            alert(Cookies.get('name2'));
+        }
+    </script>
+</body>
+</html>

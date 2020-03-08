@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>key的作用和原理</title>
+</head>
+<body>
+    <div id="box">
+        <p v-for="item in items" :key="item">{{item}}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 创建实例
+        const app = new Vue({
+            el: '#box',
+            data: {
+                items: ['a', 'b', 'c', 'd', 'e']
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.items.splice(2, 0, 'f');
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

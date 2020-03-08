@@ -1,0 +1,397 @@
+{
+  "errors": [],
+  "warnings": [
+    "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/"
+  ],
+  "version": "4.41.2",
+  "hash": "197445cc85293b67f629",
+  "time": 441,
+  "builtAt": 1583073759424,
+  "publicPath": "",
+  "outputPath": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/dist",
+  "assetsByChunkName": {
+    "click": "click.js",
+    "main": "main.js"
+  },
+  "assets": [
+    {
+      "name": "click.js",
+      "size": 215,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "click"
+      ],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "main.js",
+      "size": 2424,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {},
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        1
+      ],
+      "assets": [
+        "main.js"
+      ],
+      "children": {
+        "prefetch": [
+          {
+            "name": "click",
+            "chunks": [
+              0
+            ],
+            "assets": [
+              "click.js"
+            ]
+          }
+        ]
+      },
+      "childAssets": {
+        "prefetch": [
+          "click.js"
+        ]
+      }
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        1
+      ],
+      "assets": [
+        "main.js"
+      ],
+      "children": {
+        "prefetch": [
+          {
+            "name": "click",
+            "chunks": [
+              0
+            ],
+            "assets": [
+              "click.js"
+            ]
+          }
+        ]
+      },
+      "childAssets": {
+        "prefetch": [
+          "click.js"
+        ]
+      }
+    },
+    "click": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "click.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "size": 187,
+      "names": [
+        "click"
+      ],
+      "files": [
+        "click.js"
+      ],
+      "hash": "b1f42568e7bbfa67451e",
+      "siblings": [],
+      "parents": [
+        1
+      ],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": 1,
+          "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/click.js",
+          "name": "./src/click.js",
+          "index": 1,
+          "index2": 1,
+          "size": 187,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "factory": 52,
+                "building": 22
+              }
+            }
+          ],
+          "profile": {
+            "factory": 2,
+            "building": 4
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "import()",
+              "userRequest": "./click.js",
+              "loc": "2:4-6:5"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ./src/index.js (referenced with import())"
+          ],
+          "depth": 1,
+          "source": "function handleClick() {\n    const element = document.createElement('div');\n    element.innerText = 'hello webpack';\n    document.body.appendChild(element);\n}\n\nexport default handleClick;"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "moduleIdentifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "moduleName": "./src/index.js",
+          "loc": "2:4-6:5",
+          "request": "./click.js",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 220,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "hash": "2d85cd154687fbc682b0",
+      "siblings": [],
+      "parents": [],
+      "children": [
+        0
+      ],
+      "childrenByOrder": {
+        "prefetch": [
+          0
+        ]
+      },
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 0,
+          "size": 220,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 52,
+            "building": 22
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "document.addEventListener('click', function() {\n    import(\n        /* webpackChunkName:\"click\" */\n        /* webpackPrefetch: true */\n        './click.js'\n    ).then(({default: fn}) => {\n        fn();\n    });\n}, false);"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 0,
+      "size": 220,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 52,
+        "building": 22
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0,
+      "source": "document.addEventListener('click', function() {\n    import(\n        /* webpackChunkName:\"click\" */\n        /* webpackPrefetch: true */\n        './click.js'\n    ).then(({default: fn}) => {\n        fn();\n    });\n}, false);"
+    },
+    {
+      "id": 1,
+      "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/click.js",
+      "name": "./src/click.js",
+      "index": 1,
+      "index2": 1,
+      "size": 187,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "factory": 52,
+            "building": 22
+          }
+        }
+      ],
+      "profile": {
+        "factory": 2,
+        "building": 4
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/Users/liujie26/study/Blog/前端相关/Webpack学习总结/手把手玩转webpack/code/4-8.Prefetch和Preload/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "import()",
+          "userRequest": "./click.js",
+          "loc": "2:4-6:5"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is referenced from these modules with unsupported syntax: ./src/index.js (referenced with import())"
+      ],
+      "depth": 1,
+      "source": "function handleClick() {\n    const element = document.createElement('div');\n    element.innerText = 'hello webpack';\n    document.body.appendChild(element);\n}\n\nexport default handleClick;"
+    }
+  ],
+  "filteredModules": 0,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 5,
+      "debug": false
+    }
+  },
+  "children": []
+}
