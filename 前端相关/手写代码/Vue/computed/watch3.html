@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch属性</title>
+</head>
+<body>
+    <div id="box">
+        <p>个人信息：{{basicInfo}}</p>
+        <p>年龄：<input type="text" v-model="obj.age" /></p>
+    </div>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#box',
+            data: {
+                obj: {
+                    basicInfo: '',
+                    name: 'lisi',
+                    age: 12,
+                    single: '单身'
+                }
+            },
+            watch: {
+                obj: {
+                    handler(newVal, oldVal) {
+                        this.basicInfo = `我叫${this.obj.name}, 今年${newVal.age}岁, 目前${this.obj.single}`;
+                    },
+                    immediate: true,
+                    // deep: true // 需要添加deep为true即可对obj进行深度监听
+                }
+            },
+            // mounted() {
+            //     this.obj = {
+            //         name: 'lisi',
+            //         age: 22,
+            //         basicMsg: '',
+            //         single: '单身'
+            //     };
+            // }
+        });
+    </script>
+</body>
+</html>

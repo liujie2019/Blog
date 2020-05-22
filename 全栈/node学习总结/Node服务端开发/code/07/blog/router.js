@@ -13,7 +13,16 @@ router.get('/', (req, res) => {
 
 // 登录
 router.get('/login', (req, res) => {
-    res.render('login.html');
+    // res.render('login.html');
+    res.send('hello telnet');
+});
+
+router.get('/img', (req, res) => {
+    res.render('img.html');
+});
+
+router.post('/create', (req, res) => {
+    res.send('haha' + req.body.name);
 });
 
 router.post('/login', (req, res, next) => {

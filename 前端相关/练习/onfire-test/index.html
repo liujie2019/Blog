@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/onfire.js/1.0.6/onfire.min.js"></script>
+    <script>
+        // console.log(onfire);
+        const event1 = onfire.on('test', data => {
+            console.log('test event', data);
+        });
+        onfire.fire('test', 6666); // 传递参数6666
+        onfire.un(event1); // 取消绑定
+    </script>
+</body>
+</html>

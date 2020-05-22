@@ -8,14 +8,18 @@
 </head>
 <body>
     <script>
-        class Person{}
-        let p = new Person();
-        // map有引用计数
-        // let map = new Map();
-        let map = new WeakMap();
-        map.set(p, 1);
-        // 这里并不会将p从内存中清除，可以在控制台的memory面板中查看
-        p = null;
+        // class Person{}
+        // let p = new Person();
+        // // map有引用计数
+        // // let map = new Map();
+        // let map = new WeakMap();
+        // map.set(p, 1);
+        // // 这里并不会将p从内存中清除，可以在控制台的memory面板中查看
+        // p = null;
+        let obj = {name : 'lisi'}
+        const target = new Map();
+        target.set(obj, 'haha');
+        obj = null;
     </script>
 </body>
 </html>

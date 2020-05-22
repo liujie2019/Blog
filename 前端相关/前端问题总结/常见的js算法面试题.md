@@ -146,7 +146,7 @@ console.log(sort(arr))  // [1, 5, 9, 22, 32, 43]
  */
 const averge = arr => arr.reduce((total, currentValue) => total + currentValue, 0) / arr.length;
 
-console.log(averge([1,2,3,4]));
+console.log(averge([1, 2, 3, 4]));
 ```
 
 ### 参考文档

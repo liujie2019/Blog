@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>key的原理</title>
+</head>
+<body>
+    <div id="box">
+        <li v-for="(item, index) in list" :key="item.id">
+            <input type="checkbox" :value="item.checked" />
+            {{item.checked}}
+        </li>
+        <button @click="remove">删除</button>
+    </div>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                list: [
+                    {checked: true, id: 1},
+                    {checked: false, id: 2},
+                    {checked: true, id: 3}
+                ]
+            },
+            /*
+            这里如果不用key或者key的值是index的值的话，Vue会采用元素复用，希望删除第一项，实际上删除的是最后一项。
+            */
+            methods: {
+                remove() {
+                    this.list.shift(); // 删除第一项
+                }
+            }
+        });
+    </script>
+</body>
+</html>

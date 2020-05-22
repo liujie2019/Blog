@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch属性</title>
+</head>
+<body>
+    <div id="box">
+        <p>个人信息：{{basicInfo}}</p>
+        <p>年龄：<input type="text" v-model="age" /></p>
+    </div>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#box',
+            data: {
+                basicInfo: '',
+                name: 'lisi',
+                age: 12,
+                single: '单身'
+            },
+            watch: {
+                age(newVal, oldVal) {
+                    this.basicInfo = `我叫${this.name}, 今年${newVal}岁, 目前${this.single}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

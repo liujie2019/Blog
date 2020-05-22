@@ -11,5 +11,10 @@
   "license": "ISC",
   "devDependencies": {
     "immutable": "^3.8.2"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "san-update": "^2.1.0",
+    "updeep": "^1.2.0"
   }
 }

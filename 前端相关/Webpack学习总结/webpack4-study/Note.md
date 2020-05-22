@@ -3188,7 +3188,7 @@ function loader(source) {  // loader的参数就是源代码  这里的this就�
     let callback = this.async(); // babel的转换是异步的,同步的返回是不行的， 不能用return  同步就是直接掉用 异步会在async中
     babel.transform(source, {
         ...options,
-        sourceMap: true,         // 是否设置sourceMap 还需要再webpack.config.js 中配置  devtool: 'source-map'
+        sourceMap: true, // 是否设置sourceMap 还需要再webpack.config.js 中配置  devtool: 'source-map'
         filename: this.resourcePath.split('/').pop()   //  给生成的`source-map`指定名字
     }, function (err, result) {
         callback(err, result.code, result.map)   // 异步 参数分别是「错误 转化后的代码 和 sourceMap」

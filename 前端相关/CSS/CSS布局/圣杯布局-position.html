@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位实现</title>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden; /* 默认显示一屏 */
+        }
+        .container {
+            position: relative;
+            height: 100%;
+        }
+        .left, .right {
+            position: absolute;
+            top: 0;
+            width: 200px;
+            min-height: 200px;
+            background: red;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            right: 0;
+        }
+        .center {
+            margin: 0 200px;
+            min-height: 400px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左边</div>
+        <div class="center">中间</div>
+        <div class="right">右边</div>
+    </div>
+</body>
+</html>

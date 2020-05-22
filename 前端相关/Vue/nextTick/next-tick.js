@@ -8,21 +8,24 @@ import { handleError } from './error';
 // 判断是否是IE/IOS/内置函数
 import { isIE, isIOS, isNative } from './env';
 
-// 使用 MicroTask 的标识符
+// 使用MicroTask的标识符
 export let isUsingMicroTask = false;
 
 // 用来存储所有需要执行的回调函数
 const callbacks = [];
 
-// 用来标志是否正在执行回调函数
+// 用来标志是否有正在执行回调函数
 let pending = false;
 
+// 该函数的作用是用来执行callbacks里面存储的所有回调函数
 function flushCallbacks() {
+  // 设置pending为false，说明该函数已经被推入到任务队列或主线程中，需要等待当前栈执行完毕后再执行。
   pending = false;
-  // 将callbacks拷贝一份
+  // 拷贝一个callbacks函数数组的副本
   const copies = callbacks.slice(0);
+  // 清空callbacks
   callbacks.length = 0;
-  // 循环遍历数组里面的函数，并且执行
+  // 循环遍历数组里面的函数，并且依次执行
   for (let i = 0; i < copies.length; i++) {
     copies[i]();
   }
@@ -37,7 +40,7 @@ microtask 在某些情况下也是会有问题的，因为 microtask 优先级�
  */
 
 // 核心的异步延迟函数，用于异步延迟调用 flushCallbacks 函数
-let timerFunc;
+let timerFunc; // 保存需要被执行的函数
 
 /* istanbul ignore next, $flow-disable-line */
 
@@ -58,7 +61,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
     // "force" the microtask queue to be flushed by adding an empty timer.
 
     // IOS 的 UIWebView，Promise.then 回调被推入 microtask 队列，但是队列可能不会如期执行。
-    // 因此，添加一个空计时器强制执行 microtask 队列。
+    // 因此，添加一个空计时器(相当于添加了一个宏任务)强制执行 microtask 队列。
     if (isIOS) setTimeout(noop);
   };
   isUsingMicroTask = true;
@@ -72,10 +75,13 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   // issue #6466 MutationObserver 在 IE11 并不可靠，所以这里排除了IE
   let counter = 1;
   const observer = new MutationObserver(flushCallbacks);
+  // 创建一个文本节点
   const textNode = document.createTextNode(String(counter));
+  // 使用MutationObserver对象的observe来监听该文本节点，如果文本节点的内容有任何变动的话，它就会触发flushCallbacks回调函数
   observer.observe(textNode, {
     characterData: true,
   });
+  // timerFunc 函数, 如果我们触发该函数，会导致文本节点的数据发生改变，进而触发MutationObserver构造函数
   timerFunc = () => {
     counter = (counter + 1) % 2;
     textNode.data = String(counter);

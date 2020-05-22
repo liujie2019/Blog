@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+</head>
+<body>
+    <div id="box">
+        <p>原数据为：{{msg}}</p>
+        <p>反转后的数据：{{reverseMsg()}}</p>
+    </div>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#box',
+            data: {
+                msg: 'hello1'
+            },
+            // computed: {
+            //     reverseMsg() {
+            //         return this.msg.split('').reverse().join('');
+            //     }
+            // }
+            methods: {
+                reverseMsg() {
+                    // this指向vm实例
+                    return this.msg.split('').reverse().join('');
+                }
+            }
+        });
+        console.log(vm);
+    </script>
+</body>
+</html>

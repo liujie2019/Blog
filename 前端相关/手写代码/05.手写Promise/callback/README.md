@@ -1,0 +1,1 @@
+[https://github.com/zhufengzhufeng/promise1-12/blob/master/1.callback/1.high-order.js](https://github.com/zhufengzhufeng/promise1-12/blob/master/1.callback/1.high-order.js)

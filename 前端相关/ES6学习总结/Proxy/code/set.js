@@ -11,6 +11,7 @@ const handler = {
 
 const proxy = new Proxy({}, handler);
 const obj = {};
+// 设置obj的原型是proxy
 Object.setPrototypeOf(obj, proxy);
 
 obj.name = 'lisi';

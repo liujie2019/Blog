@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        const defaultConfig = {
+            name: 'lisi',
+            age: 12,
+            hobbies: {
+                arr: ['篮球'],
+                a: 1
+            }
+        };
+        const config = $.extend({}, defaultConfig, {
+            name: 'wangwu',
+            hobbies: {
+                arr: ['足球'],
+                b: 2
+            }
+        });
+
+        const config2 = $.extend(true, {}, defaultConfig, {
+            name: 'wangwu',
+            sex: '男',
+            hobbies: {
+                arr: ['足球'],
+                c: 3
+            }
+        });
+
+        console.log(config); // {name: "wangwu", age: 12}
+        console.log(config2); // {name: "wangwu", age: 12}
+    </script>
+</body>
+</html>

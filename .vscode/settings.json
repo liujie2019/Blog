@@ -1,4 +1,5 @@
 {
     "code-runner.runInTerminal": true,
-    "tsfmt.tslint.autoFix": "enabled"
+    "tsfmt.tslint.autoFix": "enabled",
+    "liveServer.settings.port": 5501
 }

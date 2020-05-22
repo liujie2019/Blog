@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深拷贝</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            a: 100,
+            b: [10, 20, 30],
+            c: {
+                x: 10
+            },
+            d: /^\d+$/,
+            e: new Date(),
+            f: function(a) { return a + 2;},
+            g: null,
+            h: undefined
+        };
+        function deepClone(obj, hash = new WeakMap) {
+            // 函数是不需要拷贝的
+            // 排除不是对象类型，包括函数和基本数据类型
+            // typeof function name(params){} // 'function'
+            if (typeof obj !== 'object') {
+                return obj;
+            }
+            if (obj == null) {
+                return obj;
+            }
+            if (obj instanceof RegExp) { // 针对正则做处理
+                return new RegExp(obj);
+            }
+            if (obj instanceof Date) {
+                return new Date(obj);
+            }
+            // 确保既可以拷贝普通对象，也可以拷贝实例对象
+            let newObj = new obj.constructor();
+            // 说明obj是一个对象类型
+            if (hash.get(obj)) {
+                return hash.get(obj);
+            }
+            hash.set(obj, newObj);
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    newObj[key] = deepClone(obj[key], hash);
+                }
+            }
+            return newObj;
+        }
+        // const newObj = deepClone(obj);
+        // console.log(obj);
+        // console.log(newObj);
+        // 处理循环引用
+        let o = {};
+        o.x = o;
+        console.log(o);
+        let o1 = deepClone(o);
+        console.log(o1);
+    </script>
+</body>
+</html>

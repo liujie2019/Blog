@@ -1,4 +1,4 @@
-let obj = {
+const obj = {
     name: 'lisi'
 }
 
@@ -6,8 +6,7 @@ const p = new Proxy(obj, {
     get: function(target, key, receiver) {
         if (key in target) {
             return target[key];
-        }
-        else {
+        } else {
             throw new ReferenceError("Property \"" + key + "\" does not exist.");
         }
     }

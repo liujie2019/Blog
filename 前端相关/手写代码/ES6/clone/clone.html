@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深克隆</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            a: 100,
+            b: [10, 20, 30],
+            c: {
+                x: 10
+            },
+            d: /^\d+$/,
+            e: new Date(),
+            f: function(a) { return a + 2;},
+            g: null,
+            h: undefined
+        };
+        let obj2 = {};
+        // let obj2 = {...obj}; // ES6扩展运算符实现浅拷贝
+        for (let key in obj) {
+            if (!obj.hasOwnProperty(key)) break;
+            obj2[key] = obj[key];
+        }
+        console.log(obj, obj2);
+    </script>
+</body>
+</html>

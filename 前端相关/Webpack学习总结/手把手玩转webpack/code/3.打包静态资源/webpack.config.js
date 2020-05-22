@@ -63,7 +63,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            verbose: true
+        }),
         new HtmlWebpackPlugin({
             template: './index.html'
         })

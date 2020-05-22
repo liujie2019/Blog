@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // 解析客户端请求body参数
 const passport = require('passport'); // 用户登录验证
 const app = express(); // 实例化一个app
 const db = require('./db');
@@ -12,14 +12,15 @@ const profiles = require('./routes/api/profiles');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-// passport 初始化
+// passport初始化
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.get('/', (req, res) => {
     res.send('Hello Express');
 });
-// 使用routes
+
+// 注册路由
 app.use('/api/users', users);
 app.use('/api/profiles', profiles);
 

@@ -15,5 +15,8 @@
     "koa-body": "^4.1.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0"
+  },
+  "dependencies": {
+    "xss": "^1.0.6"
   }
 }

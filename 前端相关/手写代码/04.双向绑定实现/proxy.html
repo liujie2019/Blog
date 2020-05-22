@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    姓名：<span id="spanName"></span><br>
+    <input id="inputName" />
+    <script>
+        let obj = {};
+        obj = new Proxy(obj, {
+            get(target, prop) {
+                // console.log('获取值');
+                return target[prop];
+            },
+            set(target, prop, value) {
+                // console.log('设置值');
+                target[prop] = value;
+                observer(); // 设置完值通知更新视图
+            }
+        });
+        function observer() {
+            spanName.innerHTML = obj.name;
+            inputName.value = obj.name;
+        }
+        setTimeout(() => {
+            obj.name = 'wangwu';
+        }, 1000);
+        inputName.oninput = function() {
+            obj.name = this.value;
+        }
+    </script>
+</body>
+</html>

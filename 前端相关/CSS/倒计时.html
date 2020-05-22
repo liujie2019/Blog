@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> 倒计时 </title>
+    <meta  charset="utf-8">
+    <script type="text/javascript">
+        window.onload = function(){
+            var m = 9;  //分
+            var s = 59;  //秒
+            var countdown = document.getElementById("title");
+            getCountdown();
+            setInterval(function(){ getCountdown() },1000);
+            function getCountdown (){
+                countdown.innerHTML = "<span>"+m+"</span> ：<span>"+s+"</span>";
+                if( m == 0 && s == 0 ){
+                    alert("倒计时结束");
+                    m = 9;
+                    s = 59;
+                }else if( m >= 0 ){
+                    if( s > 0 ){
+                        s--;
+                    }else if( s == 0 ){
+                        m--;
+                        s = 59;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>倒计时</h1>
+    <div id="title"></div>
+</body>
+</html>

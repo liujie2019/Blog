@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     resolveLoader: {
-        modules: ['node_modules', './loaders']
+        modules: ['node_modules', path.resolve(__dirname, 'loaders')]
     },
     module: {
         rules: [

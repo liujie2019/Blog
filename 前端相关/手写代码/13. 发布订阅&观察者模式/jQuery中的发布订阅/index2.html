@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击执行</button>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+    <script>
+        function fn1(x) {
+            console.log(1, x);
+        }
+        function fn2(x) {
+            console.log(2, x);
+        }
+        function fn3(x) {
+            console.log(3, x);
+        }
+        // 创建一个事件池 $.Callbacks()
+        let $pond1 = $.Callbacks();
+        $('#btn').click(() => {
+            // 点击按钮的时候，通知事件池中的方法执行，还可以给每个方法都传递参数
+            $pond1.fire(666);
+        });
+        // 把需要做的事情都添加到事件池中
+        // $pond1.remove()删除对应的事件
+        $pond1.add(fn1);
+        // $pond1.add(fn1); // jQuery中没有做去重处理，这里fn1会打印两次
+        $pond1.add(fn2);
+        $pond1.add(fn3);
+        function fn4(x) {
+            console.log(4, x);
+        }
+        // 后续想要添加事件的话，直接add就行，不需要修改其它代码
+        $pond1.add(fn4);
+        $pond1.remove(fn1); // 取消fn1的订阅
+    </script>
+</body>
+</html>

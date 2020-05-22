@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>node中间件代理跨域</title>
+</head>
+<body>
+    <h2>hello world666</h2>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:3000/api?user=liujie', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    console.log(xhr.response);
+                }
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>
