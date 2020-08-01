@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inputEl" type="text" />
+    <span id="spanEl"></span>
+    <script>
+        const obj = {
+            name: 'liujie',
+            age: 18
+        };
+        function defineReactive(obj, key, value) {
+            Object.defineProperty(obj, key, {
+                get() {
+                    return value;
+                },
+                set(newVal) {
+                    if (newVal !== value) {
+                        value = newVal;
+                        update();
+                    }
+                }
+        });
+        }
+        function observer(obj) {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    defineReactive(obj, key, obj[key]);
+                }
+            }
+        }
+        observer(obj);
+        function update() {
+            inputEl.value = obj.name;
+            spanEl.innerText = obj.name;
+        }
+        update();
+        inputEl.addEventListener('input', e => {
+            obj.name = e.target.value;
+        }, false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout分批插入</title>
+</head>
+<body>
+    <ul id="box"></ul>
+    <script>
+        // DocumentFragment
+        const total = 100000;
+        let index = 0;
+        const once = 2000; // 一次插入2000条
+        let box = document.querySelector('#box');
+        function insert(curTotal, curIndex) {
+            if (curTotal <= 0) {
+                return;
+            }
+            window.requestAnimationFrame(() => {
+                let fragment = document.createDocumentFragment(); // 创建一个文档碎片
+                for (let i = 0; i < once; i++) {
+                    let oLi = document.createElement('li');
+                    oLi.innerHTML = curIndex + 1;
+                    fragment.appendChild(oLi);
+                }
+                // 每次循环后一次性插入dom中
+                box.appendChild(fragment);
+                insert(total - once, curIndex + once);
+            });
+        }
+        insert(total, index);
+
+    </script>
+</body>
+</html>

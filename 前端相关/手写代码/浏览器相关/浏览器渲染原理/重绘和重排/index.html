@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            /* position: relative; */
+            /* left: 0; */
+            transform: translateX(0);
+            height: 100px;
+            width: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+        setTimeout(() => {
+            // div.style.left = '100px';
+            div.style.transform = 'translateX(100px)';
+        }, 2000);
+    </script>
+</body>
+</html>

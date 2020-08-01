@@ -39,7 +39,7 @@ co.wrap = function (fn) {
  */
 
 function co(gen) {
-// 缓存this
+  // 缓存this
   var ctx = this;
   // 获取co函数从第二个参数到最后一个参数，除gen之外的其他参数
   var args = slice.call(arguments, 1)
@@ -102,9 +102,9 @@ function co(gen) {
  */
 
 function toPromise(obj) {
-    // obj 不存在，直接返回
+    // obj不存在，直接返回
     if (!obj) return obj;
-    // 如果 obj 已经是 Promise，直接返回
+    // 如果obj已经是Promise，直接返回
     if (isPromise(obj)) return obj;
     // 如果是generator函数或者generator生成器，执行
     if (isGeneratorFunction(obj) || isGenerator(obj)) return co.call(this, obj);
@@ -124,7 +124,7 @@ function toPromise(obj) {
  * @return {Promise}
  * @api private
  */
-// thunk 函数具备以下两个要素：
+// thunk函数具备以下两个要素：
 // 1. 有且只有一个参数是callback的函数
 // 2. callback的第一个参数是 error
 function thunkToPromise(fn) {
@@ -169,7 +169,7 @@ function objectToPromise(obj) {
     var promises = [];
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i];
-      // 转换为 Promise 形式
+      // 转换为Promise形式
       var promise = toPromise.call(this, obj[key]);
       // 如果是结果是 Promise，则用 defer 函数对 results 的某个 Promise 返回值进行修改
       if (promise && isPromise(promise)) defer(promise, key);

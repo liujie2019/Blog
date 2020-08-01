@@ -5,5 +5,8 @@
 // const obj = Object.assign({}, {name: 'lisi', age: 20});
 // console.log(obj);
 import '@babel/polyfill';
-const arr = Array.from('foo');
-console.log(arr);  // [ 'f', 'o', 'o' ]
+
+const isInclude = [1, 2, 32].includes(2);
+const p = new Promise(() => {});
+// const arr = Array.from('foo');
+// console.log(arr);  // [ 'f', 'o', 'o' ]

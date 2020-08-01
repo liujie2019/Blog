@@ -10,7 +10,7 @@ const log = () => {
         }, 1000);
     });
 }
-// 这些中间件会形成一个promise，
+// 这些中间件会形成一个promise
 app.use(async (ctx, next) => {
     console.log('hello koa1');
     // await会等待下一个中间件执行完毕后再继续执行

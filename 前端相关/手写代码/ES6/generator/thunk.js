@@ -3,4 +3,4 @@ function fn(b) {
     return b * 3;
 }
 
-fn(a + 5);
+console.log(fn(a + 5));

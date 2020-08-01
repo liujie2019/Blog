@@ -10,7 +10,8 @@ app.use((ctx, next) => {
     console.log(ctx.request.req.url); // /a
     console.log(ctx.url); // /a
     // http://localhost:3000/a?name=1
-    // req是原生node中Http模块的参数
+    // ctx的req属性就是原生node中Http模块的req参数
+
     // path属性原生的req上并没有，是koa的request自己扩展的
     // console.log(ctx.req.path); // undefined  ctx.req = req
     // console.log(ctx.request.path); // /a ctx.request是koa自己封装的属性

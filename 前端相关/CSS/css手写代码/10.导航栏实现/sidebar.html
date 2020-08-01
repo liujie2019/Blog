@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平滚动导航栏</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        /* .nav {
+            display: flex;
+            padding: 3px;
+            border: 1px solid #000;
+            overflow-x: auto;
+        }
+        .item {
+            height: 30px;
+            flex: 0 0 200px;
+            background: gray;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+        } */
+        .nav {
+            width: auto;
+            height: 30px;
+            padding: 3px;
+            border: 1px solid #000;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+        .item {
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            margin-right: 5px;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+        <div class="item">item6</div>
+        <div class="item">item7</div>
+        <div class="item">item8</div>
+        <div class="item">item9</div>
+    </div>
+</body>
+</html>

@@ -39,13 +39,14 @@ const data = [{
     ]
 }];
 const deepTraversal = ((node, nodeList = []) => {
+    // 栈实现dfs
     const stack = [];
     if (node.length) {
         stack.push(node[0]);
         while (stack.length) {
             const item = stack.pop();
             nodeList.push(item.label);
-            console.log(item);
+            // console.log(item);
             if (item.children) {
                 const children = item.children;
                 for (let i = children.length - 1; i >= 0; i--) {

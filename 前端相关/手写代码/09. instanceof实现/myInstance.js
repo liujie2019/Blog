@@ -20,6 +20,21 @@ class Person {
         console.log(this.name);
     }
 }
+// const p = new Person('lisi');
+// console.log(p instanceof Person); // true
+// console.log(p instanceof Object); // true
+
+
+function myInstanceof(left, right) {
+    let proto = Object.getPrototypeOf(left);
+    let prototype = right.prototype;
+    while (true) {
+        if (proto === null) return false;
+        if (proto === prototype) return true;
+        proto = Object.getPrototypeOf(proto);
+    }
+}
+
 const p = new Person('lisi');
-console.log(p instanceof Person); // true
-console.log(p instanceof Object); // true
+console.log(myInstanceof(p, Person)); // true
+console.log(myInstanceof(p, Object)); // true

@@ -1,6 +1,6 @@
 Function.prototype.myApply = function(context) {
     if (typeof this !== 'function') {
-        throw TypeError('not a function');
+        throw new TypeError('call must be called on a function');
     }
     context = context || window;
     context.fn = this;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box > div {
+            height: 300px;
+        }
+        .left {
+            width: 200px;
+            float: left;
+            background-color: aquamarine;
+        }
+        .right {
+            width: 200px;
+            float: right;
+            background-color: antiquewhite;
+        }
+        .middle {
+            background-color: brown;
+            margin: 0 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 三栏布局 左右固定 中间自适应 -->
+    <div class="box">
+        <!-- 左右盒子浮动导致父元素高度塌陷 -->
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <!-- 右栏部分要写在中间内容之前 这种实现方式要把middle这个div放到最后面。相当于先把两边的div布局好，然后中间的div嵌入进去。-->
+        <div class="middle">middle</div>
+    </div>
+</body>
+</html>

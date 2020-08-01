@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据同步2</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        window.addEventListener('storage', function(e) {
+            console.log(e);
+            document.querySelector('input').value = e.newValue;
+        }, false);
+    </script>
+</body>
+</html>

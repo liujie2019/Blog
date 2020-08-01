@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个三角形</title>
+    <style>
+        div{
+            width: 0;
+            height: 0;
+            border: 100px solid;
+            margin-bottom: 10px;
+        }
+        .box {
+            border-color: transparent transparent greenyellow transparent; /*等腰直角*/
+        }
+        .box2 {
+            border-color: transparent transparent greenyellow green; /*等腰直角*/
+        }
+        .box3 {
+            border-width: 100px 80px;
+            border-color: transparent transparent yellow transparent; /*等腰三角形*/
+        }
+        .box4 {
+            border-width: 100px 173px; /*173由勾股定理计算得来*/
+            border-color: greenyellow yellow greenyellow red; /*等边三角形*/
+        }
+        .box5 {
+            border-width: 100px 90px 80px 70px;
+            border-color: transparent transparent yellow transparent; /*其它三角形*/
+        }
+    </style>
+</head>
+<body>
+    <!-- 通过border实现 -->
+    <div class="box"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+</body>
+</html>

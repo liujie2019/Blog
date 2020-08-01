@@ -12,7 +12,7 @@ Function.prototype.myBind = function(context) {
         const bindArgs = Array.prototype.slice.call(arguments);
         // this instanceof fBound为true时表示fBound被当做构造函数调用了
         // 当作为构造函数时，this指向实例，self指向绑定函数，因为下面一句`fbound.prototype = this.prototype;`，已经修改了fbound.prototype为绑定函数的prototype，此时结果为true，当结果为true的时候，this指向实例。
-        // 当作为普通函数时，this指向window，self指向绑定函数，此时结果为false，当结果为false的时候，this指向绑定的 context。
+        // 当作为普通函数时，this指向context，self指向绑定函数，此时结果为false，当结果为false的时候，this指向绑定的 context。
         return self.apply(this instanceof fBound
                ? this : context,
                args.concat(bindArgs) // 将fBound的参数和args进行结合
@@ -41,7 +41,10 @@ const obj = {
 var name = 'wangwu';
 var age = 12;
 
+
 const bindTest = test.myBind(obj);
+// bindTest();
+
 // bindTest当作构造函数调用
 // 这个时候的this已经指向了p
 const p = new bindTest();

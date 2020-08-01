@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimationFrame实现动画</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            position: relative;
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let i = 10;
+        let id = window.requestAnimationFrame(move);
+        function move() {
+            i+=1;
+            document.querySelector('div').style.transform = `translateX(${i}px)`;
+            id = window.requestAnimationFrame(move);
+            if (i === 200) {
+                window.cancelAnimationFrame(id);
+            }
+        }
+        // 3秒后取消动画
+        // setTimeout(() => {
+        //     window.cancelAnimationFrame(id);
+        // }, 3000);
+    </script>
+</body>
+</html>

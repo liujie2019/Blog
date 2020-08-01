@@ -7,8 +7,10 @@ app.use((ctx) => {
     // console.log(ctx.req.url); // /a
     // console.log(ctx.request.url); // /a
     // console.log(ctx.request.req.url); // /a
-    // console.log(ctx.url); // /a
+    // console.log(ctx.url); // /a  ctx会代理ctx.requets上的属性
+
     // console.log(ctx.req.query);
+
     // console.log(ctx.req.path); // undefined  ctx.req = req
     // console.log(ctx.request.path); // /a ctx.request是koa自己封装的属性
     // console.log(ctx.request.req.path); // undefined  ctx.request.req = req

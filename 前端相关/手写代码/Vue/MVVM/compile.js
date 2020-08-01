@@ -145,6 +145,7 @@ CompileUtil = {
         expr.replace(/\{\{([^}]+)\}\}/g, (...arguments) => {
             // console.log(arguments); // ["{{message.a}}", "message.a", 0, "{{message.a}}"]
             // arguments[1]获取表达式分组的值
+            // 给表达式每个{{}}都添加观察者
             new Watcher(vm, arguments[1], () => {
                 // 如果数据变化了，文本节点需要重新获取依赖的数据更新文本中的内容
                 updateFn && updateFn(node, this.getTextVal(vm, expr));
@@ -194,7 +195,7 @@ CompileUtil = {
             node.value = value;
         }, // html更新
         htmlUpdate(node, value) {
-            node.innerHTML = typeof value == 'undefined' ? '' : value;
+            node.innerHTML = typeof value === 'undefined' ? '' : value;
         }
     }
 };

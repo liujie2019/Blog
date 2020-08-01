@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js的加载会阻塞html的解析和渲染</title>
+    <!-- <script>
+        const div = document.querySelector('div');
+        console.log(div); // null
+    </script> -->
+    <script defer src="defer.js"></script>
+    <!-- onload会等到DOM树构建完成以及页面上所有资源下载完成后才会执行 -->
+    <!-- <script>
+        window.onload = function() {
+            const div = document.querySelector('div');
+            console.log(div, 'onload'); // <div></div>  "onload"
+        }
+    </script> -->
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const div = document.querySelector('div');
+            console.log(div, 'DOMContentLoaded'); // <div></div>  "DOMContentLoaded"
+        }, false);
+    </script> -->
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    // 将script标签放到这里的话，会在DOM树构建完成后执行
+    // const div = document.querySelector('div');
+    // console.log(div); // <div></div>
+</script>
+</html>

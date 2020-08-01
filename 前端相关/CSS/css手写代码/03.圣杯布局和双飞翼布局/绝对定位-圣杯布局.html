@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位实现圣杯布局</title>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .center {
+            background-color: aquamarine;
+            height: 400px;
+            margin: 0 200px;
+        }
+        .left, .right {
+            width: 200px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+        }
+        .left {
+            background-color: blue;
+            left: 0;
+        }
+        .right {
+            background-color: brown;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左边</div>
+        <div class="center">中间</div>
+        <div class="right">右边</div>
+    </div>
+</body>
+</html>

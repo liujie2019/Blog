@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+</head>
+<body>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+            {{ todo.text }}
+            </li>
+            <li v-for="i in nums">
+                {{i}}
+            </li>
+        </ol>
+        <p>{{obj}}</p>
+    </div>
+    <script>
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { text: '学习 JavaScript' },
+                    { text: '学习 Vue' },
+                    { text: '整个牛项目' }
+                ],
+                nums: [1, 2, 3],
+                obj: {
+                    name: 'lisi'
+                }
+            },
+            mounted() {
+                this.add();
+                // this.setObj();
+            },
+            methods: {
+                add() {
+                    console.log(this.nums);
+                    // this.nums[0] = 6;
+                    this.$set(this.nums, 0, 6);
+                    console.log(this.nums);
+                    // console.log(this.todos);
+                    // this.todos[0] = {text: 'xixixi'}; // 这样改的话，页面不会重新渲染
+                    // this.todos[0].text = 'lalala';
+                    // this.$set(this.todos, 0, {text: 'xixixi'});
+                    // console.log(this.todos);
+                    // this.todos[0].text = 'lalala';
+                    // this.todos.push({text: 'hahaha'});
+                },
+                setObj() {
+                    // this.obj.age = 12; // 这样改的话，页面不会重新渲染
+                    console.log(this.obj);
+                    this.$set(this.obj, 'age', 18);
+                    console.log(this.obj);
+                    this.obj.age = 12;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

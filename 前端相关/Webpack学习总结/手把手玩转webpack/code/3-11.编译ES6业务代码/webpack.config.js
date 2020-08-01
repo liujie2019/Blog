@@ -19,9 +19,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/, // ?表示匹配x 0次或者1次，即匹配js或者jsx
                 loader: 'babel-loader', // babel-loader只是webpack和babel之间通信的桥梁
-                exclude: /node_modules/
+                exclude: /node_modules/, // 忽略node_modules目录下文件,
+                include: path.resolve(__dirname, './src')
             },
             {
                 test: /\.less$/,

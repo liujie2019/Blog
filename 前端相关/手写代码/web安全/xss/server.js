@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
 
-
 const app = new Koa();
 
 app.listen(8088, () => {

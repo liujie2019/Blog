@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一次性渲染</title>
+</head>
+<body>
+    <ul id="box"></ul>
+    <script>
+        let now = Date.now();
+        const total = 100000;
+        let box = document.querySelector('#box');
+        for (let i = 0; i < total; i++) {
+            let oLi = document.createElement('li');
+            oLi.innerHTML = i;
+            box.appendChild(oLi);
+        }
+        console.log('js运行时间：', Date.now() - now);
+        setTimeout(() => {
+            console.log('总运行时间：', Date.now() - now)
+        }, 0);
+    </script>
+</body>
+</html>

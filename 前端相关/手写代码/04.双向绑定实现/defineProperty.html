@@ -13,6 +13,7 @@
         let obj = {
             name: ''
         };
+        // 实现对象的深拷贝
         let newObj = JSON.parse(JSON.stringify(obj));
         Object.defineProperty(obj, 'name', {
             get() {

@@ -12,3 +12,4 @@ function flat(array, depth = 0) {
 const arr = [1, 2, 3, [4, 5, [6]]];
 console.log(flat(arr, 1)); // [ 1, 2, 3, 4, 5, [ 6 ] ]
 console.log(arr); // [ 1, 2, 3, [ 4, 5, [ 6 ] ] ]
+console.log(flat(arr, 2)); // [ 1, 2, 3, 4, 5, 6 ]

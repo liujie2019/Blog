@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动-圣杯布局</title>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden; /* 默认显示一屏 */
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            height: 50px;
+            background-color: yellow;
+            text-align: center;
+            line-height: 50px;
+        }
+        .container {
+            padding: 0 200px;
+            overflow: hidden; /*触发BFC，清除浮动*/
+        }
+        .center, .left, .right {
+            float: left;
+        }
+        .left, .right {
+            width: 200px;
+            height: 400px;
+        }
+        .center {
+            width: 100%;
+            background-color: aquamarine;
+            height: 400px;
+        }
+        .left {
+            background-color: blueviolet;
+            margin-left: -100%;
+            position: relative;
+            left: -200px;
+        }
+        .right {
+            background-color: red;
+            margin-left: -200px;
+            position: relative;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>头部</header>
+    <section class="container">
+        <div class="center">中</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </section>
+    <footer>底部</footer>
+</body>
+</html>

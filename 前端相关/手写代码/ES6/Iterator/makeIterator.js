@@ -25,3 +25,56 @@ do {
 { value: 'b', done: false }
 { value: undefined, done: true }
 */
+
+
+// 生成一个迭代器对象
+// function makeIterator(arr) {
+//     let nextIndex = 0;
+//     return {
+//         next() {
+//             const done = nextIndex === arr.length;
+//             const value = done ? undefined : arr[nextIndex++];
+//             return {
+//                 value,
+//                 done
+//             };
+//         }
+//     };
+// }
+
+let obj = {};
+
+obj[Symbol.iterator] = function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+console.log([...obj]); // [ 1, 2, 3 ]
+
+function* foo() {
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+    yield 5;
+    return 6;
+}
+
+let it = foo();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+/**
+{ value: 1, done: false }
+{ value: 2, done: false }
+{ value: 3, done: false }
+{ value: 4, done: false }
+{ value: 5, done: false }
+{ value: 6, done: true }
+{ value: undefined, done: true }
+*/

@@ -301,7 +301,7 @@ function loader(source) {  // loader的参数就是源代码  这里的this就�
     let callback = this.async(); // babel的转换是异步的,同步的返回是不行的， 不能用return  同步就是直接掉用 异步会在async中
     babel.transform(source, {
         ...options,
-        sourceMap: true,         // 是否设置sourceMap 还需要再webpack.config.js 中配置  devtool: 'source-map'
+        sourceMap: true, // 是否设置sourceMap 还需要再webpack.config.js 中配置  devtool: 'source-map'
         filename: this.resourcePath.split('/').pop()   //  给生成的`source-map`指定名字
     }, function (err, result) {
         callback(err, result.code, result.map)   // 异步 参数分别是「错误 转化后的代码 和 sourceMap」
@@ -329,7 +329,7 @@ console.log(dog.sayName());
 
 [返回目录](#目录)
 ### banner-loader实现
-给所有匹配的`js`加一个注释
+给所有匹配的js加一个注释：
 `webpack.config.js`
 ```js
 {    // 给所有匹配的`js`加一个注释
@@ -393,9 +393,8 @@ function loader(source) {  // loader的参数就是源代码
 module.exports = loader;
 
 ```
->优化:
-
-1. 修改`banner.js`的内容后, `webpack`进行监控，打包`webapck.config.js`配置`watch: true`。
+优化:
+1. 修改`banner.js`的内容后, webpack进行监控，打包`webapck.config.js`配置`watch: true`。
 2. `loader`缓存
 
 ### file-loader和url-loader实现
@@ -619,7 +618,6 @@ class DonePlugins {
 }
 module.exports = DonePlugins;
 ```
-
 ### 异步插件`plugins/AsyncPlugins`
 ```js
 class AsyncPlugins {
@@ -774,7 +772,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 把外链的标签 变成内联的标签
 class InlineSourcePlugins {
     constructor({match}) {
-        this.reg = match;  // 正则
+        this.reg = match; // 正则
     }
     // 处理某一个标签
     processTag(tag, compilation) {

@@ -3,7 +3,6 @@
         "useBuiltIns": "usage",
         "corejs": 2,
         "targets": {
-            "chrome": "67"
         }
     }]]
 }

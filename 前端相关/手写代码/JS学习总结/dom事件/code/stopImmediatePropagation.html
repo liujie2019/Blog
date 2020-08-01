@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>stopImmediatePropagation</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', function(e) {
+            console.log('click1');
+            // stopImmediatePropagation 既能阻止事件向父元素冒泡，也能阻止元素同事件类型的其它监听器被触发
+            e.stopImmediatePropagation();
+        }, false);
+        btn.addEventListener('click', function(e) {
+            console.log('click2');
+        }, false);
+    </script>
+</body>
+</html>

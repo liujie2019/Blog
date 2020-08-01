@@ -1,0 +1,6 @@
+{
+    "plugins": [["./env-plugin.js", {
+        "name": "lisi",
+        "age": 12
+    }]]
+}

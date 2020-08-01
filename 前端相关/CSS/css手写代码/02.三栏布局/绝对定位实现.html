@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+        }
+        .box > div {
+            height: 300px;
+        }
+        .left {
+            position: absolute;
+            width: 200px;
+            background-color: aquamarine;
+        }
+        .right {
+            width: 200px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: bisque;
+        }
+        .middle {
+            margin: 0 200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 三栏布局 左右固定 中间自适应 -->
+    <div class="box">
+        <div class="left">left</div>
+        <div class="middle">middle</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

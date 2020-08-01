@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹出框</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .bg {
+            height: 100%;
+            background-color: aquamarine;
+            font-size: 60px;
+            text-align: center;
+        }
+        .dialog {
+            position: fixed;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dialog .content {
+            background-color: #fff;
+            width: 500px;
+            min-height: 300px;
+            border-radius: 10px;
+            border: 1px solid #ebeef5;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">页面内容呢</div>
+    <div class="dialog">
+        <div class="content">这里是对话框</div>
+    </div>
+</body>
+</html>

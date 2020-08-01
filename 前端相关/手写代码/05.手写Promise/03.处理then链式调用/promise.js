@@ -144,7 +144,7 @@ class Promise {
     finally(callback) {
         let P = this.constructor;
         return this.then(
-            value  => P.resolve(callback()).then(() => value), // 成功得回调
+            value => P.resolve(callback()).then(() => value), // 成功的回调
             err => P.resolve(callback()).then(() => { throw err; }) // 失败的回调
         );
         // finally的作用是：不管前面的Promise是fulfilled还是rejected，都会执行回调函数callback。
@@ -191,6 +191,7 @@ class Promise {
         return function() {
             const args = [...arguments];
             return new Promise((resolve, reject) => {
+                // 除了函数传入的参数以外还需要一个callback函数来供异步方法调用
                 fn.apply(null, args.concat((err, data) => err ? reject(err) : resolve(data)));
             });
         };

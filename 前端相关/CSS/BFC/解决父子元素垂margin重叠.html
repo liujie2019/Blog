@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>消除margin合并</title>
+	<style type="text/css">
+		.wrap{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin: 10px;
+			/*可以通过给父元素和子元素同时设置border属性来消除marhin的合并*/
+			/*border: 1px solid #000;*/
+			overflow: hidden;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			margin: 10px;
+			/*border: 1px solid #000;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">我是子元素</div>
+	</div>
+</body>
+</html>

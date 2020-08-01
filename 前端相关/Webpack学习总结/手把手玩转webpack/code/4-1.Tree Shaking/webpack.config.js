@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'production',
-    devtool: 'cheap-module-source-map',
+    // devtool: 'cheap-module-source-map',
     // mode: 'development',
     // devtool: 'cheap-module-eval-source-map',
     entry: './src/index.js', // 等价于如下配置
@@ -32,14 +32,7 @@ module.exports = {
                 // style-loader将合并后的css插入到html文件的style标签中
                 use: [
                     'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,
-                            // modules: true // 开启css模块化打包
-                        }
-                    },
-                    'postcss-loader',
+                    'css-loader',
                     'less-loader'
                 ]
             },

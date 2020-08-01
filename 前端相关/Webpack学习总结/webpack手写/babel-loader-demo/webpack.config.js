@@ -23,7 +23,7 @@ module.exports = {
             }
         ]
     },
-    resolveLoader: {
+    resolveLoader: { // 配置loader的查找
         modules: ['node_modules', path.resolve(__dirname, 'loaders')]
     }
 };

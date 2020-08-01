@@ -44,6 +44,7 @@ const deepTraversal = ((node, nodeList = []) => {
             const {label, children} = node[i];
             nodeList.push(label);
             if (children && children.length) {
+                // 递归
                 deepTraversal(children, nodeList);
             }
         }

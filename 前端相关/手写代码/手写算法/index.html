@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let timer = setInterval(() => {
+            console.log(111);
+        }, 2000);
+        console.log(timer);
+        clearInterval(timer); // 清除定时器后 timer的值并没有发生变化，还需要手动置为null来释放内存空间
+
+        console.log(timer);
+    </script>
+</body>
+</html>

@@ -3,34 +3,38 @@ const Koa = require('koa');
 const app = new Koa();
 
 // 洋葱模型
-// (ctx, next) => {
-//     console.log('hello koa1');
-//     (ctx, next) => {
-//         console.log('hello koa3');
-//         (ctx, next) => {
-//             console.log('hello koa5');
-//             next();
-//             console.log('hello koa6');
-//         }()
-//         console.log('hello koa4');
-//     }()
-//     console.log('hello koa2');
-// }
+/*
+伪代码
+(ctx, next) => {
+    console.log('hello koa1');
+    (ctx, next) => {
+        console.log('hello koa3');
+        (ctx, next) => {
+            console.log('hello koa5');
+            next();
+            console.log('hello koa6');
+        }()
+        console.log('hello koa4');
+    }()
+    console.log('hello koa2');
+}
+*/
+
 
 app.use((ctx, next) => {
-    console.log('hello koa1');
+    console.log('1');
     next();
-    console.log('hello koa2');
+    console.log('2');
 });
 app.use((ctx, next) => {
-    console.log('hello koa3');
+    console.log('3');
     next();
-    console.log('hello koa4');
+    console.log('4');
 });
 app.use((ctx, next) => {
-    console.log('hello koa5');
+    console.log('5');
     next();
-    console.log('hello koa6');
+    console.log('6');
 });
 app.listen(3000, () => {
     console.log('server run 3000');

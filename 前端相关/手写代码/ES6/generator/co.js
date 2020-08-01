@@ -8,14 +8,18 @@ function* read() {
     return age + a;
 }
 const slice = Array.prototype.slice;
+// co实现：接受一个generator函数，返回的是Promise
 function co(gen) {
-    const ctx = this;
-    const args = slice.call(arguments, 1)
-    if (typeof gen === 'function') gen = gen.apply(ctx, args);
+    const ctx = this; // 保存this上下文
+    const args = slice.call(arguments, 1);
+    if (typeof gen === 'function') gen = gen.apply(ctx, args); // 得到迭代器对象
+    // 传入参数不是generator的兼容处理
     if (!gen || typeof gen.next !== 'function') return resolve(gen);
     return new Promise((resolve, reject) => {
+        // 自定义next函数
         function next(r) {
-            const {value, done} = gen.next(r);
+            let res = gen.next(r);
+            const {value, done} = res;
             if (!done) {
                 Promise.resolve(value).then(r => {
                     next(r);

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>history路由</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/">turn yellow</a></li>
+        <li><a href="/red">turn red</a></li>
+        <li><a href="/blue">turn blue</a></li>
+        <li><a href="/green">turn green</a></li>
+    </ul>
+    <script>
+        class HistoryRouter {
+            constructor(props) {
+                this.routes = {};
+                this._bindPopState(); // 初始化时监听popstate事件
+            }
+            init(path) { // 初始化路由
+                history.replaceState({path: path}, null, path);
+                this.routes[path] && this.routes[path]();
+            }
+            go(path) {
+                history.pushState({path: path}, null, path);
+                this.routes[path] && this.routes[path]();
+            }
+            // 将路径和其对应的回调函数加入hashMap存储
+            route(path, cb) {
+                this.routes[path] = cb;
+            }
+            _bindPopState() {
+                window.addEventListener('popstate', function(e) {
+                    const path = e.state && e.state.path;
+                    this.routes[path] && this.routes[path]();
+                }, false);
+            }
+        }
+
+        const body = document.querySelector('body');
+        const ul = document.querySelector('ul');
+        function changeColor(color) {
+            body.style.backgroundColor = color;
+        }
+        const historyRouter = new HistoryRouter();
+
+
+        historyRouter.route('/', () => {
+            changeColor('yellow');
+        });
+        historyRouter.route('/red', () => {
+            changeColor('red');
+        });
+        historyRouter.route('/blue', () => {
+            changeColor('blue');
+        });
+        historyRouter.route('/green', () => {
+            changeColor('green');
+        });
+        historyRouter.init(location.pathname);
+
+        ul.addEventListener('click', e => {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                historyRouter.go(e.target.getAttribute('href'));
+            }
+        }, false);
+    </script>
+</body>
+</html>

@@ -9,7 +9,8 @@
     "dev-build": "webpack --config ./build/webpack.dev.js",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
     "server": "node server.js",
-    "dll": "webpack --config ./build/webpack.dll.js"
+    "dll": "webpack --config ./build/webpack.dll.js",
+    "build-dll": "yarn run dll && yarn run build"
   },
   "author": "liujie",
   "license": "ISC",

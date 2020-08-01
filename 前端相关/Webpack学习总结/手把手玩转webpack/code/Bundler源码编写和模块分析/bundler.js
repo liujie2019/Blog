@@ -20,6 +20,7 @@ const moduleAnalyser = filename => {
             dependencies[node.source.value] = newFile;
         }
     });
+    // 将源代码编译成浏览器可以识别的代码
     const {code} = babel.transformFromAst(ast, null, {
         presets: ['@babel/preset-env']
     });
@@ -42,6 +43,7 @@ const makeDependenciesGraph = entry => {
         const {dependencies} = item; // 拿到当前模块的依赖对象
         if (dependencies) { // 如果依赖对象存在，对依赖对象进行遍历
             for (let key in dependencies) {
+                // 递归
                 graphArray.push(moduleAnalyser(dependencies[key]));
             }
         }
@@ -80,3 +82,5 @@ const generateCode = entry => {
 // localRequire是将模块在文件中引用的路径转为模块真实的存放路径
 const code = generateCode('./src/index.js');
 console.log(code);
+// 将编译好的代码写入文件
+fs.writeFileSync('./dist/bundle.js', code, 'utf-8');

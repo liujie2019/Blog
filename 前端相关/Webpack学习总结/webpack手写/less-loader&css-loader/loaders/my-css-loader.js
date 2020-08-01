@@ -1,5 +1,8 @@
 
 function loader(source) {
+    // 匹配url()
+    // 匹配分组(.+?)
+    // return source;
     const reg = /url\((.+?)\)/g;
     let pos = 0;
     let current;

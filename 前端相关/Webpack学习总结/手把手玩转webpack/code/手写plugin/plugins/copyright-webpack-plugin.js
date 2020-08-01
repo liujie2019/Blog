@@ -1,3 +1,5 @@
+const RawSource = require('webpack-sources').RawSource;
+
 class CopyrightWebpackPlugin {
     constructor() {
         console.log('插件被使用了');
@@ -11,18 +13,21 @@ class CopyrightWebpackPlugin {
         // compiler.hooks钩子函数，就是在某个时刻会执行的函数
         // compiler中存放的是配置的内容以及包括打包的所有内容
         // 而compilation中存放是某一次打包的内容
+
         // 第一个参数是插件名称
         // emit钩子函数会在将打包后的文件放入到dist目录后触发
         compiler.hooks.emit.tapAsync('CopyrightWebpackPlugin', (compilation, cb) => {
             // debugger
-            compilation.assets['copyright.txt'] = {
-                source: function() { // 指定文件内容
-                    return 'copyright by liujie';
-                },
-                size: function() { // 指定文件大小
-                    return 21;
-                }
-            };
+            // compilation.assets['copyright.txt'] = {
+            //     source: function() { // 指定文件内容
+            //         return 'copyright by liujie';
+            //     },
+            //     size: function() { // 指定文件大小
+            //         return 21;
+            //     }
+            // };
+            // 文件写入webpack-sources
+            compilation.assets['copyright.txt'] = new RawSource('copyright by liujie2020');
             cb(); // 异步钩子都需要执行cb
         });
     }

@@ -14,13 +14,18 @@ module.exports = {
                 use: 'babel-loader'
             }, {
                 test: /\.(ico|gif|png|jpg|jpeg|webp)$/i,
-                // use: 'my-file-loader'
                 use: {
-                    loader: 'my-url-loader',
+                    loader: 'my-file-loader',
                     options: {
-                        limit: 100 * 1024 // 小于100k的图片采用base64编码
+                        output: '/assets'
                     }
                 }
+                // use: {
+                //     loader: 'url-loader',
+                //     options: {
+                //         limit: 100 * 1024 // 小于100k的图片采用base64编码
+                //     }
+                // }
             }
         ]
     },

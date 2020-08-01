@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hash路由实现</title>
+</head>
+<body>
+    <button id="back">back</button>
+    <button id="forward">forward</button>
+    <ul>
+        <li><a href="#/">turn white</a></li>
+        <li><a href="#/red">turn red</a></li>
+        <li><a href="#/blue">turn blue</a></li>
+        <li><a href="#/green">turn green</a></li>
+    </ul>
+    <script>
+        class HashRouter {
+            constructor() {
+                this.routes = {};
+                this.currentUrl = '';
+                this.hashHistory = [];
+                this.isBack = false;
+                this.isForward = false;
+                this.currentIndex = this.hashHistory.length - 1;
+                this.refresh = this.refresh.bind(this);
+                this.back = this.back.bind(this);
+                this.forward = this.forward.bind(this);
+                window.addEventListener('load', this.refresh, false);
+                window.addEventListener('hashchange', this.refresh, false);
+            }
+            route(url, cb) {
+                this.routes[url] = cb || function() {};
+            }
+            refresh() {
+                this.currentUrl = location.hash.slice(1) || '/';
+                if (!this.isBack && !this.isForward) {
+                    // 不是后退则存储当前路径
+                    this.hashHistory.push(this.currentUrl);
+                    this.currentIndex++;
+                }
+                this.routes[this.currentUrl]();
+                this.isBack = false;
+                this.isForward = false;
+            }
+            // 后退
+            back() {
+                this.isBack = true;
+                this.currentIndex <= 0 ? (this.currentIndex = 0) : (this.currentIndex = this.currentIndex - 1);
+                // 设置对应的hash，触发hashchange回调
+                location.hash = this.hashHistory[this.currentIndex];
+            }
+            // 前进
+            forward() {
+                this.isForward = true;
+                this.currentIndex >= this.hashHistory.length - 1 ? (this.currentIndex = this.hashHistory.length - 1) : (this.currentIndex = this.currentIndex + 1);
+                // 设置对应的hash，触发hashchange回调
+                location.hash = this.hashHistory[this.currentIndex];
+            }
+        }
+        const hashRouter = new HashRouter();
+        const content = document.querySelector('body');
+        const forward = document.querySelector('#forward');
+        const back = document.querySelector('#back');
+        back.addEventListener('click', hashRouter.back, false);
+        forward.addEventListener('click', hashRouter.forward, false);
+        function changeColor(color) {
+            content.style.backgroundColor = color;
+        }
+        hashRouter.route('/', () => {
+            changeColor('yellow');
+        });
+        hashRouter.route('/red', () => {
+            changeColor('red');
+        });
+        hashRouter.route('/blue', () => {
+            changeColor('blue');
+        });
+        hashRouter.route('/green', () => {
+            changeColor('green');
+        });
+    </script>
+</body>
+</html>

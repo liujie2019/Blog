@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex:1</title>
+    <style>
+        .box {
+            display: flex;
+            height: 100px;
+            width: 400px;
+        }
+        .child {
+            flex: 1 1 auto;
+            /* flex: 1 1 0%; */
+            /* flex: 1; */
+        }
+        .left {
+            /* width: 20px; */
+            background-color: aquamarine;
+        }
+        .right {
+            width: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left child">我是item1</div>
+        <div class="right child">我是item2我占据的空间更多，哈</div>
+    </div>
+</body>
+</html>

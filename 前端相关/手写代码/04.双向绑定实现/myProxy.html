@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inputEl" type="text" />
+    <span id="spanEl"></span>
+    <script>
+        const obj = {
+            name: 'liujie',
+            age: 18
+        };
+        const proxy = new Proxy(obj, {
+            get(target, prop) {
+                return target[prop];
+            },
+            set(target, prop, value) {
+                target[prop] = value;
+                update();
+            }
+        });
+        function update() {
+            inputEl.value = obj.name;
+            spanEl.innerText = obj.name;
+        }
+        update();
+        inputEl.oninput = function(e) {
+            proxy.name = e.target.value;
+        }
+    </script>
+</body>
+</html>

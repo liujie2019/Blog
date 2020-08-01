@@ -18,9 +18,22 @@ router.get('/users', (req, res, next) => {
             // 使用全局错误处理中间件
             return next(err);
         }
-        res.render('Home.html', {
-            userData: userData
-        });
+        res.json({userData});
+        // res.render('Home.html', {
+        //     userData: userData
+        // });
+    });
+});
+router.post('/users', (req, res, next) => {
+    User.find((err, userData) => {
+        if (err) {
+            // 使用全局错误处理中间件
+            return next(err);
+        }
+        res.json({userData});
+        // res.render('Home.html', {
+        //     userData: userData
+        // });
     });
 });
 

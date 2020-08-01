@@ -8,8 +8,9 @@ class MVVM {
         this.methods = methods;
         // 如果有要编译的模板就开始编译
         if (this.$el) {
-            // 数据代理，vm上的取值操作都代理到vm.$data上，即vm.message等同于vm.$data.message
             this.initComputed(); // 初始化computed
+
+            // 数据代理，vm上的取值操作都代理到vm.$data上，即vm.message等同于vm.$data.message
             this.proxyData(this.$data);
             // 数据劫持 就是把对象的所有属性(this.$data中的属性)改成get和set方法
             new Observer(this.$data);
@@ -23,6 +24,7 @@ class MVVM {
         const computed = this.computed;
         if (typeof computed === 'object') {
             Object.keys(computed).forEach(key => {
+                // {{getHelloWord}} => vm.$data.getHelloWord
                 // 在getVal方法中，取值是从vm.$data中取的
                 // 所以这里要将计算属性代理到this.$data上，而不是this上
                 Object.defineProperty(this.$data, key, {
@@ -41,7 +43,7 @@ class MVVM {
         Object.keys(data).forEach(key => {
             // this就是当前vm实例
             Object.defineProperty(this, key, {
-                configurable: false,
+                configurable: false, // 不可删除
                 enumerable: true,
                 get() {
                     return data[key];
