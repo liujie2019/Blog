@@ -26,20 +26,20 @@ class Promise {
             reject(error);
         }
     }
-    then(onresolved, onrejected) {
+    then(onResolved, onRejected) {
         if (this.status === 'resolved') {
-            onresolved(this.value);
+            onResolved(this.value);
         }
         if (this.status === 'rejected') {
-            onrejected(this.reason);
+            onRejected(this.reason);
         }
         // 处理异步的情况
         if (this.status === 'pending') {
             this.resolveCb.push(() => { // 先订阅
-                onresolved(this.value);
+                onResolved(this.value);
             });
             this.rejectCb.push(() => {
-                onrejected(this.reason);
+                onRejected(this.reason);
             });
         }
     }
@@ -93,3 +93,23 @@ new Promise((resolve, reject) => {
 });
 
 module.exports = Promise;
+
+
+Promise.all = function(promiseArr) {
+    return new Promise((resolve, reject) => {
+        let count = 0;
+        let len = promiseArr.length;
+        let res = [];
+        for (let i = 0; i < len; i++) {
+            Promise.resolve(promiseArr[i]).then(data => {
+                res[i] = data;
+                count++;
+                if (count === len) {
+                    resolve(res);
+                }
+            }).catch(err => {
+                reject(err);
+            });
+        }
+    });
+}

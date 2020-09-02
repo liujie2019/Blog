@@ -9,14 +9,14 @@ const arr = [
 function print(arr) {
     if (!arr.length) return [];
     const res = [];
-    const startI = 0;
-    const startJ = arr[0].length - 1;
+    const startI = 0; // 行
+    const startJ = arr[0].length - 1; // 列
     // 以对角线为分割线，分步打印
 
     let i = 0;
     let j = 0;
-    let leftI = 0;
-    let leftJ = 0;
+    let leftI = 0; // 行
+    let leftJ = 0; // 列
     while (leftJ < startJ) {
        i = leftI;
        j = leftJ;
@@ -55,6 +55,7 @@ function print(arr) {
         rightI++;
         console.log(rightLine);
     }
+    return res;
 }
 
 print(arr);

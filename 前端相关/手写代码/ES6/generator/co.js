@@ -12,10 +12,10 @@ const slice = Array.prototype.slice;
 function co(gen) {
     const ctx = this; // 保存this上下文
     const args = slice.call(arguments, 1);
-    if (typeof gen === 'function') gen = gen.apply(ctx, args); // 得到迭代器对象
-    // 传入参数不是generator的兼容处理
-    if (!gen || typeof gen.next !== 'function') return resolve(gen);
     return new Promise((resolve, reject) => {
+        if (typeof gen === 'function') gen = gen.apply(ctx, args); // 得到迭代器对象
+        // 传入参数不是generator的兼容处理
+        if (!gen || typeof gen.next !== 'function') return resolve(gen);
         // 自定义next函数
         function next(r) {
             let res = gen.next(r);

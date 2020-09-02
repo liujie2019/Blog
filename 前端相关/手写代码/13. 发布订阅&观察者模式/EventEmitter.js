@@ -72,6 +72,7 @@ class EventBus {
     once(type, cb) {
         function fn(...args) {
             cb(...args);
+            console.log(this);
             this.off(type, fn);
         }
         this.on(type, fn);
@@ -81,11 +82,11 @@ class EventBus {
 const event = new EventBus();
 const handler = (...args) => console.log(args);
 // 订阅
-event.on('click', handler);
-// 触发
-event.emit('click', 1, 2, 3);
-// // 取消订阅
-event.off('click', handler);
+// event.on('click', handler);
+// // 触发
+// event.emit('click', 1, 2, 3);
+// // // 取消订阅
+// event.off('click', handler);
 // // 取消后再次触发不生效
 // event.emit('click', 1, 2);
 

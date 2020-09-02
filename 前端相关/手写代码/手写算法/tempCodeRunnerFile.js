@@ -1,15 +1,17 @@
-const str = 'hello world!';
-
-function reverse(str) {
-    let i = 0;
-    let j = str.length - 1;
-    let arr = str.split('');
-    while(i < j) {
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-        i++;
-        j--;
+function divide(num, digit = 2) {
+    let res = [];
+    let digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    while(num > 0) {
+        let rem = num % digit;
+        res.push(digits[rem]);
+        num = Math.floor(num / digit);
     }
-    return arr.join('');
+    return res.reverse().join('');
 }
 
-console.log(reverse(str)); // '!dlrow olleh'
+console.log(divide(10, 2)); // 1010
+
+console.log(divide(1231, 2)); // 输出10011001111
+console.log(divide(1231, 8)); // 输出2317
+console.log(divide(1231, 16)); // 输出4CF
+console.log(divide(1231, 36));

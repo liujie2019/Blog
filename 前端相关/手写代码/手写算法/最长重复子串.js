@@ -13,21 +13,36 @@
 //     }
 //     return size
 // };
-const lengthOfLongestSubstring = function(s) {
+// const lengthOfLongestSubstring = function(s) {
+//     let str = '';
+//     let size = 0;
+//     for (let i of s) {
+//         const index = str.indexOf(i);
+//         if (index === -1) {
+//             str += i;
+//             size = size > str.length ? size : str.length;
+//         } else {
+//             str = str.substr(index + 1) + i;
+//         }
+//     }
+//     // console.log(str); // dabc
+//     return size;
+// }
+
+// console.log(lengthOfLongestSubstring('abcdabc'));
+
+function lengthOfLongestSubstring(s) {
     let str = '';
     let size = 0;
     for (let i of s) {
-        const index = str.indexOf(i);
+        let index = str.indexOf(i);
         if (index === -1) {
             str += i;
-            size = size > str.length ? size : str.length;
+            size = size < str.length ? str.length : size;
         } else {
-            str = str.substr(index + 1) + i;
+            str = str.substr(index+1) + i;
         }
     }
-    // console.log(str); // dabc
     return size;
 }
-
-// console.log(lengthOfLongestSubstring('abcdabc'));
 console.log(lengthOfLongestSubstring('pwwkew'));

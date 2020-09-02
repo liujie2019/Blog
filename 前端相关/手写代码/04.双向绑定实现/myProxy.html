@@ -10,9 +10,32 @@
     <input id="inputEl" type="text" />
     <span id="spanEl"></span>
     <script>
+        // const obj = {
+        //     name: 'liujie',
+        //     age: 18
+        // };
+        // const proxy = new Proxy(obj, {
+        //     get(target, prop) {
+        //         return target[prop];
+        //     },
+        //     set(target, prop, value) {
+        //         target[prop] = value;
+        //         update();
+        //     }
+        // });
+        // function update() {
+        //     inputEl.value = obj.name;
+        //     spanEl.innerText = obj.name;
+        // }
+        // update();
+        // inputEl.oninput = function(e) {
+        //     proxy.name = e.target.value;
+        // }
+    </script>
+    <script>
         const obj = {
-            name: 'liujie',
-            age: 18
+            name: 'wangwu',
+            age: 14
         };
         const proxy = new Proxy(obj, {
             get(target, prop) {
@@ -24,8 +47,8 @@
             }
         });
         function update() {
-            inputEl.value = obj.name;
-            spanEl.innerText = obj.name;
+            inputEl.value = proxy.name;
+            spanEl.innerText = proxy.name;
         }
         update();
         inputEl.oninput = function(e) {

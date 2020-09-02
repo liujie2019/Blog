@@ -40,10 +40,10 @@
         }
         // 为对象属性添加绑定，实现数据劫持
         observer(obj);
-        setTimeout(() => {
-            obj.name = 'wangwu';
-            console.log(111)
-        }, 2000);
+        // setTimeout(() => {
+        //     obj.name = 'wangwu';
+        // }, 2000);
+        update();
         inputName.addEventListener('input', function(e) {
             obj.name = e.target.value;
         }, false);
